@@ -56,7 +56,6 @@ class SuperAdm extends CI_Controller {
         $this->load->view('akses/admin/data_admin', $data);
 	}
 
-
 	public function addstaff(){
 		$add = array(
 
@@ -79,7 +78,6 @@ class SuperAdm extends CI_Controller {
 		redirect('SuperAdm');
 
 	}
-
 
 	public function updatestaff(){
 		$upd = array(
@@ -117,9 +115,50 @@ class SuperAdm extends CI_Controller {
 		$data['active3'] = '';
 		
 		$data['asses'] = $this->SuperAdm_model->getassesment();
-
+		
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/submission_superadmin', $data);
+	}
+	public function addassesment(){
+		$add = array(
+
+			'nomor_urut' => $_POST['nomor_urut'],
+			'creteria' => $_POST['creteria'],
+			'intruksi_upload' =>  $_POST['intruksi_upload'],
+			'penjelasan' =>  $_POST['penjelasan'],
+			'informasi_upload' =>  $_POST['informasi_upload'],
+			'respon' => $_POST['respon'],
+			'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addassesment($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deleteassesment(){
+
+		$this->SuperAdm_model->deleteassesment($_POST['id_ass']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updateassesment(){
+		$upd = array(
+			'id_ass' => $_POST['id_ass'],
+			'nomor_urut' => $_POST['nomor_urut'],
+			'creteria' => $_POST['creteria'],
+			'intruksi_upload' =>  $_POST['intruksi_upload'],
+			'penjelasan' =>  $_POST['penjelasan'],
+			'informasi_upload' =>  $_POST['informasi_upload'],
+			'respon' => $_POST['respon'],
+			'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->updateassesment($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function m1(){
