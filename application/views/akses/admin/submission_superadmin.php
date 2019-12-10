@@ -178,7 +178,7 @@
   </div>
 
 <?php 
-  foreach ($admassesment as $row){
+  foreach ($asses as $row){
 ?>
 
 <!-- Modal -->
@@ -199,37 +199,37 @@
              <tr>
                   <th>Nomor Urut</th>
                   <td>:</td>
-                  <td><input type="text" name="nomor_urut" class="form-control"></td>
+                  <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nomor_urut; ?>"></td>
                 </tr>
                 <tr>
                   <th>Kriteria</th>
                   <td>:</td>
-                  <td><input type="text" name="creteria" class="form-control"></td>
+                  <td><input type="text" name="creteria" class="form-control" value="<?php echo $row->creteria; ?>"></td>
                 </tr>
                 <tr>
                   <th>Instruksi Upload</th>
                   <td>:</td>
-                  <td><input type="text" name="intruksi_upload" class="form-control"></td>
+                  <td><input type="text" name="intruksi_upload" class="form-control" value="<?php echo $row->intruksi_upload; ?>"></td>
                 </tr>                
                 <tr>
                   <th>Penjelasan</th>
                   <td>:</td>
-                  <td><input type="text" name="penjelasan" class="form-control"></td>
+                  <td><input type="text" name="penjelasan" class="form-control" value="<?php echo $row->penjelasan; ?>"></td>
                 </tr>
                 <tr>
                   <th>Informasi Upload</th>
                   <td>:</td>
-                  <td><input type="text" name="informasi_upload" class="form-control"></td>
+                  <td><input type="text" name="informasi_upload" class="form-control" value="<?php echo $row->informasi_upload; ?>"></td>
                 </tr>
                 <tr>
                   <th>Respon</th>
                   <td>:</td>
-                  <td><input type="text" name="respon" class="form-control"></td>
+                  <td><input type="text" name="respon" class="form-control" value="<?php echo $row->respon; ?>"></td>
                 </tr>
                 <tr>
                   <th>Bobot</th>
                   <td>:</td>
-                  <td><input type="text" name="bobot" class="form-control"></td>
+                  <td><input type="text" name="bobot" class="form-control" value="<?php echo $row->bobot; ?>"></td>
                 </tr>
               </table>
           </h5>
@@ -252,7 +252,7 @@
        <p align="justify">Apa kamu yakin akan menghapus Assesment :  <?=$row->nomor_urut?> Kriteria : <?=$row->creteria?> </p>
       </div>
       <div class="modal-footer">
-      <form method="post" action="superadm/deleteassessment">
+      <form method="post" action="superadm/deleteassesment">
           <input type="hidden" name="id_ass" value="<?php echo $row->id_ass; ?>">
           <button type="submit" class="btn btn-success">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
