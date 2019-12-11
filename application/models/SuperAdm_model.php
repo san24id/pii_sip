@@ -171,6 +171,31 @@ class SuperAdm_model extends CI_model {
         return $query;
     }
 
+    function addssektor($add){
+        $sql = "INSERT INTO `t_subsektor`(`id_sektor`, `nama_subsektor` ) 
+        VALUES ('".$add['id_sektor']."', '".$add['nama_sektor']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatessektor($upd){
+        $sql = "UPDATE `t_subsektor` SET `id_sektor`='".$upd['id_sektor']."',`nama_subsektor`='".$upd['nama_subsektor']."' WHERE `id_subsektor`='".$upd['id_subsektor']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletessektor($id){
+        $sql = "DELETE FROM `t_subsektor` WHERE `t_subsektor`.`id_subsektor` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     public function getprovinsi(){
         $sql = "SELECT * from t_provinsi";
         $query = $this->db->query($sql)->result();

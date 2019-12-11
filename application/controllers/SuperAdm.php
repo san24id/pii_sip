@@ -371,7 +371,7 @@ class SuperAdm extends CI_Controller {
 
 		redirect('SuperAdm');
 	}
-
+	
 	public function subsektor(){
 		$data['active1'] = 'active';
 		$data['active2'] = '';
@@ -381,6 +381,49 @@ class SuperAdm extends CI_Controller {
 
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/subsektor_superadm', $data);
+	}
+
+	public function addssektor(){
+		$add = array(
+
+			'id_sektor' => $_POST['id_sektor'],
+			'nama_subsektor' => $_POST['nama_subsektor']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addssektor($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletessektor(){
+
+		$this->SuperAdm_model->deletessektor($_POST['id_subsektor']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatessektor(){
+		$upd = array(
+			'id_subsektor' => $_POST['id_subsektor'],
+			'id_sektor' => $_POST['id_sektor'],
+			'nama_subsektor' => $_POST['nama_subsektor']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatessektor($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function provinsi(){

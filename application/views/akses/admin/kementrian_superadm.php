@@ -177,7 +177,7 @@
 ?>
 
 <!-- Modal -->
-<div class="modal fade" id="ubah<?php echo $row->id; ?>" role="dialog" aria-hidden="true"  tabindex="-1"  data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="ubah<?php echo $row->id_kementerian; ?>" role="dialog" aria-hidden="true"  tabindex="-1"  data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -189,13 +189,8 @@
         <div class="modal-body">
           <h5>
             <form method="post" action="superadm/updatekementrian">
-              <input type="hidden" name="id_kementerian" value="<?php echo $row->id; ?>">
-             <table class="table">
-                <tr>
-                  <th>Nomer Kementrian</th>
-                  <td>:</td>
-                  <td><input type="text" name="id_kementerian" class="form-control" value="<?php echo $row->id_kementerian; ?>"></td>
-                </tr>
+              <input type="hidden" name="id_kementerian" value="<?php echo $row->id_kementerian; ?>">
+             <table class="table">                
                 <tr>
                   <th>Nama Kementrian</th>
                   <td>:</td>
@@ -244,7 +239,7 @@
     </div>
   </div>
   
-  <div class="modal fade" id="hapus<?php echo $row->id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="hapus<?php echo $row->id_kementerian; ?>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
 

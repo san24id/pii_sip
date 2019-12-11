@@ -158,8 +158,8 @@
         <div class="modal-body">
           <h5>
             <form method="post" action="superadm/updatelpnk">
-              <input type="hidden" name="id_kementerian" value="<?php echo $row->id_lpnk; ?>">
-             <table class="table">
+              <input type="hidden" name="id_lpnk" value="<?php echo $row->id_lpnk; ?>">
+              <table class="table">
                 <tr>
                   <th>Nama LPNK</th>
                   <td>:</td>
@@ -213,7 +213,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Data LPNK :  <?=$row->id_lpnk?> Nama LPNK : <?=$row->nama_lpnk?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Data LPNK :  <?=$row->id_lpnk?></p>
+       <p> Nama LPNK : <?=$row->nama_lpnk?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletelpnk">

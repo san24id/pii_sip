@@ -152,7 +152,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ubah Kementrian</h4>
+          <h4 class="modal-title">Ubah Sektor</h4>
         </div>
         <div class="modal-body">
           <h5>
@@ -160,7 +160,7 @@
               <input type="hidden" name="id_sektor" value="<?php echo $row->id_sektor; ?>">
              <table class="table">
                 <tr>
-                  <th>Nama Kementrian</th>
+                  <th>Nama Sektor</th>
                   <td>:</td>
                   <td><input type="text" name="nama_sektor" class="form-control" value="<?php echo $row->nama_sektor; ?>"></td>
                 </tr>
@@ -212,7 +212,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Data Sektor :  <?=$row->id_sektor?> Nama Sektor : <?=$row->nama_sektor?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Data Sektor :  <?=$row->id_sektor?></p>
+       <p> Nama Sektor : <?=$row->nama_sektor?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletesektor">

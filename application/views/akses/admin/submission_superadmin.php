@@ -249,7 +249,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Assesment :  <?=$row->nomor_urut?> Kriteria : <?=$row->creteria?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Assesment :  <?=$row->nomor_urut?></p>
+       <p> Kriteria : <?=$row->creteria?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deleteassesment">

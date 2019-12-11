@@ -281,7 +281,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus dengan Nama :  <?=$row->display_name?> Username : <?=$row->username?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus dengan Nama :  <?=$row->display_name?></p>
+       <p> Username : <?=$row->username?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletestaff">

@@ -131,7 +131,7 @@
                 <tr>
                 <th>Nomor Pertanyaan</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control" value="<?php echo $row->id_ass; ?>"></td>
+                  <td><input type="text" name="id_ass" class="form-control"></td>
                 </tr>
                 <tr>
                   <th>Nomor Urut</th>
@@ -200,27 +200,27 @@
                 <tr>
                   <th>Nomor Pertanyaan</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control"></td>
+                  <td><input type="text" name="id_ass" class="form-control" value="<?php echo $row->idass; ?>"></td>
                 </tr>
                 <tr>
                   <th>Nomor Urut</th>
                   <td>:</td>
-                  <td><input type="text" name="nomor_urut" class="form-control"></td>
+                  <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nomor_urut; ?>"></td>
                 </tr>
                 <tr>
                   <th>Urut</th>
                   <td>:</td>
-                  <td><input type="text" name="urut" class="form-control"></td>
+                  <td><input type="text" name="urut" class="form-control" value="<?php echo $row->urut; ?>"></td>
                 </tr>                
                 <tr>
                   <th>A</th>
                   <td>:</td>
-                  <td><input type="text" name="a" class="form-control"></td>
+                  <td><input type="text" name="a" class="form-control" value="<?php echo $row->a; ?>"></td>
                 </tr>
                 <tr>
                   <th>B</th>
                   <td>:</td>
-                  <td><input type="text" name="b" class="form-control"></td>
+                  <td><input type="text" name="b" class="form-control" value="<?php echo $row->b; ?>"></td>
                 </tr>
                 <!-- <tr>
                   <th>Respon</th>
@@ -250,7 +250,8 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Pilihan ini : <?=$row->id_ass?> Pertanyaan : <?=$row->nomor_urut?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Pilihan ini : <?=$row->id_ass?></p>
+       <p> Pertanyaan : <?=$row->nomor_urut?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletem1">
