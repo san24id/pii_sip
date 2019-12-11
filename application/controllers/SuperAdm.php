@@ -254,6 +254,7 @@ class SuperAdm extends CI_Controller {
 
 	public function updatekementrian(){
 		$upd = array(
+			'id' => $_POST['id'],
 			'id_kementerian' => $_POST['id_kementerian'],
 			'nama_kementerian' => $_POST['nama_kementerian']
 			// 'urut' => $_POST['urut'],
@@ -328,6 +329,47 @@ class SuperAdm extends CI_Controller {
 	
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/sektor_superadm', $data);
+	}
+
+	public function addsektor(){
+		$add = array(
+
+			'nama_sektor' => $_POST['nama_sektor']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addsektor($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletesektor(){
+
+		$this->SuperAdm_model->deletesektor($_POST['id_sektor']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatesektor(){
+		$upd = array(
+			'id_sektor' => $_POST['id_sektor'],
+			'nama_sektor' => $_POST['nama_sektor']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatesektor($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function subsektor(){

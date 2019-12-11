@@ -19,7 +19,7 @@ class SuperAdm_model extends CI_model {
 
     function updateassesment($upd){
         $sql = "UPDATE `t_assessment` SET `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
-        `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."'"; 
+        `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."' WHERE `id_ass`='".$upd['id_ass']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -53,7 +53,7 @@ class SuperAdm_model extends CI_model {
 
     function updatem1($upd){
         $sql = "UPDATE `m1` SET `id_ass`='".$upd['id_ass']."',`nomor_urut`='".$upd['nomor_urut']."',`urut`='".$upd['urut']."',`a`='".$upd['a']."',
-        `b`='".$upd['b']."',`su`='".$upd['su']."'"; 
+        `b`='".$upd['b']."',`su`='".$upd['su']."'WHERE `id`='".$upd['id']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -76,8 +76,8 @@ class SuperAdm_model extends CI_model {
     }
 
     function addkementerian($add){
-        $sql = "INSERT INTO `t_kementerian`(`nama_kementerian` ) 
-        VALUES ('".$add['nama_kementerian']."')";
+        $sql = "INSERT INTO `t_kementerian`(`id_kementerian`, `nama_kementerian` ) 
+        VALUES ('".$add['id_kementerian']."'.'".$add['nama_kementerian']."')";
 
         $query = $this->db->query($sql);
 
@@ -85,7 +85,7 @@ class SuperAdm_model extends CI_model {
     }
 
     function updatekementrian($upd){
-        $sql = "UPDATE `t_kementerian` SET `nama_kementerian`='".$upd['nama_kementerian']."'"; 
+        $sql = "UPDATE `t_kementerian` SET `nama_kementerian`='".$upd['nama_kementerian']."' WHERE `id_kementerian`='".$upd['id_kementerian']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -93,7 +93,7 @@ class SuperAdm_model extends CI_model {
     }
 
     function deletekementrian($id){
-        $sql = "DELETE FROM `t_kementerian` WHERE `t_kementerian`.`id_kementerian` = $id";
+        $sql = "DELETE FROM `t_kementerian` WHERE `t_kementerian`.`id` = $id";
 
         $query = $this->db->query($sql);
 
@@ -117,7 +117,7 @@ class SuperAdm_model extends CI_model {
     }
 
     function updatelpnk($upd){
-        $sql = "UPDATE `t_lpnk` SET `nama_lpnk`='".$upd['nama_lpnk']."'"; 
+        $sql = "UPDATE `t_lpnk` SET `nama_lpnk`='".$upd['nama_lpnk']."' WHERE `id_lpnk`='".$upd['id_lpnk']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -135,6 +135,31 @@ class SuperAdm_model extends CI_model {
     public function getsektor(){
         $sql = "SELECT * from t_sektor";
         $query = $this->db->query($sql)->result();
+
+        return $query;
+    }
+
+    function addsektor($add){
+        $sql = "INSERT INTO `t_sektor`(`nama_sektor` ) 
+        VALUES ('".$add['nama_sektor']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatesektor($upd){
+        $sql = "UPDATE `t_sektor` SET `nama_sektor`='".$upd['nama_sektor']."' WHERE `id_sektor`='".$upd['id_sektor']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletesektor($id){
+        $sql = "DELETE FROM `t_sektor` WHERE `t_sektor`.`id_sektor` = $id";
+
+        $query = $this->db->query($sql);
 
         return $query;
     }

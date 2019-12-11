@@ -131,7 +131,7 @@
                 <tr>
                 <th>Nomor Pertanyaan</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control"></td>
+                  <td><input type="text" name="id_ass" class="form-control" value="<?php echo $row->id_ass; ?>"></td>
                 </tr>
                 <tr>
                   <th>Nomor Urut</th>
@@ -250,7 +250,7 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Pilihan ini :  <?=$row->id_ass?> Pertanyaan : <?=$row->nomor_urut?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Pilihan ini : <?=$row->id_ass?> Pertanyaan : <?=$row->nomor_urut?> </p>
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletem1">
