@@ -264,7 +264,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatekementrian($upd);
 
-		redirect('SuperAdm/kementrian');
+		redirect('SuperAdm');
 	}
 
 	public function lpnk(){
@@ -276,6 +276,47 @@ class SuperAdm extends CI_Controller {
 
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/lpnk_superadm', $data);
+	}
+
+	public function addlpnk(){
+		$add = array(
+
+			'nama_lpnk' => $_POST['nama_lpnk']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addlpnk($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletelpnk(){
+
+		$this->SuperAdm_model->deletelpnk($_POST['id_lpnk']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatelpnk(){
+		$upd = array(
+			'id_lpnk' => $_POST['id_lpnk'],
+			'nama_lpnk' => $_POST['nama_lpnk']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatelpnk($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function sektor(){

@@ -107,6 +107,31 @@ class SuperAdm_model extends CI_model {
         return $query;
     }
 
+    function addlpnk($add){
+        $sql = "INSERT INTO `t_lpnk`(`nama_lpnk` ) 
+        VALUES ('".$add['nama_lpnk']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatelpnk($upd){
+        $sql = "UPDATE `t_lpnk` SET `nama_lpnk`='".$upd['nama_lpnk']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletelpnk($id){
+        $sql = "DELETE FROM `t_lpnk` WHERE `t_lpnk`.`id_lpnk` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     public function getsektor(){
         $sql = "SELECT * from t_sektor";
         $query = $this->db->query($sql)->result();

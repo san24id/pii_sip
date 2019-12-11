@@ -157,7 +157,7 @@
                   <td>:</td>
                   <td><input type="text" name="bobot" class="form-control"></td>
                 </tr> -->
-                  </td>
+                  
                 </tr>
              </table>
           </h5>
