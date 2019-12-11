@@ -119,6 +119,7 @@ class SuperAdm extends CI_Controller {
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/submission_superadmin', $data);
 	}
+
 	public function addassesment(){
 		$add = array(
 
@@ -166,15 +167,52 @@ class SuperAdm extends CI_Controller {
 		$data['active2'] = '';
 		$data['active3'] = '';
 
-		// $data['profil'] = $this->Dashboard_model->getProfilProjek();
-		// $data['user'] = $this->Dashboard_model->getuser();
-		// $data['admstaff'] = $this->Dashboard_model->data_adminstaff();
-		// $data['sektor'] = $this->Home_model->getSektor();
-		// $data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
+		
 		$data['m1s'] = $this->SuperAdm_model->getm1();
 
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/m1_superadmin', $data);
+	}
+
+	public function addm1(){
+		$add = array(
+
+			'id_ass' => $_POST['id_ass'],
+			'nomor_urut' => $_POST['nomor_urut'],
+			'urut' => $_POST['urut'],
+			'a' =>  $_POST['a'],
+			'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addm1($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletem1(){
+
+		$this->SuperAdm_model->deletem1($_POST['id']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatem1(){
+		$upd = array(
+			'id' => $_POST['id'],
+			'id_ass' => $_POST['id_ass'],
+			'urut' => $_POST['urut'],
+			'a' =>  $_POST['a'],
+			'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatem1($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function kementrian(){
@@ -186,6 +224,47 @@ class SuperAdm extends CI_Controller {
 
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/kementrian_superadm', $data);
+	}
+
+	public function addkementrian(){
+		$add = array(
+
+			'id_ass' => $_POST['id_ass'],
+			'nomor_urut' => $_POST['nomor_urut'],
+			'urut' => $_POST['urut'],
+			'a' =>  $_POST['a'],
+			'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addkementrian($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletekementrian(){
+
+		$this->SuperAdm_model->deletekementrian($_POST['id']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatekementrian(){
+		$upd = array(
+			'id' => $_POST['id'],
+			'id_ass' => $_POST['id_ass'],
+			'urut' => $_POST['urut'],
+			'a' =>  $_POST['a'],
+			'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatekementrian($upd);
+
+		redirect('SuperAdm');
 	}
 
 	public function lpnk(){

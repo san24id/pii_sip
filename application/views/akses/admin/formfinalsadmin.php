@@ -193,8 +193,10 @@
                           <input type="hidden" name="status" value="<?php echo $rowp->status; ?>">
                           <input type="hidden"  name="user2" value="<?php echo $this->session->userdata('username') ?>">
                           <textarea class="form-control" cols="3" name="respon1" placeholder="YOUR RESPON" readonly><?php echo $res->respon1 ?></textarea><br>
-                     Last Admin User &nbsp;: &nbsp;<input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;<input type="text" value="<?php echo $res->log_update1 ?>" readonly><br><br>
-                      <textarea class="form-control" cols="3" name="respon2" placeholder="YOUR RESPON" readonly><?php echo $res->respon2 ?></textarea><br>
+                     Last Admin User &nbsp;: &nbsp;
+                          <input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;
+                          <input type="text" value="<?php echo $res->log_update1 ?>" readonly><br><br>
+                          <textarea class="form-control" cols="3" name="respon2" placeholder="YOUR RESPON" readonly><?php echo $res->respon2 ?></textarea><br>
                      Last Admin Approval &nbsp;: &nbsp;<input type="text" value="<?php echo $res->user2 ?>" readonly> &nbsp;<input type="text" value="<?php echo $res->log_update2 ?>" readonly><br><br>
                         </form>
                       <?php }} ?>

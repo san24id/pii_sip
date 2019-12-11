@@ -42,6 +42,32 @@ class SuperAdm_model extends CI_model {
         return $query;
     }
 
+    function addm1($add){
+        $sql = "INSERT INTO `m1`(`id_ass`, `nomor_urut`, `urut`, `a`, `b`, `su` ) 
+        VALUES ('".$add['id_ass']."','".$add['nomor_urut']."','".$add['urut']."','".$add['a']."','".$add['b']."','".$add['su']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatem1($upd){
+        $sql = "UPDATE `m1` SET `id_ass`='".$upd['id_ass']."',`nomor_urut`='".$upd['nomor_urut']."',`urut`='".$upd['urut']."',`a`='".$upd['a']."',
+        `b`='".$upd['b']."',`su`='".$upd['su']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletem1($id){
+        $sql = "DELETE FROM `m1` WHERE `m1`.`id` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     public function getkementrian(){
         $sql = "SELECT * FROM t_kementerian";
         $query = $this->db->query($sql)->result();
