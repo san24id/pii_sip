@@ -195,7 +195,7 @@
         <div class="modal-body">
           <h5>
             <form method="post" action="superadm/updatem1">
-              <input type="hidden" name="id_ass" value="<?php echo $row->id; ?>">
+              <input type="hidden" name="id" value="<?php echo $row->id; ?>">
              <table class="table">
                 <tr>
                   <th>Nomor Pertanyaan</th>
@@ -254,7 +254,7 @@
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deletem1">
-          <input type="hidden" name="id_ass" value="<?php echo $row->id; ?>">
+          <input type="hidden" name="id" value="<?php echo $row->id; ?>">
           <button type="submit" class="btn btn-success">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>

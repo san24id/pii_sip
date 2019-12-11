@@ -75,6 +75,31 @@ class SuperAdm_model extends CI_model {
         return $query;
     }
 
+    function addkementerian($add){
+        $sql = "INSERT INTO `t_kementerian`(`nama_kementerian` ) 
+        VALUES ('".$add['nama_kementerian']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatekementrian($upd){
+        $sql = "UPDATE `t_kementerian` SET `nama_kementerian`='".$upd['nama_kementerian']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletekementrian($id){
+        $sql = "DELETE FROM `t_kementerian` WHERE `t_kementerian`.`id_kementerian` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     public function getlpnk(){
         $sql = "SELECT * from t_lpnk";
         $query = $this->db->query($sql)->result();

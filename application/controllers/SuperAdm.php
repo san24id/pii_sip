@@ -229,11 +229,11 @@ class SuperAdm extends CI_Controller {
 	public function addkementrian(){
 		$add = array(
 
-			'id_ass' => $_POST['id_ass'],
-			'nomor_urut' => $_POST['nomor_urut'],
-			'urut' => $_POST['urut'],
-			'a' =>  $_POST['a'],
-			'b' =>  $_POST['b']
+			'nama_kementerian' => $_POST['nama_kementerian']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
 			// 'su' =>  $_POST['informasi_upload']
 			// 'respon' => $_POST['respon'],
 			// 'bobot' => $_POST['bobot']
@@ -246,7 +246,7 @@ class SuperAdm extends CI_Controller {
 
 	public function deletekementrian(){
 
-		$this->SuperAdm_model->deletekementrian($_POST['id']);
+		$this->SuperAdm_model->deletekementrian($_POST['id_kementerian']);
 
 		redirect('SuperAdm');
 
@@ -254,17 +254,17 @@ class SuperAdm extends CI_Controller {
 
 	public function updatekementrian(){
 		$upd = array(
-			'id' => $_POST['id'],
-			'id_ass' => $_POST['id_ass'],
-			'urut' => $_POST['urut'],
-			'a' =>  $_POST['a'],
-			'b' =>  $_POST['b']
+			'id_kementerian' => $_POST['id_kementerian'],
+			'nama_kementerian' => $_POST['nama_kementerian']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
 			// 'su' =>  $_POST['informasi_upload']
 		);
 
 		$this->SuperAdm_model->updatekementrian($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kementrian');
 	}
 
 	public function lpnk(){
