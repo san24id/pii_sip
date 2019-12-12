@@ -115,7 +115,7 @@ class SuperAdm extends CI_Controller {
 		$data['active3'] = '';
 		
 		$data['asses'] = $this->SuperAdm_model->getassesment();
-		
+		$data['sum'] = $this->SuperAdm_model->getsum();		
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/submission_superadmin', $data);
 	}

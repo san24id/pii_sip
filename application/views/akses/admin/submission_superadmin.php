@@ -20,6 +20,7 @@
               <div class="table-responsive">
                 <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah">Tambah</button>
                 <br><br>
+                <!-- <p1>Bobot Pertanyaan sudah mencapai angka : <?php echo $sum;?> </p1> -->
                 <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -230,6 +231,16 @@
                   <th>Bobot</th>
                   <td>:</td>
                   <td><input type="text" name="bobot" class="form-control" value="<?php echo $row->bobot; ?>"></td>
+                  <!-- <?php $a = 50;
+                        $b = 50;
+                        $sum = (int) $a + $b;
+
+                        if($sum == 100){
+                          echo "Nilai Bobot 100!";
+                          }else{
+                            echo "Nilai Bobot Harus 100, tolong diperbaiki!";
+                          }
+                  ?> -->
                 </tr>
               </table>
           </h5>

@@ -7,6 +7,13 @@ class SuperAdm_model extends CI_model {
 
         return $query;
     }
+    
+    function getsum(){
+        $sql = "SELECT SUM(bobot) as bobot FROM t_assessment";
+        $result = $this->db->query($sql);
+
+        return $result->row()->bobot;
+        }
 
     function addassesment($add){
         $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
