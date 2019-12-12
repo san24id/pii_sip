@@ -437,6 +437,47 @@ class SuperAdm extends CI_Controller {
 		$this->load->view('akses/admin/provinsi_superadm', $data);
 	}
 
+	public function addprov(){
+		$add = array(
+
+			'nama_provinsi' => $_POST['nama_provinsi']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addprov($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deleteprov(){
+
+		$this->SuperAdm_model->deleteprov($_POST['id_provinsi']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updateprov(){
+		$upd = array(
+			'id_provinsi' => $_POST['id_provinsi'],
+			'nama_provinsi' => $_POST['nama_provinsi']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updateprov($upd);
+
+		redirect('SuperAdm');
+	}
+
 	public function kotakabu(){
 		$data['active1'] = 'active';
 		$data['active2'] = '';

@@ -23,7 +23,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <th>NO.</th>
-                  <!-- <th>ID Kementrian</th> -->
+                  <th>Nomor Wilayah</th>
                   <th>Nama Provinsi</th>
                   
                   <!-- <th>Lokasi</th>
@@ -43,6 +43,7 @@
                 <tr>
                   
                   <td><?php echo $i++; ?></td>
+                  <td><?php echo $row->id_provinsi; ?></td>
                   <td><?php echo $row->nama_provinsi; ?></td>
                                   
                   <td>                    
@@ -116,16 +117,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Tambah LPNK</h4>
+          <h4 class="modal-title">Tambah Provinsi</h4>
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/addlpnk">
+            <form method="post" action="superadm/addprov">
              <table class="table">
                   <tr>
-                  <th>Nama LPNK</th>
+                  <th>Nama Provinsi</th>
                   <td>:</td>
-                  <td><input type="text" name="nama_lpnk" class="form-control"></td>
+                  <td><input type="text" name="nama_provinsi" class="form-control"></td>
                 </tr>
                 </tr>
              </table>
@@ -142,28 +143,28 @@
   </div>   
 
 <?php 
-  foreach ($llpnk as $row){
+  foreach ($provinsi as $row){
 ?>   
 
 <!-- Modal -->
-<div class="modal fade" id="ubah<?php echo $row->id_lpnk; ?>" role="dialog" aria-hidden="true"  tabindex="-1"  data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="ubah<?php echo $row->id_provinsi; ?>" role="dialog" aria-hidden="true"  tabindex="-1"  data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ubah LPNK</h4>
+          <h4 class="modal-title">Ubah Provinsi</h4>
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/updatelpnk">
-              <input type="hidden" name="id_lpnk" value="<?php echo $row->id_lpnk; ?>">
+            <form method="post" action="superadm/updateprov">
+              <input type="hidden" name="id_provinsi" value="<?php echo $row->id_provinsi; ?>">
               <table class="table">
                 <tr>
-                  <th>Nama LPNK</th>
+                  <th>Nama Provinsi</th>
                   <td>:</td>
-                  <td><input type="text" name="nama_lpnk" class="form-control" value="<?php echo $row->nama_lpnk; ?>"></td>
+                  <td><input type="text" name="nama_provinsi" class="form-control" value="<?php echo $row->nama_provinsi; ?>"></td>
                 </tr>
                 <!-- <tr>
                   <th>Kriteria</th>
@@ -208,17 +209,17 @@
     </div>
   </div>
 
-  <div class="modal fade" id="hapus<?php echo $row->id_lpnk; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="hapus<?php echo $row->id_provinsi; ?>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Data LPNK :  <?=$row->id_lpnk?></p>
-       <p> Nama LPNK : <?=$row->nama_lpnk?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Data Provinsi :  <?=$row->id_provinsi?></p>
+       <p> Nama Provinsi : <?=$row->nama_provinsi?> </p>
       </div>
       <div class="modal-footer">
-      <form method="post" action="superadm/deletelpnk">
-          <input type="hidden" name="id_lpnk" value="<?php echo $row->id_lpnk; ?>">
+      <form method="post" action="superadm/deleteprov">
+          <input type="hidden" name="id_provinsi" value="<?php echo $row->id_provinsi; ?>">
           <button type="submit" class="btn btn-success">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>

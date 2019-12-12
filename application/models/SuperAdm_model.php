@@ -203,6 +203,31 @@ class SuperAdm_model extends CI_model {
         return $query;
     }
 
+    function addprov($add){
+        $sql = "INSERT INTO `t_provinsi`(`nama_provinsi` ) 
+        VALUES ('".$add['nama_provinsi']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updateprov($upd){
+        $sql = "UPDATE `t_provinsi` SET `nama_provinsi`='".$upd['nama_provinsi']."' WHERE `id_provinsi`='".$upd['id_provinsi']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deleteprov($id){
+        $sql = "DELETE FROM `t_provinsi` WHERE `t_provinsi`.`id_provinsi` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
     public function getkotakabu(){
         $sql = "SELECT * from t_kotakabu";
         $query = $this->db->query($sql)->result();
