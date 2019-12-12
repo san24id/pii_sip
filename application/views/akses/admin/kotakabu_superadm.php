@@ -26,13 +26,7 @@
                   <th>NO</th>
                   <th>Nomor Provinsi</th>
                   <th>Wilayah Provinsi</th>
-               
-                  
-                  <!-- <th>Lokasi</th>
-                  <th>Estimasi Nilai</th>
-                  <th>Skor</th>
-                  <th>Log Update</th>
-                  <th>Action</th> -->
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,8 +43,8 @@
                   <td><?php echo $row->nama_daerah; ?></td>
                                   
                   <td>                    
-                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_lpnk; ?>">Ubah</button>
-                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row->id_lpnk; ?>">Hapus</button>
+                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_kotakabu; ?>">Ubah</button>
+                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row->id_kotakabu; ?>">Hapus</button>
                     
                   </td>
                 </tr>
@@ -127,7 +121,7 @@
             <form method="post" action="superadm/addkotakabu">
              <table class="table">
                   <tr>
-                  <th>Nomor Wilayah</th>
+                  <th>Nomor Provinsi</th>
                   <td>:</td>
                   <td><input type="text" name="id_provinsi" class="form-control"></td>
                   </tr>
@@ -150,7 +144,7 @@
     </div>
   </div> 
 
-  <?php 
+<?php 
   foreach ($kkotakabu as $row){
 ?>   
 
@@ -177,7 +171,8 @@
                 <tr>
                   <th>Nama Kota Kabupaten</th>
                   <td>:</td>
-                  <td><input type="text" name="nama_daerah" class="form-control" value="<?php echo $row->nama_daerah; ?>"></td>
+                  <td> <?php var_dump($row) ?>
+                  <input type="text" name="nama_daerah" class="form-control" value="<?php echo $row->nama_daerah; ?>"></td>
                 </tr>                
               </table>
           </h5>

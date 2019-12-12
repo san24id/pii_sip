@@ -73,7 +73,8 @@
     <div class="pull-right hidden-xs">
      
     </div>
-    <strong>Copyright &copy; 2019 </footer>   
+    <strong>Copyright &copy; 2019
+  </footer>   
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

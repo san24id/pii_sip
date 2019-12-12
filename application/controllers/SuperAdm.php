@@ -488,4 +488,46 @@ class SuperAdm extends CI_Controller {
 		$this->load->view('akses/admin/header_admin');
 		$this->load->view('akses/admin/kotakabu_superadm', $data);
 	}
+
+	public function addkotakabu(){
+		$add = array(
+			'id_provinsi' => $_POST['id_provinsi'],
+			'nama_daerah' => $_POST['nama_daerah']
+			// 'nomor_urut' => $_POST['nomor_urut'],
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+			// 'respon' => $_POST['respon'],
+			// 'bobot' => $_POST['bobot']
+		);
+
+		$this->SuperAdm_model->addkotakabu($add);
+
+		redirect('SuperAdm');
+	}
+
+	public function deletekotakabu(){
+
+		$this->SuperAdm_model->deletekotakabu($_POST['id_kotakabu']);
+
+		redirect('SuperAdm');
+
+	}
+
+	public function updatekotakabu(){
+		$upd = array(
+			'id_kotakabu' => $_POST['id_kotakabu'],
+			'id_provinsi' => $_POST['id_provinsi'],
+			'nama_daerah' => $_POST['nama_daerah']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updatekotakabu($upd);
+
+		redirect('SuperAdm');
+	}
 }

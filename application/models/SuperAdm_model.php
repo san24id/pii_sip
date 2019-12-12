@@ -234,4 +234,30 @@ class SuperAdm_model extends CI_model {
 
         return $query;
     }
+
+    function addkotakabu($add){
+        $sql = "INSERT INTO `t_kotakabu`(`id_provinsi`, `nama_daerah` ) 
+        VALUES ('".$add['id_provinsi']."','".$add['nama_daerah']."')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function updatekotakabu($upd){
+        $sql = "UPDATE `t_kotakabu` SET `id_provinsi`='".$upd['id_provinsi']."',`nama_daerah`='".$upd['nama_daerah']."'
+        WHERE `id_kotakabu`='".$upd['id_kotakabu']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
+    function deletekotakabu($id){
+        $sql = "DELETE FROM `t_kotakabu` WHERE `t_kotakabu`.`id_kotakabu` = $id";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
 }
