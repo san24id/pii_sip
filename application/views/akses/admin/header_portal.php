@@ -139,15 +139,15 @@
         <?php 
             if($this->session->userdata("role") == 1){?>
                <li class=""><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
-               <!-- <li class=""><a href="superadm/adminpii"><i class="glyphicon glyphicon-user"></i><span>Admin PII</span></a></li> -->
-               <li class=""><a href="superadm/assesment"><i class="glyphicon glyphicon-blackboard"></i><span>Assesment</span></a></li>
+               <li class=""><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
+               <li class=""><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
                <li class=""><a href="superadm/m1"><i class="glyphicon glyphicon-user"></i><span>M1</span></a></li>
-               <li class=""><a href="superadm/kementrian"><i class="glyphicon glyphicon-user"></i><span>Kementrian</span></a></li>
-               <li class=""><a href="superadm/lpnk"><i class="glyphicon glyphicon-user"></i><span>LPNK</span></a></li>
-               <li class=""><a href="superadm/sektor"><i class="glyphicon glyphicon-user"></i><span>Sektor</span></a></li>
-               <li class=""><a href="superadm/subsektor"><i class="glyphicon glyphicon-user"></i><span>Subsektor</span></a></li>
-               <li class=""><a href="superadm/provinsi"><i class="glyphicon glyphicon-user"></i><span>Provinsi</span></a></li>
-               <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-user"></i><span>Kota Kabupaten</span></a></li>
+               <li class=""><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementrian</span></a></li>
+               <li class=""><a href="superadm/lpnk"><i class="glyphicon glyphicon-list-alt"></i><span>LPNK</span></a></li>
+               <li class=""><a href="superadm/sektor"><i class="glyphicon glyphicon-sector"></i><span>Sektor</span></a></li>
+               <li class=""><a href="superadm/subsektor"><i class="glyphicon glyphicon-info-sign"></i><span>Subsektor</span></a></li>
+               <li class=""><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
+               <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li>
         <?php }else if($this->session->userdata("role") == 2){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>

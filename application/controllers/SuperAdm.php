@@ -530,4 +530,31 @@ class SuperAdm extends CI_Controller {
 
 		redirect('SuperAdm');
 	}
+
+	public function user(){
+		$data['active1'] = 'active';
+		$data['active2'] = '';
+		$data['active3'] = '';
+
+		$data['user'] = $this->SuperAdm_model->getuser();
+		
+		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/user_superadm', $data);
+	}
+
+	public function updateuser(){
+		$upd = array(
+			'id_kotakabu' => $_POST['id_kotakabu'],
+			'id_provinsi' => $_POST['id_provinsi'],
+			'nama_daerah' => $_POST['nama_daerah']
+			// 'urut' => $_POST['urut'],
+			// 'a' =>  $_POST['a'],
+			// 'b' =>  $_POST['b']
+			// 'su' =>  $_POST['informasi_upload']
+		);
+
+		$this->SuperAdm_model->updateuser($upd);
+
+		redirect('SuperAdm');
+	}
 }

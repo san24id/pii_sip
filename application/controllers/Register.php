@@ -70,6 +70,7 @@ class Register extends CI_Controller{
 	}
 
 	public function newmember(){
+        $this->form_validation->set_rules('nik', 'NIK', 'required|max_length[17]');
 		$this->form_validation->set_rules('nama_user', 'Nama', 'required');
 		$this->form_validation->set_rules('instansi', 'Instansi', 'required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
@@ -83,6 +84,7 @@ class Register extends CI_Controller{
         if ( $this->form_validation->run() == false )
         {
             $this->deleteCaptcha();
+            $this->session->set_flashdata('nik',$_POST['nik']);
         	$this->session->set_flashdata('nama_user',$_POST['nama_user']);
         	$this->session->set_flashdata('instansi',$_POST['instansi']);
         	$this->session->set_flashdata('jabatan',$_POST['jabatan']);
@@ -94,7 +96,8 @@ class Register extends CI_Controller{
         else
         {
 			$regist = array(
-
+                 
+                 'nik' => $_POST['nik'],   
 				 'nama_user' => $_POST['nama_user'], 
 				 'instansi' => $_POST['instansi'], 
 				 'jabatan' => $_POST['jabatan'], 

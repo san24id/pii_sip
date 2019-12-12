@@ -260,4 +260,23 @@ class SuperAdm_model extends CI_model {
 
         return $query;
     }
+
+    public function getuser(){
+        $sql = "SELECT * from t_user";
+        $query = $this->db->query($sql)->result();
+
+        return $query;
+    }
+
+    function updateuser($upd){
+        $sql = "UPDATE `t_user` SET `nomor_user`='".$upd['nomor_user']."',`nik`='".$upd['nik']."',`nama_user`='".$upd['nama_user']."'
+        ,`instansi`='".$upd['instansi']."',`jabatan`='".$upd['jabatan']."',`telepon`='".$upd['telepon']."',`username`='".$upd['username']."'
+        ,`status`='".$upd['status']."'
+        WHERE `id_user`='".$upd['id_user']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        return $query;
+    }
+
 }
