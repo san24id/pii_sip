@@ -69,9 +69,9 @@ class Register extends CI_Controller{
 		$this->load->view('login/register', $data);
 	}
 
-    public function _upload()
+    public function _upload($regist)
   {
-    $upload_path = './upload/product/';
+    $upload_path = './upload';
     $config['upload_path']          = $upload_path;
     $config['allowed_types']        = 'jpg|png|jpeg|pdf';
     $config['file_name']            = 'User' . '-' . date('YmdHis');

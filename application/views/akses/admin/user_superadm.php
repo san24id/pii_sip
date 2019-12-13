@@ -26,6 +26,7 @@
                   <th>NO.</th>
                   <th>Nomor User</th>
                   <th>NIK</th>
+                  <th>Kartu NIK</th>
                   <th>Nama</th>
                   <th>Instansi</th>
                   <th>Jabatan</th>
@@ -48,6 +49,7 @@
                   <!-- <td><?php echo $row->id; ?></td> -->
                   <td><?php echo $row->nomor_user; ?></td>
                   <td><?php echo $row->nik; ?></td>
+                  <td><img src="<?php echo base_url() ?>/upload<?php echo $row->image?>" width="64" /></td>
                   <td><?php echo $row->nama_user; ?></td>
                   <td><?php echo $row->instansi; ?></td>
                   <td><?php echo $row->jabatan; ?></td>
@@ -56,7 +58,7 @@
                   <td><?php echo $row->status ?></td>
                  
                   <td>                    
-                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id; ?>">Ubah</button>
+                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_user; ?>">Ubah</button>
                       <!-- <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row->id; ?>">Hapus</button>                     -->
                   </td>
                   </tr>
@@ -147,6 +149,11 @@
                   <th>NIK</th>
                   <td>:</td>
                   <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nik; ?>"></td>
+                </tr>
+                <tr>
+                  <th>Kartu NIK</th>
+                  <td>:</td>
+                  <td><input type="text" name="foto" class="form-control" value="<?php echo $row->foto; ?>"></td>
                 </tr>
                 <tr>
                   <th>Nama</th>

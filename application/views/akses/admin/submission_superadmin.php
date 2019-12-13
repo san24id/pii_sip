@@ -231,7 +231,7 @@
                   <th>Bobot</th>
                   <td>:</td>
                   <td><input type="text" name="bobot" class="form-control" value="<?php echo $row->bobot; ?>"></td>
-                  <!-- <?php $a = 50;
+                  <!-- <?php $a = 100;
                         $b = 50;
                         $sum = (int) $a + $b;
 

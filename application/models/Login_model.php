@@ -32,7 +32,6 @@ class Login_model extends CI_Model{
 
         $sql = $this->db->query("INSERT INTO `t_user`(`nomor_user`, `nik`, `foto`, `nama_user`, `instansi`, `jabatan`, `email`, `telepon`, `username`, `password`, `log_create`, `log_update`) VALUES ( '$nomor_user', '$nik', '$foto', '$nama_user','$instansi','$jabatan','$email','$telepon','$username',md5('$password'),NOW(), NOW())");
 
-
         $nomor_user = 'SIP'.date('dmY').$this->db->insert_id();
         
         $rid = $this->db->insert_id();
