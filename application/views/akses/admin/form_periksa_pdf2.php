@@ -1,23 +1,4 @@
-<style type="text/css">
-      @media print {
-        body * {
-          visibility: hidden;
-        }
-        #printThis * {
-          visibility: visible;
-        }
-        #printThis {
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-        .modal-footer * {
-          visibility: hidden;
-        }
-      }
-    </style> 
-
-     <!-- Content Wrapper. Contains page content -->
+   <base href="<?php echo base_url() ?>">
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -40,339 +21,73 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
+                <div class="form-group">
+                  <label>1. Penanggung Jawab Proyek Kerjasama : </label>&nbsp;<?php echo $rowp->nama_pj; ?>
+                  <input type="hidden" name="id_projek" class="form-control" value="<?php echo $rowp->id_projek; ?>">
+                  <input type="hidden" name="nama_pj" class="form-control" placeholder="Dirut Pertamina, Dirut PLN, Mentri BUMN" value="<?php echo $rowp->nama_pj; ?>">
+                </div>
 
-                    <div class="form-group">
-                      <label>1. Penanggung Jawab Proyek Kerjasama : <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#anomor1" ></i></label>
-                      <input type="hidden" name="id_projek" class="form-control" value="<?php echo $rowp->id_projek; ?>" readonly>
-                      <input type="text" name="nama_pj" class="form-control" placeholder="Contoh: Menteri Perhubungan, Gubernur Jawa Barat, Direktur Utama PLN" value="<?php echo $rowp->nama_pj; ?>" readonly>
-                    </div>
-                    <script type="text/javascript">
-                      function yesnoCheck() {
-                          if (document.getElementById('pp').checked) {
-                              document.getElementById('rjenis').style.display = 'block';
-                               document.getElementById('rprovinsi').style.display = 'none';
-                              document.getElementById('rbn').style.display = 'none';
-                              document.getElementById('rbd').style.display = 'none';
-                              document.getElementById('rln').style.display = 'none';
-                              // Required
-                              $("#jenis").attr('required', true);
-                              $("#kementerian").attr('required', true);
+                <div class="form-group">
+                   <label>2. Kategori Penanggung Jawab Proyek Kerjasama : </label> &nbsp;
+                   <?php 
 
-                              $("#provinsi").attr('required', false);
-                              $("#kotabu").attr('required', false);
-
-                              $("#rbn").attr('required', false);
-                              $("#rbd").attr('required', false);
-                              $("#rln").attr('required', false);
-                          }
-                          else if (document.getElementById('pd').checked) {
-                              document.getElementById('rjenis').style.display = 'none';
-                              document.getElementById('rprovinsi').style.display = 'block';
-                              document.getElementById('rbn').style.display = 'none';
-                              document.getElementById('rbd').style.display = 'none';
-                              document.getElementById('rln').style.display = 'none';
-                              // Required
-                              $("#jenis").attr('required', false);
-                              $("#kementerian").attr('required', false);
-
-                              $("#provinsi").attr('required', true);
-                              $("#kotabu").attr('required', true);
-
-                              $("#rbn").attr('required', false);
-                              $("#rbd").attr('required', false);
-                              $("#rln").attr('required', false);
-                          }
-                          else if (document.getElementById('bn').checked) {
-                              document.getElementById('rjenis').style.display = 'none';
-                              document.getElementById('rprovinsi').style.display = 'none';
-                              document.getElementById('rbn').style.display = 'block';
-                              document.getElementById('rbd').style.display = 'none';
-                              document.getElementById('rln').style.display = 'none';
-                              // Required
-                              $("#jenis").attr('required', false);
-                              $("#kementerian").attr('required', false);
-
-                              $("#provinsi").attr('required', false);
-                              $("#kotabu").attr('required', false);
-
-                              $("#rbn").attr('required', true);
-                              $("#rbd").attr('required', false);
-                              $("#rln").attr('required', false);
-                          }
-                          else if (document.getElementById('bd').checked) {
-                              document.getElementById('rprovinsi').style.display = 'none';
-                              document.getElementById('rjenis').style.display = 'none';
-                              document.getElementById('rbn').style.display = 'none';
-                              document.getElementById('rbd').style.display = 'block';
-                              document.getElementById('rln').style.display = 'none';
-                              // Required
-                              $("#jenis").attr('required', false);
-                              $("#kementerian").attr('required', false);
-
-                              $("#provinsi").attr('required', false);
-                              $("#kotabu").attr('required', false);
-
-                              $("#rbn").attr('required', false);
-                              $("#rbd").attr('required', true);
-                              $("#rln").attr('required', false);
-                          }
-                          else if (document.getElementById('ln').checked) {
-                              document.getElementById('rprovinsi').style.display = 'none';
-                              document.getElementById('rjenis').style.display = 'none';
-                              document.getElementById('rbn').style.display = 'none';
-                              document.getElementById('rbd').style.display = 'none';
-                              document.getElementById('rln').style.display = 'block';
-                              // Required
-                              $("#jenis").attr('required', false);
-                              $("#kementerian").attr('required', false);
-
-                              $("#provinsi").attr('required', false);
-                              $("#kotabu").attr('required', false);
-
-                              $("#rbn").attr('required', false);
-                              $("#rbd").attr('required', false);
-                              $("#rln").attr('required', true);
-                          }else{
-                              document.getElementById('rjenis').style.display = 'none';
-                              document.getElementById('rprovinsi').style.display = 'none';
-                              document.getElementById('bn').style.display = 'none';
-                              document.getElementById('bd').style.display = 'none';
-                              document.getElementById('ln').style.display = 'none';
-                              // Required
-                              $("#jenis").attr('required', false);
-                              $("#kementerian").attr('required', false);
-
-                              $("#provinsi").attr('required', false);
-                              $("#kotabu").attr('required', false);
-
-                              $("#rbn").attr('required', false);
-                              $("#rbd").attr('required', false);
-                              $("#rln").attr('required', false);
-                          }
-                      
-                      }
-
-                    </script>
-                      <?php 
-                        if($rowp->kategori == 1){
-                          $ck1 = 'checked';
-                          $ck2 = '';
-                          $ck3 = '';
-                          $ck4 = '';
-                          $ck5 = '';
-                          $st1 = 'display: block;';
-                          $st2 = 'display: none;';
-                          $st3 = 'display: none;';
-                          $st4 = 'display: none;';
-                          $st5 = 'display: none;';
-                        }else if($rowp->kategori == 2){
-                          $ck1 = '';
-                          $ck2 = 'checked';
-                          $ck3 = '';
-                          $ck4 = '';
-                          $ck5 = '';
-                          $st1 = 'display: none;';
-                          $st2 = 'display: block;';
-                          $st3 = 'display: none;';
-                          $st4 = 'display: none;';
-                          $st5 = 'display: none;';
-                        }else if($rowp->kategori == 3){
-                          $ck1 = '';
-                          $ck2 = '';
-                          $ck3 = 'checked';
-                          $ck4 = '';
-                          $ck5 = '';
-                          $st1 = 'display: none;';
-                          $st2 = 'display: none;';
-                          $st3 = 'display: block;';
-                          $st4 = 'display: none;';
-                          $st5 = 'display: none;';
-                        }else if($rowp->kategori == 4){
-                          $ck1 = '';
-                          $ck2 = '';
-                          $ck3 = '';
-                          $ck4 = 'checked';
-                          $ck5 = '';
-                          $st1 = 'display: none;';
-                          $st2 = 'display: none;';
-                          $st3 = 'display: none;';
-                          $st4 = 'display: block;';
-                          $st5 = 'display: none;';
-                        }else if($rowp->kategori == 5){
-                          $ck1 = '';
-                          $ck2 = '';
-                          $ck3 = '';
-                          $ck4 = '';
-                          $ck5 = 'checked';
-                          $st1 = 'display: none;';
-                          $st2 = 'display: none;';
-                          $st3 = 'display: none;';
-                          $st4 = 'display: none;';
-                          $st5 = 'display: block;';
-                        }else{
-                          $ck1 = '';
-                          $ck2 = '';
-                          $ck3 = '';
-                          $ck4 = '';
-                          $ck5 = '';
-                          $st1 = 'display: none;';
-                          $st2 = 'display: none;';
-                          $st3 = 'display: none;';
-                          $st4 = 'display: none;';
-                          $st5 = 'display: none;';
+                        if($rowp->kode == 'PP'){
+                            echo $rowp->nama_kategori.', '.$rowp->jenis.', '.$rowp->nama_kementerian.$rowp->nama_lpnk;
+                        }else if($rowp->kode == 'PD'){
+                            echo $rowp->nama_kategori.', '.$rowp->nama_provinsi.', '.$rowp->nama_daerah;
+                        }else if($rowp->kode == 'BN'){
+                           echo $rowp->nama_kategori.', '.$rowp->bumn_text;
+                        }else if($rowp->kode == 'BD'){
+                           echo $rowp->nama_kategori.', '.$rowp->bumd_text;
+                        } else{
+                            echo $rowp->nama_kategori.', '.$rowp->lainnya_text;
                         }
-                        
-                        ?>
-                      <div class="form-group">
-                        <label>2. Kategori Penanggung Jawab Proyek Kerjasama :</label>
-                        <div class="radio">
-                          <label>
-                          <input type="radio" name="kt" value="1" id="pp" <?php echo $ck1; ?> onclick="yesnoCheck()" disabled>
-                          Pemerintah Pusat
-                          </label>
-                        </div>
-                        <div style="<?php echo $st1; ?>" id="rjenis">
-                          <div class="radio">
-                            <label></label>
-                            <select class="select2 form-control" name="jenis" id="jenis" style="width: 150px;" disabled>
-                              <?php if($rowp->jenis == 'Kementerian'){ ?>
-                              <option value="Kementerian" selected="selected">Kementerian</option>
-                              <option value="Lembaga">Lembaga</option>
-                              <?php }else{ ?>
-                              <option value="Kementerian">Kementerian</option>
-                              <option value="Lembaga" selected="selected">Lembaga</option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                          <div class="radio" id="kemen">
-                            <label>Kementrian :</label>
-                            <select class="select2 form-control" name="kementerian" id="kementerian" style="width: 100%;" disabled>
-                              <option value="">--Pilih--</option>
-                              <?php foreach($kementerian as $row) { 
-                                if($row['id_kementerian'] == $rowp->n_kementerian){
-                                ?>
-                              <option value="<?=$row['id_kementerian']?>" selected><?=$row['nama_kementerian']?></option>
-                              <?php }else{ ?>
-                              <option value="<?=$row['id_kementerian']?>"><?=$row['nama_kementerian']?></option>
-                              <?php }} ?>
-                            </select>
-                          </div>
-                          <div class="radio" id="lemba">
-                            <label>Lembaga :</label>
-                            <select class="select2 form-control" name="lembaga" id="lpnk" style="width: 100%;" disabled>
-                              <option value="">--Pilih--</option>
-                              <?php foreach($lpnk as $row) { 
-                                if($row['id_lpnk'] == $rowp->n_lembaga){
-                                ?>
-                              <option value="<?=$row['id_lpnk']?>" selected><?=$row['nama_lpnk']?></option>
-                              <?php }else{ ?>
-                              <option value="<?=$row['id_lpnk']?>"><?=$row['nama_lpnk']?></option>
-                              <?php }} ?>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="radio">
-                          <label>
-                          <input type="radio" name="kt"  value="2" id="pd" <?php echo $ck2; ?> onclick="yesnoCheck();" disabled>
-                          Pemerintah Daerah
-                          </label>
-                        </div>
-                        <div style="<?php echo $st2; ?>" id="rprovinsi">
-                          <div class="radio">
-                            <label>Provinsi :</label>
-                            <select class="select2 form-control" style="width: 100%;" name="provinsi" id="provinsi" disabled>
-                              <option value="">--Pilih--</option>
-                              <?php foreach($provinsi as $row) { 
-                                if($row['id_provinsi'] == $rowp->n_provinsi){
-                                ?>
-                              <option value="<?=$row['id_provinsi']?>" selected><?=$row['nama_provinsi']?></option>
-                              <?php }else{ ?>
-                              <option value="<?=$row['id_provinsi']?>"><?=$row['nama_provinsi']?></option>
-                              <?php }} ?>
-                            </select>
-                          </div>
-                          <div class="radio" id="rkotabu">
-                            <label>Kota/ Kabupaten :</label>
-                            <input type="hidden" name="n_kotakabu" id="n_kotakabu" value="<?php echo $rowp->n_kotakabu ?>">
-                            <select class="select2 form-control" name="kotabu" id="kotabu"  style="width: 100%;" disabled>
-                              <option value="">--Pilih--</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="radio">
-                          <label>
-                          <input type="radio" name="kt" value="3" id="bn" <?php echo $ck3; ?> onclick="yesnoCheck();" disabled>
-                          BUMN <input type="text" value="<?php echo $rowp->bumn_text; ?>" style="<?php echo $st3; ?>" class="form-control" name="bumn" id="rbn">
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label>
-                          <input type="radio" name="kt"  value="4" id="bd" <?php echo $ck4; ?> onclick="yesnoCheck();" disabled>
-                          BUMD <input type="text"  value="<?php echo $rowp->bumd_text; ?>" style="<?php echo $st4; ?>"  class="form-control" name="bumd" id="rbd">
-                          </label>
-                        </div>
-                        <div class="radio">
-                          <label>
-                          <input type="radio" name="kt" value="5" id="ln" <?php echo $ck5; ?> onclick="yesnoCheck();" disabled>
-                          Lainnya <input style="<?php echo $st5; ?>" type="text"  value="<?php echo $rowp->lainnya_text; ?>" class="form-control" name="lainnya" id="rln">
-                          </label>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>3. Sektor Infrastruktur&nbsp;:&nbsp; </label><i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#anomor3"></i>
-                        <select class="form-control select2" name="sektor" id="sektor" style="width: 100%" disabled>
-                           <option value="">--Pilih--</option>
-                          <?php foreach($sektor as $row) { 
-                            if($row['id_sektor'] == $rowp->sektor){
-                            ?>
-                          <option value="<?=$row['id_sektor']?>" selected><?=$row['nama_sektor']?></option>
-                          <?php }
-                            else{
-                            ?>
-                          <option value="<?=$row['id_sektor']?>"><?=$row['nama_sektor']?></option>
-                          <?php 
-                            }} 
-                            ?>
-                        </select>
-                      </div>
-                      <div class="form-group" id="gsubsektor">
-                      <label>3.1. Sub Sektor Infrastruktur&nbsp;:&nbsp; </label>
-                      <input type="hidden" name="id_subsektor" id="id_subsektor" value="<?php echo $rowp->subsektor; ?>">
-                      <input type="hidden" name="subsub" id="subsub" value="<?php echo $rowp->nama_subsektor; ?>">
-                      <select class="form-control select2" name="subsektor"  id="subsektor" style="width: 100%" disabled>
-                            <option value="">--Pilih--</option>
-                      </select>
-                    </div>
 
-                    <div class="form-group" id="gsubsektorln">
-                       <input type="text" class="form-control" placeholder="Lainnya" name="subsektorln" id="subsektorln" value="<?php echo $rowp->nama_lainnya; ?>" readonly>
-                    </div>
-                      <div class="form-group">
-                        <label>4. Nama Proyek :</label>
-                        <input type="text" class="form-control" name="nama_proyek" value="<?php echo $rowp->nama_projek; ?>" readonly>
-                      </div>
-                      <div class="form-group">
-                        <label>5. Lokasi Proyek :</label>
-                        <input type="text" class="form-control" name="lokasi" value="<?php echo $rowp->lokasi; ?>" readonly>
-                      </div>
-                      <div class="form-group">
-                        <label>6. Estimasi Nilai Proyek (dalam Rupiah) :</label>
-                        <input type="text" class="form-control" name="estimasi" value="<?php echo $rowp->estimasi; ?>" id = "rupiah" readonly>
-                      </div>
-                      <hr>
-                    <div class="form-group">
+                   ?>
+                </div>
+
+              <div class="form-group">
+                <label>3. Sektor Infrastruktur:</label>&nbsp;<?php echo $rowp->nama_sektor; ?>
+              </div>
+
+              <div class="form-group">
+                <label>3.1 Subsektor Infrastruktur:</label>&nbsp;<?php echo $rowp->nama_subsektor; ?>
+              </div>
+              <?php if($rowp->nama_lainnya != '' || $rowp->nama_lainnya != NULL ){  ?>
+                <div class="form-group">
+                  <label>3.2 Subsektor Lainnya:</label>&nbsp;<?php echo $rowp->nama_lainnya; ?>
+                </div>
+              <?php } ?>
+
+               <div class="form-group">
+                  <label>4. Nama Proyek :</label> &nbsp;<?php echo $rowp->nama_projek; ?>
+                </div>
+
+                 <div class="form-group">
+                  <label title="tes">5. Lokasi Proyek :</label>&nbsp;<?php echo $rowp->lokasi; ?>
+                </div>
+
+                 <div class="form-group">
+                  <label title="tes">6. Estimasi Nilai Proyek (dalam Rupiah) :</label>&nbsp;<?php echo $rowp->estimasi; ?>
+                </div>
+
+                <hr>
+                <div class="form-group">
                       <div class="row">
-                        <div class="col-md-4"> 
-                           <label>7. Informasi PIC Proyek : <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#anomor7"></i></label>
-                          <input type="text" class="form-control" name="nama" placeholder="Nama" value="<?php echo $rowp->nama; ?>" readonly>
+                        <div class="col-md-12"> 
+                         <label>7. Informasi PIC Proyek : </label>
                         </div>
                         <div class="col-md-4"> 
-                           <label><font color="#FFF">-</font></label>
-                          <input type="text" class="form-control" name="jabatan" placeholder="Jabatan" value="<?php echo $rowp->jabatan;  ?>" readonly>
+                          <label>-</label>
+                           Nama : <?php echo $rowp->nama; ?>
                         </div>
                         <div class="col-md-4"> 
-                          <label><font color="#FFF">-</font></label>
-                          <input type="text" class="form-control" name="telepon" onkeypress="return wajibAngka(event)" placeholder="telepon" value="<?php echo $rowp->telepon; ?>" readonly>
+                          <label>-</label>
+                          Jabatan : <?php echo $rowp->jabatan; ?>
+                        </div>
+                        <div class="col-md-4"> 
+                         <label>-</label>
+                           Telepon : <?php echo $rowp->telepon; ?>
                         </div>
                       </div>
                     </div>
@@ -455,15 +170,20 @@
                           <td><?php echo $nomor[0]; ?></td>
                           <td><?php echo $pertanyaan[0]; ?>&nbsp;<?php if($penjelasan[0] == NULL || $penjelasan[0] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor0"></i><?php } ?>
                             <br>
-                                       <input type="radio" name="p0"  value="Y" class="pi0" <?php echo $Y[0]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p0"  value="N" class="pi0" <?php echo $N[0]; ?>>&nbsp;&nbsp;Tidak
+                                       <?php if($Y[0] == 'checked'){
+                                            echo 'Ya';
+                                       }else if($N[0] == 'checked'){
+                                            echo 'Tidak';
+                                       } ?>
+<!--                                        <input type="radio" name="p0"  value="Y" class="pi0" <?php echo $Y[0]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <input type="radio" name="p0"  value="N" class="pi0" <?php echo $N[0]; ?>>&nbsp;&nbsp;Tidak -->
                                        <input type="hidden" name="Y[]" value="<?php echo $Y[0]; ?>" class="y0">
                                        <input type="hidden" name="N[]" value="<?php echo $N[0]; ?>" class="n0">
                                        <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[0]; ?>">
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[0]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[0]; ?>" class = 'bb0'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[0]; ?>" class = 'rs0'>
-                                       <div class="dp0" style="display: none;">
+                                      <?php if($Y[0] == 'checked'){ ?>
                                        <?php foreach ($noass0 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -510,8 +230,8 @@
                                               
                                           }
                                         ?>
-                                        <?php  } ?>
-                                      </div>
+                                        <?php  }} ?>
+                                      
                           </td>
                          <td><?php echo $skor1[0]; ?></td>
                         </tr>
@@ -521,16 +241,20 @@
                           <td><?php echo $nomor[1]; ?></td>
                           <td><?php echo $pertanyaan[1]; ?>&nbsp;<?php if($penjelasan[1] == NULL || $penjelasan[1] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor1"></i><?php } ?>
                                 <br>
-                                       <input type="radio" name="p1"  value="Y" class="pi1" <?php echo $Y[1]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p1"  value="N" class="pi1" <?php echo $N[1]; ?>>&nbsp;&nbsp;Tidak
+                                       <?php if($Y[1] == 'checked'){
+                                            echo 'Ya';
+                                       }else if($N[1] == 'checked'){
+                                            echo 'Tidak';
+                                       } ?>
+
                                        <input type="hidden" name="Y[]" value="<?php echo $Y[1]; ?>" class="y1">
                                        <input type="hidden" name="N[]" value="<?php echo $N[1]; ?>" class="n1">
                                        <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[1]; ?>">
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[1]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[1]; ?>" class = 'bb1'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[1]; ?>" class = 'rs1'>
-                                       <div class="dp1" style="display: none;">
-                                       <?php foreach ($noass1 as $row) {
+                                  <?php if($Y[1] == 'checked'){ ?>
+                                       <?php foreach ($noass1 as $row){
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
@@ -574,10 +298,10 @@
                                               echo "<input name='box6[]' type='hidden' value='textarea' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
-                                          }
+                                          }}
                                         ?>
                                         <?php  } ?>
-                                      </div>
+                                     
                           </td>
                           <td><?php echo $skor1[1]; ?></td>
                         </tr>
@@ -587,15 +311,18 @@
                           <td><?php echo $nomor[2]; ?></td>
                           <td><?php echo $pertanyaan[2]; ?>&nbsp;<?php if($penjelasan[2] == NULL || $penjelasan[2] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor2"></i><?php } ?>
                           <br>
-                                       <input type="radio" name="p2"  value="Y" class="pi2" <?php echo $Y[2]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p2"  value="N" class="pi2" <?php echo $N[2]; ?>>&nbsp;&nbsp;Tidak
+                                       <?php if($Y[2] == 'checked'){
+                                            echo 'Ya';
+                                       }else if($N[2] == 'checked'){
+                                            echo 'Tidak';
+                                       } ?>
                                        <input type="hidden" name="Y[]" value="<?php echo $Y[2]; ?>" class="y2">
                                        <input type="hidden" name="N[]" value="<?php echo $N[2]; ?>" class="n2">
                                        <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[2]; ?>">
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[2]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[2]; ?>" class = 'bb2'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[2]; ?>" class = 'rs2'>
-                                       <div class="dp2" style="display: none;">
+                                      <?php if($Y[2] == 'checked'){ ?>
                                            <?php foreach ($noass2 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -640,20 +367,9 @@
                                               echo "<input name='box6[]' type='hidden' value='textarea' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
-                                          }
+                                          }}
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[2] == 'checked'){
-                                            if($s_upload[2] == 1){?>
-                                              <br>
-                                             <div style="display: none;">
-                                                <span class="attachment1"><?php echo $upload[2]; ?></span> 
-                                                <span class="attachment1"><?php echo $upload1[2]; ?></span>
-                                                <span class="attachment1"><?php echo $upload2[2]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download FIle No.1</button>
-                                       <?php }}?>
                           </td>
                           <td><?php echo $skor1[2]; ?></td>
                        </tr>
@@ -663,15 +379,18 @@
                           <td><?php echo $nomor[3]; ?></td>
                           <td><?php echo $pertanyaan[3]; ?>&nbsp;<?php if($penjelasan[3] == NULL || $penjelasan[3] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor3"></i><?php } ?>
                             <br>
-                                       <input type="radio" name="p3"  value="Y" class="pi3" <?php echo $Y[3]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p3"  value="N" class="pi3" <?php echo $N[3]; ?>>&nbsp;&nbsp;Tidak
+                                       <?php if($Y[3] == 'checked'){
+                                            echo 'Ya';
+                                       }else if($N[3] == 'checked'){
+                                            echo 'Tidak';
+                                       } ?>
                                        <input type="hidden" name="Y[]" value="<?php echo $Y[3]; ?>" class="y3">
                                        <input type="hidden" name="N[]" value="<?php echo $N[3]; ?>" class="n3">
                                        <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[3]; ?>">
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[3]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[3]; ?>" class = 'bb3'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[3]; ?>" class = 'rs3'>
-                                       <div class="dp3" style="display: none;" >
+                                     <?php if($Y[2] == 'checked'){ ?>
                                        <?php foreach ($noass3 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -716,10 +435,10 @@
                                               echo "<input name='box6[]' type='hidden' value='textarea' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
-                                          }
+                                          }}
                                         ?>
                                         <?php  } ?>
-                                      </div>
+                                    
                           </td>
                           <td><?php echo $skor1[3]; ?></td>
                         </tr>
@@ -737,7 +456,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[4]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[4]; ?>" class = 'bb4'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[4]; ?>" class = 'rs4'>
-                                       <div class="dp4" style="display: none;">
+                                 
                                        <?php foreach ($noass4 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -785,17 +504,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[4] == 'checked'){
-                                            if($s_upload[4] == 1){?>
-                                              <br>
-                                             <div style="display: none;">
-                                                  <span class="attachment2"><?php echo $upload[4]; ?></span>
-                                                  <span class="attachment2"><?php echo $upload1[4]; ?></span>
-                                                  <span class="attachment2"><?php echo $upload2[4]; ?></span></div>
-                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip2()">Download FIle No.2</button>
-                                       <?php }}?>
+                                  
                           </td>
                           <td><?php echo $skor1[4]; ?></td>
                         </tr>
@@ -813,7 +522,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[5]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[5]; ?>" class = 'bb5'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[5]; ?>" class = 'rs5'>
-                                       <div class="dp5" style="display: none;">
+                                   
                                            <?php foreach ($noass5 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -861,16 +570,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[5] == 'checked'){
-                                            if($s_upload[5] == 1){?>
-                                              <br>
-                                             <div style="display: none;">
-                                                <span class="attachment3"><?php echo $upload[5]; ?></span>
-                                            </div>
-                                              <button type="button" class="btn btn-default btn-sm" onclick="zip3()">Download FIle No.3</button>
-                                       <?php }}?>
+                                  
                           </td>
                           <td><?php echo $skor1[5]; ?></td>
                        </tr>
@@ -888,7 +588,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[6]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[6]; ?>" class = 'bb6'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[6]; ?>" class = 'rs6'>
-                                       <div class="dp6" style="display: none;">
+                                  
                                            <?php foreach ($noass6 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -936,19 +636,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[6] == 'checked'){
-                                            if($s_upload[6] == 1){?>
-                                              <br>
-                                            <div style="display: none;"> 
-                                                <span class="attachment4"><?php echo $upload[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload1[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload2[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload3[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload4[6]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip4()">Download FIle No.4</button>
-                                       <?php }}?>
+                                    
                           </td>
                           <td><?php echo $skor1[6]; ?></td>
                        </tr>
@@ -966,7 +654,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[7]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[7]; ?>" class = 'bb7'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[7]; ?>" class = 'rs7'>
-                                       <div class="dp7" style="display: none;">
+                                  
                                            <?php foreach ($noass7 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1014,20 +702,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                    <?php 
-                                        if($Y[7] == 'checked'){
-                                            if($s_upload[7] == 1){?>
-                                              <br>
-                                             <div style="display: none;">
-                                                <span class="attachment5"><?php echo $upload[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload1[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload2[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload3[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload4[7]; ?></span>
-                                            </div>
-                                            <button type="button" class="btn btn-default btn-sm" onclick="zip5()">Download FIle No.5</button>
-                                       <?php }}?>
+                                 
                           </td>
                           <td><?php echo $skor1[7]; ?></td>
                        </tr>
@@ -1045,7 +720,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[8]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[8]; ?>" class = 'bb8'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[8]; ?>" class = 'rs8'>
-                                       <div class="dp8" style="display: none;">
+                                    
                                            <?php foreach ($noass8 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1093,15 +768,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[8] == 'checked'){
-                                            if($s_upload[8] == 1){?>
-                                              <br>
-                                            <div style="display: none;">
-                                              <span class="attachment6"> <?php echo $upload[8]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.6</button></a>
-                                       <?php }}?>
+                                 
                           </td>
                           <td><?php echo $skor1[8]; ?></td>
                        </tr>
@@ -1119,7 +786,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[9]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[9]; ?>" class = 'bb9'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[9]; ?>" class = 'rs9'>
-                                       <div class="dp9" style="display: none;">
+                                   
                                            <?php foreach ($noass9 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1167,7 +834,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
+                                   
                           </td>
                           <td><?php echo $skor1[9]; ?></td>
                        </tr>
@@ -1185,7 +852,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[10]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[10]; ?>" class = 'bb10'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[10]; ?>" class = 'rs10'>
-                                       <div class="dp10" style="display: none;">
+                             
                                            <?php foreach ($noass10 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1233,7 +900,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
+                                   
                           </td>
                           <td><?php echo $skor1[10]; ?></td>
                        </tr>
@@ -1251,7 +918,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[11]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[11]; ?>" class = 'bb11'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[11]; ?>" class = 'rs11'>
-                                       <div class="dp11" style="display: none;">
+                                  
                                            <?php foreach ($noass11 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1299,7 +966,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
+                                
                           </td>
                           <td><?php echo $skor1[11]; ?></td>
                        </tr>
@@ -1317,7 +984,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[12]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[12]; ?>" class = 'bb12'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[12]; ?>" class = 'rs12'>
-                                       <div class="dp12" style="display: none;">
+                                
                                            <?php foreach ($noass12 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1365,19 +1032,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[12] == 'checked'){
-                                            if($s_upload[12] == 1){?>
-                                              <br>
-                                            <div style="display: none;">
-                                                <span class="attachment7"><?php echo $upload[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload1[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload2[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload3[12]; ?></span>
-                                          </div>
-                                        <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download FIle No.7</button>
-                                       <?php }}?>
+                                 
                           </td>
                           <td><?php echo $skor1[12]; ?></td>
                        </tr>
@@ -1395,7 +1050,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[13]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[13]; ?>" class = 'bb13'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[13]; ?>" class = 'rs13'>
-                                       <div class="dp13" style="display: none;">
+                        
                                            <?php foreach ($noass13 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1443,15 +1098,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[13] == 'checked'){
-                                            if($s_upload[13] == 1){?>
-                                              <br>
-                                            <div style="display: none;">
-                                              <span class="attachment9"> <?php echo $upload[13]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.8</button></a>
-                                       <?php }}?>
+                                 
                           </td>
                           <td><?php echo $skor1[13]; ?></td>
                        </tr>
@@ -1469,7 +1116,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[14]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[14]; ?>" class = 'bb14'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[14]; ?>" class = 'rs14'>
-                                       <div class="dp14" style="display: none;">
+           
                                            <?php foreach ($noass14 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1517,15 +1164,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
-                                      <?php 
-                                        if($Y[14] == 'checked'){
-                                            if($s_upload[14] == 1){?>
-                                              <br>
-                                            <div style="display: none;">
-                                              <span class="attachment9"> <?php echo $upload[14]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.9</button></a>
-                                       <?php }}?>
+                               
                           </td>
                           <td><?php echo $skor1[14]; ?></td>
                        </tr>
@@ -1543,7 +1182,7 @@
                                        <input type="hidden" name="nomor[]" value="<?php echo $nomor[15]; ?>"> 
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[15]; ?>" class = 'bb15'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[15]; ?>" class = 'rs15'>
-                                       <div class="dp15" style="display: none;">
+
                                            <?php foreach ($noass15 as $row) {
                                            if($row->b == 'not'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -1591,7 +1230,7 @@
                                           }
                                         ?>
                                         <?php  } ?>
-                                      </div>
+
                           </td>
                           <td><?php echo $skor1[15]; ?></td>
                        </tr>
@@ -1601,24 +1240,6 @@
                   </div>
                 </div>
                 <!-- /.box-body -->
-
-            <div class="modal fade" id="disclamer" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
-          
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-        
-                  <h5><p align="justify">Dengan ini seluruh pengisian Data Proyek dan Deskripsi Proyek sudah benar dan sesuai </p></h5>
-
-                </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-secondary" id="draft2">Tidak</button>
-                      <button type="submit" name="next" value="next" class="btn btn-success" id="next">Ya</button>
-                    </div>
-                </div>
-              </div>
-            </div>
-
         </form>
 
           <div class="row">
@@ -1691,7 +1312,7 @@
                           <input type="hidden"  name="user2" value="<?php echo $this->session->userdata('username') ?>">
                           <textarea class="form-control" cols="3" name="respon1" placeholder="YOUR RESPON" readonly><?php echo $res->respon1 ?></textarea><br>
                      Last Admin User &nbsp;: &nbsp;
-                          <input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;<input type="text" value="<?php echo date("d-m-Y H:i:s", strtotime($res->log_update1)); ?>" readonly><br><br>
+                          <input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;<input type="text" value="<?php echo $res->log_update1 ?>" readonly><br><br>
                           <textarea class="form-control" cols="3" name="respon2" placeholder="YOUR RESPON" readonly><?php echo $res->respon2 ?></textarea><br>
                      Last Admin Approval &nbsp;: &nbsp;
                           <input type="text" value="<?php echo $res->user2 ?>" readonly> &nbsp;
@@ -1702,398 +1323,23 @@
               </div>
             </div>
 
-                <div class="box-footer">
-                  <a href="dashboard/submissionpage"><button type="button" class="btn btn-warning btn-sm">Kembali</button></a>                   
-                  <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-primary btn-sm">Export Informasi Proyek</button></a>
-                  <a href="Dashboard/FormVerifikasiProyekPDF2/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
-                </div>
               </div>
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
             <!-- /.row -->
           </section>
+
         <!-- /.content -->
       </div>
-      <!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-        </div>
-        <strong>Copyright &copy; 2019 
-      </footer>
-      <!-- Control Sidebar -->
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <!--<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>-->
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-       
-       
-        <!-- /.control-sidebar-menu -->
 
-     
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-
-      <!-- Settings tab content -->
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
 
     <!-- Modal -->
 
 
-<div class="modal fade" id="anomor1" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        
-        <h5><p align="justify">Penanggung Jawab Proyek Kerjasama (PJPK) adalah Menteri, Kepala Lembaga, Kepala Daerah dan Direksi Badan Usaha Milik Negara/Direksi Badan Usaha Milik Daerah sepanjang diatur dalam peraturan perundangundangan sektor (sesuai dengan Peraturan Menteri PPN/Bappenas No. 4 tahun 2015 tentang Tata Cara Pelaksanaan Kerjasama Pemerintah dengan Badan Usaha (KPBU) dalam Penyediaan Infrastruktur)</p></h5>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="anomor3" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        
-        <h5><p align="justify">Mengacu kepada Peraturan Presiden No. 38 tahun 2015 tentang Kerjasama Pemerintah dengan Badan Usaha (KPBU) dalam Penyediaan Infrastruktur dan Peraturan Menteri PPN/Bappenas No. 4 tahun 2015 tentang Tata Cara Pelaksanaan KPBU dalam Penyediaan Infrastruktur, terdapat 19 jenis infrastruktur (ekonomi dan sosial) yang dapat dikerjasamakan.</p></h5>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="anomor7" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        
-        <h5><p align="justify">Pejabat berwenang yang dapat dihubungi terkait Proyek.</p></h5>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor0" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[0]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor1" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[1]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor2" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[2]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor3" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[3]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor4" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[4]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor5" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[5]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor6" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[6]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor7" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[7]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor8" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[8]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor9" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[9]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor10" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[10]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor11" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[11]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor12" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[12]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor13" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[13]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="bnomor14" tabindex="-1" role="dialog" aria-labelledby="bnomor1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-        <h5><p align="justify"><?php echo $penjelasan[14]; ?></p><h5>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="alert_file" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-
-      <div class="modal-body">
-       <p align="justify">Harap lengkapi file upload yang telah disediakan</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalNext" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="col-xs-12">
-                <!-- /.box -->
-                <div class="box">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                  <!-- /.box-header -->
-                  <div class="box-body">
-                      <input type="hidden" name="id_projek" value="<?php echo $rowp->id_projek; ?>" />
-                      <input type="hidden" name="status" value="<?php echo $rowp->status; ?>" />
-                      <div class="box-body">
-                          <div id="printThis">
-                          <h5>
-                            <center><b><font size="+1" style="font-family: sans-serif;">Terima Kasih Telah Mengisi<br>"SISTEM INFORMASI PROYEK KPBU"</font></b></center>
-                        <br>
-                      
-                        <p align="justify" style="font-family: sans-serif;">PT Penjaminan Infrastruktur Indonesia (Persero) akan mereview dan menindaklanjuti dokumen yang telah Saudara sampaikan. <br><br>
-                              PT Penjaminan Infrastruktur Indonesia (Persero) akan menghubungi saudara jika pengecekan telah selesai.</p>
-
-                          <br>
-                            <center><b><font size="+1" style="font-family: sans-serif;">Rekomendasi Penilaian:</font></b></center>
-
-                        <table class="table table-bordered table-striped" style="font-family: sans-serif;">
-                          <tbody>
-                            <?php 
-                              $i = 1;
-                              foreach ($getrespon as $res) {
-                              ?>
-                            <tr>
-                              <td><?=$i++;?></td>
-                              <td><?php echo $res->respon; ?></td>
-                            </tr>
-                            <?php }  ?>
-                          </tbody>
-                        </table>
-                          <br>
-                        <table width="100%">
-                        <tbody>
-                            <tr>
-                              <td><center><a href="http://kpsrb.bappenas.go.id/ppptoolkit/tentang-kpbu/" target="blank"><img src="assets/dashboard/images/bappneas.png" width="70%" /></a></center></td>
-                              <td><center><a href="http://www.iigf.co.id/id/" target="blank"><img src="assets/dashboard/images/pii.png" width="70%" /></a></center></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <hr style=" border: 1px solid #000;">
-                        <img src="assets/dashboard/images/FooterHyperlink.png" width="100%">
-
-                          <center><b><font style="font-family: sans-serif;">Seketariat:</font></b></center>
-                          <br>
-                          <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
-                      </h5>
-                    </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="print">Print</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<
     <!-- jQuery 2.2.3 -->
     <script src="assets/dashboard/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
@@ -3945,6 +3191,23 @@
         var $combine = 'name[]=' + arr.join('&name[]=');
         window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no9';
       }
+
+    $("#sbmt-approval").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          url: "<?php echo base_url("index.php/dashboard/saveapproval"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#form-approval").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#mdl-approval").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Send Approval success')
+          }      
+      });
+    });
+
+    function setHdn(value){
+      $(".hdnid_project").val(value);
+    }
 
     </script>
   </body>

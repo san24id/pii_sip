@@ -177,11 +177,11 @@
                           <textarea class="form-control" cols="3" name="respon1" placeholder="YOUR RESPON" readonly><?php echo $res->respon1 ?></textarea><br>
                      Last Admin User &nbsp;: &nbsp;
                       <input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;
-                      <input type="text" value="<?php echo $res->log_update1 ?>" readonly><br><br>
+                      <input type="text" value="<?php echo date("d-m-Y H:i:s", strtotime($res->log_update1)); ?>" readonly><br><br>
                       <textarea class="form-control" cols="3" name="respon2" placeholder="YOUR RESPON" required><?php echo $res->respon2 ?></textarea><br>
                      Last Admin Approval &nbsp;: &nbsp;
                      <input type="text" value="<?php echo $res->user2 ?>" readonly> &nbsp;
-                     <input type="text" value="<?php echo $res->log_update2 ?>" readonly><br><br>
+                     <input type="text" value="<?php echo date("d-m-Y H:i:s", strtotime($res->log_update2)); ?>" readonly><br><br>
                           <button type="submit" class="btn btn-primary" name="save" value="draft">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
                           <button type="submit" class="btn btn-success" name="submit" value="submit">Submit</button>
                         </form>
@@ -195,7 +195,7 @@
                           <textarea class="form-control" cols="3" name="respon1" placeholder="YOUR RESPON" readonly><?php echo $res->respon1 ?></textarea><br>
                      Last Admin User &nbsp;: &nbsp;
                           <input type="text" value="<?php echo $res->user1 ?>" readonly> &nbsp;
-                          <input type="text" value="<?php echo $res->log_update1 ?>" readonly><br><br>
+                          <input type="text" value="<?php echo date("d-m-Y H:i:s", strtotime($res->log_update1)); ?>" readonly><br><br>
                           <textarea class="form-control" cols="3" name="respon2" placeholder="YOUR RESPON" readonly><?php echo $res->respon2 ?></textarea><br>
                      Last Admin Approval &nbsp;: &nbsp;<input type="text" value="<?php echo $res->user2 ?>" readonly> &nbsp;<input type="text" value="<?php echo $res->log_update2 ?>" readonly><br><br>
                         </form>
@@ -208,7 +208,7 @@
                 <div class="box-footer">
                    <a href="dashboard/submissionpage"><button type="button" class="btn btn-warning btn-sm">Kembali</button></a>
                    <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-primary btn-sm">Export Informasi Proyek</button></a>
-                   <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
+                   <a href="Dashboard/FormVerifikasiProyekPDF2/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
                 </div>
               </div>
               <!-- /.box-body -->
