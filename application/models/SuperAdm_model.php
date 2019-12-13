@@ -16,14 +16,23 @@ class SuperAdm_model extends CI_model {
         }
 
     function addassesment($add){
-        $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
-        VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."','".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."')";
-
-        $query = $this->db->query($sql);
-
-        return $query;
+        $cari_jumlah_bobot = "SELECT SUM(bobot) FROM t_assessment";
+        $query_cari_jumlah_bobot = $this->db->query($cari_jumlah_bobot);
+        $penjumlahan = $add['bobot'];
+        $hasil_penjumlahan = $query_cari_jumlah_bobot + $penjumlahan; 
+        if($hasil_penjumlahan <= 100){        
+	        $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
+            VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
+            '".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."')";
+        
+	        $query = $this->db->query($sql);
+        
+	        return $query;
+            }else{
+	            die('Bobot Maksimal 100!!!');
+        }
     }
-
+       
     function updateassesment($upd){
         $sql = "UPDATE `t_assessment` SET `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
         `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."' WHERE `id_ass`='".$upd['id_ass']."'"; 

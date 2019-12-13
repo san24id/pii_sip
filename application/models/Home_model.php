@@ -676,7 +676,7 @@ class Home_model extends CI_Model{
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png|pdf';
-        $config['file_name']            = 'testnama';
+        $config['file_name']            = $this->nama_user;
         $config['overwrite']            = true;
         $config['max_size']             = 1024; // 1MB
         // $config['max_width']            = 1024;
@@ -722,6 +722,14 @@ class Home_model extends CI_Model{
 
         return $query;
 
+    }
+
+    function uploaduser($file, $id){
+        $sql = "UPDATE `t_user` SET `foto`= '".$file['foto']."' WHERE id_projek = $id";
+
+        $query = $this->db->query($sql);
+
+        return true;
     }
 
     function updatefile1($file, $id){

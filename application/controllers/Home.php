@@ -944,10 +944,7 @@ class Home extends CI_Controller {
 		redirect('Home/myprofile');
 
 	}
-
-
 	
-
 	public function Insertfile($idp){
 		
       //Check if file is not empty

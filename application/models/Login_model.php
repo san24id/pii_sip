@@ -20,6 +20,7 @@ class Login_model extends CI_Model{
     function insert_regist($regist){
 
         $nik =addslashes($regist['nik']);
+        $foto =addslashes($regist['foto']);
         $nama_user =addslashes($regist['nama_user']);
         $instansi = addslashes($regist['instansi']);
         $jabatan = addslashes($regist['jabatan']);
@@ -29,7 +30,7 @@ class Login_model extends CI_Model{
         $password = addslashes($regist['password']);
 
 
-        $sql = $this->db->query("INSERT INTO `t_user`(`nomor_user`, `nik`, `nama_user`, `instansi`, `jabatan`, `email`, `telepon`, `username`, `password`, `log_create`, `log_update`) VALUES ( '$nomor_user', '$nik', '$nama_user','$instansi','$jabatan','$email','$telepon','$username',md5('$password'),NOW(), NOW())");
+        $sql = $this->db->query("INSERT INTO `t_user`(`nomor_user`, `nik`, `foto`, `nama_user`, `instansi`, `jabatan`, `email`, `telepon`, `username`, `password`, `log_create`, `log_update`) VALUES ( '$nomor_user', '$nik', '$foto', '$nama_user','$instansi','$jabatan','$email','$telepon','$username',md5('$password'),NOW(), NOW())");
 
 
         $nomor_user = 'SIP'.date('dmY').$this->db->insert_id();
