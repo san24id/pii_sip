@@ -42,7 +42,7 @@
                 <tr>
                   <td><?php echo $i++; ?></td>
                   <td>  
-                        <?php 
+                  <?php 
                           if($row->status == 1){
                               echo "<img src='assets/dashboard/images/legend/treatment.png'>";  
                           }else if($row->status == 2){
@@ -50,11 +50,17 @@
                           }else if($row->status == 3){
                              echo "<img src='assets/dashboard/images/legend/verified.png'>";
                           }else if($row->status == 4){
-                             echo "<img src='assets/dashboard/images/legend/executed_2.png'>";
+                             echo "<img src='assets/dashboard/images/legend/sendtoadminapp.png'>";
                           }else if($row->status == 5){
-                             echo "<img src='assets/dashboard/images/legend/executed.png'>";
-                          } 
-                        ?> 
+                             echo "<img src='assets/dashboard/images/legend/default.png'>";
+                          }else if($row->status == 6 || $row->status == 7){
+                             echo "<img src='assets/dashboard/images/legend/sendtoadminuser.png'>";
+                          }else if($row->status == 8){
+                             echo "<img src='assets/dashboard/images/legend/respontoadminuser.png'>";
+                          }else if($row->status == 9 || $row->status == 10){
+                             echo "<img src='assets/dashboard/images/legend/responformpp.png'>";
+                          }    
+                        ?>
                   </td>
                   <td><?php echo $row->nomor_projek; ?></td>
                   <td><?php echo $row->nama_pj; ?></td>

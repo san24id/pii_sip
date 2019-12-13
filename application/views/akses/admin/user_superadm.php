@@ -49,7 +49,8 @@
                   <!-- <td><?php echo $row->id; ?></td> -->
                   <td><?php echo $row->nomor_user; ?></td>
                   <td><?php echo $row->nik; ?></td>
-                  <td><img src="<?php echo base_url() ?>/upload<?php echo $row->image?>" width="64" /></td>
+                  <td><?php echo $row->foto; ?></td>
+                  <!-- <td><img src="<?php echo base_url() ?>/upload<?php echo $row->image?>" width="64" /></td> -->
                   <td><?php echo $row->nama_user; ?></td>
                   <td><?php echo $row->instansi; ?></td>
                   <td><?php echo $row->jabatan; ?></td>
