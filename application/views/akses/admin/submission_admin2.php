@@ -227,15 +227,15 @@
                           }else if($row->status == 3){
                              echo "<img src='assets/dashboard/images/legend/verified.png'>";
                           }else if($row->status == 4){
-                             echo "<img src='assets/dashboard/images/legend/sendtoadminapp.png' width='35%'>";
+                             echo "<img src='assets/dashboard/images/legend/sendtoadminapp.png'>";
                           }else if($row->status == 5){
                              echo "<img src='assets/dashboard/images/legend/default.png'>";
                           }else if($row->status == 6 || $row->status == 7){
-                             echo "<img src='assets/dashboard/images/legend/sendtoadminuser.png' width='35%'>";
+                             echo "<img src='assets/dashboard/images/legend/sendtoadminuser.png'>";
                           }else if($row->status == 8){
-                             echo "<img src='assets/dashboard/images/legend/respontoadminuser.png' width='35%'>";
+                             echo "<img src='assets/dashboard/images/legend/respontoadminuser.png'>";
                           }else if($row->status == 9 || $row->status == 10){
-                             echo "<img src='assets/dashboard/images/legend/responformpp.png' width='35%'>";
+                             echo "<img src='assets/dashboard/images/legend/responformpp.png'>";
                           }   
                         ?> 
                   </td>
@@ -347,22 +347,22 @@
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td><img src="assets/dashboard/images/legend/sendtoadminapp.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/sendtoadminapp.png"></td>
                   <td>Send to Admin Approval</td>
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td><img src="assets/dashboard/images/legend/sendtoadminuser.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/sendtoadminuser.png"></td>
                   <td>Send to Admin User</td>
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td><img src="assets/dashboard/images/legend/respontoadminuser.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/respontoadminuser.png"></td>
                   <td>Respon From Admin User</td>
                 </tr>
                 <tr>
                   <td>7</td>
-                  <td><img src="assets/dashboard/images/legend/responformpp.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/responformpp.png"></td>
                   <td>Respon From Admin Approval</td>
                 </tr>
                 <tr>
