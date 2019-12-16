@@ -583,6 +583,7 @@
                           <center><b><font style="font-family: sans-serif;">Seketariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
+                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.id </p></center>
                       </h5>
                     </div>
                       </div>
@@ -1573,7 +1574,7 @@
                                               if($s_upload[11] == 1){?>
                                                 <br>
                                               <div style="display: none;">
-                                                <span class="attachment9"> <?php echo $upload[11]; ?></span></div>
+                                                <span class="attachment11"> <?php echo $upload[11]; ?></span></div>
                                                 <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip12()">Download File No.12</button></a>
                                          <?php }}?>
                             </td>
@@ -1647,10 +1648,10 @@
                                             if($s_upload[12] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                                <span class="attachment10"><?php echo $upload[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload1[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload2[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload3[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload1[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload2[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload3[12]; ?></span>
                                           </div>
                                         <button type="button" class="btn btn-default btn-sm" onclick="zip13()">Download File No.13</button>
                                        <?php }}?>
@@ -1725,7 +1726,7 @@
                                             if($s_upload[13] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment11"> <?php echo $upload[13]; ?></span></div>
+                                              <span class="attachment13"> <?php echo $upload[13]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm"onclick="zip14()">Download File No.14</button></a>
                                        <?php }}?>
                           </td>
@@ -1799,7 +1800,7 @@
                                             if($s_upload[14] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment12"> <?php echo $upload[14]; ?></span></div>
+                                              <span class="attachment14"> <?php echo $upload[14]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip15()">Download File No.15</button></a>
                                        <?php }}?>
                           </td>

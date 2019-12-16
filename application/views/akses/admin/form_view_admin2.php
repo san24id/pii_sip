@@ -977,7 +977,7 @@
                                                 <span class="attachment6"><?php echo $upload2[6]; ?></span>
                                                 <span class="attachment6"><?php echo $upload3[6]; ?></span>
                                                 <span class="attachment6"><?php echo $upload4[6]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download File No.7</button>
+                                                <button type="button" class="btn btn-default btn-sm" onclick="zip6()">Download File No.7</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[6]; ?></td>
@@ -1056,7 +1056,7 @@
                                                 <span class="attachment7"><?php echo $upload3[7]; ?></span>
                                                 <span class="attachment7"><?php echo $upload4[7]; ?></span>
                                             </div>
-                                            <button type="button" class="btn btn-default btn-sm" onclick="zip8()">Download File No.9</button>
+                                            <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download File No.8</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[7]; ?></td>
@@ -1130,7 +1130,7 @@
                                               <br>
                                             <div style="display: none;">
                                               <span class="attachment8"> <?php echo $upload[8]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip9()">Download File No.10</button></a>
+                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip8()">Download File No.8</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[8]; ?></td>
@@ -1206,7 +1206,7 @@
                                                   <span class="attachment9"><?php echo $upload[9]; ?></span> 
                                                   <span class="attachment9"><?php echo $upload1[9]; ?></span>
                                                   <span class="attachment9"><?php echo $upload2[9]; ?></span></div>
-                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip10()">Download File No.10</button>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip9()">Download File No.10</button>
                                          <?php }}?>
                             </td>
                             <td><?php echo $skor1[9]; ?></td>
@@ -1355,7 +1355,7 @@
                                               if($s_upload[11] == 1){?>
                                                 <br>
                                               <div style="display: none;">
-                                                <span class="attachment9"> <?php echo $upload[11]; ?></span></div>
+                                                <span class="attachment11"> <?php echo $upload[11]; ?></span></div>
                                                 <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip12()">Download File No.12</button></a>
                                          <?php }}?>
                             </td>
@@ -1429,10 +1429,10 @@
                                             if($s_upload[12] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                                <span class="attachment10"><?php echo $upload[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload1[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload2[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload3[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload1[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload2[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload3[12]; ?></span>
                                           </div>
                                         <button type="button" class="btn btn-default btn-sm" onclick="zip13()">Download File No.13</button>
                                        <?php }}?>
@@ -1507,7 +1507,7 @@
                                             if($s_upload[13] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment11"> <?php echo $upload[13]; ?></span></div>
+                                              <span class="attachment13"> <?php echo $upload[13]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm"onclick="zip14()">Download File No.14</button></a>
                                        <?php }}?>
                           </td>
@@ -1581,7 +1581,7 @@
                                             if($s_upload[14] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment12"> <?php echo $upload[14]; ?></span></div>
+                                              <span class="attachment14"> <?php echo $upload[14]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip15()">Download File No.15</button></a>
                                        <?php }}?>
                           </td>
@@ -2119,6 +2119,7 @@
                           <center><b><font style="font-family: sans-serif;">Seketariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
+                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.id </p></center>
                       </h5>
                     </div>
                       </div>
@@ -3974,6 +3975,7 @@
         var $combine = 'name[]=' + arr.join('&name[]=');
         window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no4';
       }
+
       function zip5(){
         var arr = [];
         $('.attachment5').each(function() {

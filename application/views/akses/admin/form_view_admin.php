@@ -1355,7 +1355,7 @@
                                               if($s_upload[11] == 1){?>
                                                 <br>
                                               <div style="display: none;">
-                                                <span class="attachment9"> <?php echo $upload[11]; ?></span></div>
+                                                <span class="attachment11"> <?php echo $upload[11]; ?></span></div>
                                                 <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip12()">Download File No.12</button></a>
                                          <?php }}?>
                             </td>
@@ -1429,10 +1429,10 @@
                                             if($s_upload[12] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                                <span class="attachment10"><?php echo $upload[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload1[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload2[12]; ?></span>
-                                                <span class="attachment10"><?php echo $upload3[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload1[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload2[12]; ?></span>
+                                                <span class="attachment12"><?php echo $upload3[12]; ?></span>
                                           </div>
                                         <button type="button" class="btn btn-default btn-sm" onclick="zip13()">Download File No.13</button>
                                        <?php }}?>
@@ -1507,7 +1507,7 @@
                                             if($s_upload[13] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment11"> <?php echo $upload[13]; ?></span></div>
+                                              <span class="attachment13"> <?php echo $upload[13]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm"onclick="zip14()">Download File No.14</button></a>
                                        <?php }}?>
                           </td>
@@ -1581,7 +1581,7 @@
                                             if($s_upload[14] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment12"> <?php echo $upload[14]; ?></span></div>
+                                              <span class="attachment14"> <?php echo $upload[14]; ?></span></div>
                                               <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip15()">Download File No.15</button></a>
                                        <?php }}?>
                           </td>
@@ -2136,6 +2136,7 @@
                           <center><b><font style="font-family: sans-serif;">Seketariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
+                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.id </p></center>
                       </h5>
                     </div>
                       </div>
@@ -3950,7 +3951,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no0';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no1';
       }
 
       function zip1(){
@@ -3960,7 +3961,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no1';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no2';
       }
 
       function zip2(){
@@ -3970,7 +3971,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no2';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no3';
       }
 
       function zip3(){
@@ -3980,7 +3981,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no3';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no4';
       }
 
       function zip4(){
@@ -3990,7 +3991,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no4';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no5;
       }
       function zip5(){
         var arr = [];
@@ -3999,7 +4000,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no5';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no6';
       }
 
       function zip6(){
@@ -4009,7 +4010,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no6';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no7';
       }
 
       function zip7(){
@@ -4019,7 +4020,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no7';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no8';
       }
 
       function zip8(){
@@ -4029,7 +4030,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no8';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no9';
       }
 
       function zip9(){
@@ -4039,7 +4040,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no9';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no10';
       }
 
       function zip10(){
@@ -4049,7 +4050,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no10';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no11';
       }
 
       function zip11(){
@@ -4059,7 +4060,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no11';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no12';
       }
 
       function zip12(){
@@ -4069,7 +4070,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no12';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no13';
       }
 
       function zip13(){
@@ -4079,7 +4080,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no13';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no14';
       }
 
       function zip14(){
@@ -4089,7 +4090,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no14';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no15';
       }
 
       function zip15(){
@@ -4099,7 +4100,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no15';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no16';
       }
 
       function zip16(){
@@ -4109,7 +4110,7 @@
         });
 
         var $combine = 'name[]=' + arr.join('&name[]=');
-        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no16';
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no17';
       }
 
     $("#sbmt-approval").on('click', function(){

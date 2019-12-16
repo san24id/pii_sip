@@ -97,7 +97,7 @@
                   <td><?php echo $row->nama_kategori; ?></td>
                   <td><?php echo $row->nama_sektor; ?></td>
                   <td><?php echo $row->nama_projek; ?></td>
-                  <td><?php echo $row->log_update; ?></td>
+                  <td><?php echo date("d-m-Y H:i:s", strtotime($row->log_update)); ?></td>
                    <td><?php echo $row->komen; ?></td>
                   <td>
 
@@ -247,7 +247,7 @@
                   <td><?php echo $row->lokasi ?></td>
                   <td><?php echo $row->estimasi; ?></td>
                   <td><?php echo $row->total_skor; ?></td>
-                  <td><?php echo $row->log_update; ?></td>
+                  <td><?php echo date("d-m-Y H:i:s", strtotime($row->log_update)); ?></td>
                   <td>
 
                     <?php if($this->session->userdata('role') == 2){ ?>
