@@ -870,7 +870,7 @@
                                                 <span class="attachment1"><?php echo $upload[2]; ?></span> 
                                                 <span class="attachment1"><?php echo $upload1[2]; ?></span>
                                                 <span class="attachment1"><?php echo $upload2[2]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download FIle No.1</button>
+                                                <button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download File No.1</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[2]; ?></td>
@@ -1012,7 +1012,7 @@
                                                   <span class="attachment2"><?php echo $upload[4]; ?></span>
                                                   <span class="attachment2"><?php echo $upload1[4]; ?></span>
                                                   <span class="attachment2"><?php echo $upload2[4]; ?></span></div>
-                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip2()">Download FIle No.2</button>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip2()">Download File No.2</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[4]; ?></td>
@@ -1087,7 +1087,7 @@
                                              <div style="display: none;">
                                                 <span class="attachment3"><?php echo $upload[5]; ?></span>
                                             </div>
-                                              <button type="button" class="btn btn-default btn-sm" onclick="zip3()">Download FIle No.3</button>
+                                              <button type="button" class="btn btn-default btn-sm" onclick="zip3()">Download File No.3</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[5]; ?></td>
@@ -1165,7 +1165,7 @@
                                                 <span class="attachment4"><?php echo $upload2[6]; ?></span>
                                                 <span class="attachment4"><?php echo $upload3[6]; ?></span>
                                                 <span class="attachment4"><?php echo $upload4[6]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip4()">Download FIle No.4</button>
+                                                <button type="button" class="btn btn-default btn-sm" onclick="zip4()">Download File No.4</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[6]; ?></td>
@@ -1244,7 +1244,7 @@
                                                 <span class="attachment5"><?php echo $upload3[7]; ?></span>
                                                 <span class="attachment5"><?php echo $upload4[7]; ?></span>
                                             </div>
-                                            <button type="button" class="btn btn-default btn-sm" onclick="zip5()">Download FIle No.5</button>
+                                            <button type="button" class="btn btn-default btn-sm" onclick="zip5()">Download File No.5</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[7]; ?></td>
@@ -1318,7 +1318,7 @@
                                               <br>
                                             <div style="display: none;">
                                               <span class="attachment6"> <?php echo $upload[8]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.6</button></a>
+                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip6()">Download File No.6</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[8]; ?></td>
@@ -1594,7 +1594,7 @@
                                                 <span class="attachment7"><?php echo $upload2[12]; ?></span>
                                                 <span class="attachment7"><?php echo $upload3[12]; ?></span>
                                           </div>
-                                        <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download FIle No.7</button>
+                                        <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download File No.7</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[12]; ?></td>
@@ -1668,7 +1668,7 @@
                                               <br>
                                             <div style="display: none;">
                                               <span class="attachment9"> <?php echo $upload[13]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.8</button></a>
+                                              <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download File No.8</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[13]; ?></td>
@@ -1742,7 +1742,7 @@
                                               <br>
                                             <div style="display: none;">
                                               <span class="attachment9"> <?php echo $upload[14]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle No.9</button></a>
+                                              <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip9()">Download File No.9</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[14]; ?></td>
