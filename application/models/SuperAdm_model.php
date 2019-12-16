@@ -345,7 +345,26 @@ class SuperAdm_model extends CI_model {
     }
 
     function importass(){
-        
+        $sql ="TRUNCATE `t_assessment`";
+        $query = $this->db->query($sql);
+
+        $sql ="TRUNCATE `m1`";
+        $query = $this->db->query($sql);
+
+        $sql = "DELETE t1, t2, t3, t4, t5 FROM `t_projekprofil` t1, t_skor t2, t_m1profil t3, t_subsektor_ln t4, t_user_kategori t5 WHERE t1.id_projek = t2.id_projek AND t1.id_projek = t3.id_projek AND t1.id_projek = t4.id_projek AND t1.id_projek = t5.id_projek AND t1.status < 3";
+
+        $query = $this->db->query($sql);
+
+        $sql ="INSERT INTO `t_assessment`(`id_ass`, `section`, `nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot`, `s_upload`, `s_upload2`)SELECT * FROM imp_assessment";
+        $query = $this->db->query($sql);
+
+        $sql ="INSERT INTO `m1`(`idass`, `nomor_urut`, `urut`, `a`, `b`, `su`) SELECT `idass`, `nomor_urut`, `urut`, `a`, `b`, '0' FROM `imp_m1`";
+        $query = $this->db->query($sql);
+
+
+        return $query;
+
+
     }
 
 
