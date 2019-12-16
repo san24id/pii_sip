@@ -666,7 +666,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body" id="form2">
-                                        <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                       <tbody>
                       <?php if($id_ass[0] != '' || $id_ass[0] != NULL){ ?>
                         <tr>
@@ -727,12 +727,22 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                         <td><?php echo $skor1[0]; ?></td>
-                        </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        </div>
+                                        <?php 
+                                          if($Y[0] == 'checked'){
+                                              if($s_upload[0] == 1){?>
+                                                <br>
+                                               <div style="display: none;">
+                                                  <span class="attachment0"><?php echo $upload[0]; ?></span> 
+                                                  <span class="attachment0"><?php echo $upload1[0]; ?></span>
+                                                  <span class="attachment0"><?php echo $upload2[0]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip0()">Download File No.1</button>
+                                         <?php }}?>
+                            </td>
+                            <td><?php echo $skor1[0]; ?></td>
+                         </tr>
                         <?php } ?>
                         <?php if($id_ass[1] != '' || $id_ass[1] != NULL){ ?>
                         <tr>
@@ -793,12 +803,22 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                          <td><?php echo $skor1[1]; ?></td>
-                        </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        </div>
+                                        <?php 
+                                          if($Y[1] == 'checked'){
+                                              if($s_upload[1] == 1){?>
+                                                <br>
+                                               <div style="display: none;">
+                                                  <span class="attachment1"><?php echo $upload[1]; ?></span> 
+                                                  <span class="attachment1"><?php echo $upload1[1]; ?></span>
+                                                  <span class="attachment1"><?php echo $upload2[1]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download File No.2</button>
+                                         <?php }}?>
+                            </td>
+                            <td><?php echo $skor1[1]; ?></td>
+                         </tr>
                         <?php } ?>
                         <?php if($id_ass[2] != '' || $id_ass[2] != NULL){ ?>
                         <tr>
@@ -867,10 +887,10 @@
                                             if($s_upload[2] == 1){?>
                                               <br>
                                              <div style="display: none;">
-                                                <span class="attachment1"><?php echo $upload[2]; ?></span> 
-                                                <span class="attachment1"><?php echo $upload1[2]; ?></span>
-                                                <span class="attachment1"><?php echo $upload2[2]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download File No.1</button>
+                                                <span class="attachment2"><?php echo $upload[2]; ?></span> 
+                                                <span class="attachment2"><?php echo $upload1[2]; ?></span>
+                                                <span class="attachment2"><?php echo $upload2[2]; ?></span></div>
+                                                <button type="button" class="btn btn-default btn-sm" onclick="zip2()">Download File No.3</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[2]; ?></td>
@@ -935,12 +955,22 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                          <td><?php echo $skor1[3]; ?></td>
-                        </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        </div>
+                                        <?php 
+                                          if($Y[3] == 'checked'){
+                                              if($s_upload[3] == 1){?>
+                                                <br>
+                                               <div style="display: none;">
+                                                  <span class="attachment3"><?php echo $upload[3]; ?></span> 
+                                                  <span class="attachment3"><?php echo $upload1[3]; ?></span>
+                                                  <span class="attachment3"><?php echo $upload2[3]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip3()">Download File No.4</button>
+                                         <?php }}?>
+                            </td>
+                            <td><?php echo $skor1[3]; ?></td>
+                         </tr>
                         <?php } ?>
                         <?php if($id_ass[4] != '' || $id_ass[4] != NULL){ ?>
                         <tr>
@@ -1009,10 +1039,10 @@
                                             if($s_upload[4] == 1){?>
                                               <br>
                                              <div style="display: none;">
-                                                  <span class="attachment2"><?php echo $upload[4]; ?></span>
-                                                  <span class="attachment2"><?php echo $upload1[4]; ?></span>
-                                                  <span class="attachment2"><?php echo $upload2[4]; ?></span></div>
-                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip2()">Download File No.2</button>
+                                                  <span class="attachment4"><?php echo $upload[4]; ?></span>
+                                                  <span class="attachment4"><?php echo $upload1[4]; ?></span>
+                                                  <span class="attachment4"><?php echo $upload2[4]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip4()">Download File No.5</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[4]; ?></td>
@@ -1085,9 +1115,9 @@
                                             if($s_upload[5] == 1){?>
                                               <br>
                                              <div style="display: none;">
-                                                <span class="attachment3"><?php echo $upload[5]; ?></span>
+                                                <span class="attachment5"><?php echo $upload[5]; ?></span>
                                             </div>
-                                              <button type="button" class="btn btn-default btn-sm" onclick="zip3()">Download File No.3</button>
+                                              <button type="button" class="btn btn-default btn-sm" onclick="zip5()">Download File No.6</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[5]; ?></td>
@@ -1160,12 +1190,12 @@
                                             if($s_upload[6] == 1){?>
                                               <br>
                                             <div style="display: none;"> 
-                                                <span class="attachment4"><?php echo $upload[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload1[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload2[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload3[6]; ?></span>
-                                                <span class="attachment4"><?php echo $upload4[6]; ?></span></div>
-                                                <button type="button" class="btn btn-default btn-sm" onclick="zip4()">Download File No.4</button>
+                                                <span class="attachment6"><?php echo $upload[6]; ?></span>
+                                                <span class="attachment6"><?php echo $upload1[6]; ?></span>
+                                                <span class="attachment6"><?php echo $upload2[6]; ?></span>
+                                                <span class="attachment6"><?php echo $upload3[6]; ?></span>
+                                                <span class="attachment6"><?php echo $upload4[6]; ?></span></div>
+                                                <button type="button" class="btn btn-default btn-sm" onclick="zip6()">Download File No.7</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[6]; ?></td>
@@ -1238,13 +1268,13 @@
                                             if($s_upload[7] == 1){?>
                                               <br>
                                              <div style="display: none;">
-                                                <span class="attachment5"><?php echo $upload[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload1[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload2[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload3[7]; ?></span>
-                                                <span class="attachment5"><?php echo $upload4[7]; ?></span>
+                                                <span class="attachment7"><?php echo $upload[7]; ?></span>
+                                                <span class="attachment7"><?php echo $upload1[7]; ?></span>
+                                                <span class="attachment7"><?php echo $upload2[7]; ?></span>
+                                                <span class="attachment7"><?php echo $upload3[7]; ?></span>
+                                                <span class="attachment7"><?php echo $upload4[7]; ?></span>
                                             </div>
-                                            <button type="button" class="btn btn-default btn-sm" onclick="zip5()">Download File No.5</button>
+                                            <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download File No.8</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[7]; ?></td>
@@ -1317,8 +1347,8 @@
                                             if($s_upload[8] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment6"> <?php echo $upload[8]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip6()">Download File No.6</button></a>
+                                              <span class="attachment8"> <?php echo $upload[8]; ?></span></div>
+                                              <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip8()">Download File No.8</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[8]; ?></td>
@@ -1383,12 +1413,22 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                          <td><?php echo $skor1[9]; ?></td>
-                       </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        </div>
+                                        <?php 
+                                          if($Y[9] == 'checked'){
+                                              if($s_upload[9] == 1){?>
+                                                <br>
+                                               <div style="display: none;">
+                                                  <span class="attachment9"><?php echo $upload[9]; ?></span> 
+                                                  <span class="attachment9"><?php echo $upload1[9]; ?></span>
+                                                  <span class="attachment9"><?php echo $upload2[9]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip9()">Download File No.10</button>
+                                         <?php }}?>
+                            </td>
+                            <td><?php echo $skor1[9]; ?></td>
+                         </tr>
                        <?php } ?>
                         <?php if($id_ass[10] != '' || $id_ass[10] != NULL){ ?>
                        <tr>
@@ -1449,12 +1489,22 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                          <td><?php echo $skor1[10]; ?></td>
-                       </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        <!-- </div>
+                                        <?php 
+                                          if($Y[10] == 'checked'){
+                                              if($s_upload[10] == 1){?>
+                                                <br>
+                                               <div style="display: none;">
+                                                  <span class="attachment10"><?php echo $upload[10]; ?></span> 
+                                                  <span class="attachment10"><?php echo $upload1[10]; ?></span>
+                                                  <span class="attachment10"><?php echo $upload2[10]; ?></span></div>
+                                                  <button type="button" class="btn btn-default btn-sm" onclick="zip11()">Download File No.11</button>
+                                         <?php }}?> -->
+                            </td>
+                            <td><?php echo $skor1[10]; ?></td>
+                         </tr>
                        <?php } ?>
                         <?php if($id_ass[11] != '' || $id_ass[11] != NULL){ ?>
                        <tr>
@@ -1515,12 +1565,20 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                               
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                          <td><?php echo $skor1[11]; ?></td>
-                       </tr>
+                                          ?>
+                                          <?php  } ?>
+                                        </div>
+                                        <?php 
+                                          if($Y[11] == 'checked'){
+                                              if($s_upload[11] == 1){?>
+                                                <br>
+                                              <div style="display: none;">
+                                                <span class="attachment9"> <?php echo $upload[11]; ?></span></div>
+                                                <a href="<?php echo 'upload/'.$upload[8]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip12()">Download File No.12</button></a>
+                                         <?php }}?>
+                            </td>
+                            <td><?php echo $skor1[11]; ?></td>
+                         </tr>
                        <?php } ?>
                         <?php if($id_ass[12] != '' || $id_ass[12] != NULL){ ?>
                        <tr>
@@ -1589,12 +1647,12 @@
                                             if($s_upload[12] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                                <span class="attachment7"><?php echo $upload[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload1[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload2[12]; ?></span>
-                                                <span class="attachment7"><?php echo $upload3[12]; ?></span>
+                                                <span class="attachment10"><?php echo $upload[12]; ?></span>
+                                                <span class="attachment10"><?php echo $upload1[12]; ?></span>
+                                                <span class="attachment10"><?php echo $upload2[12]; ?></span>
+                                                <span class="attachment10"><?php echo $upload3[12]; ?></span>
                                           </div>
-                                        <button type="button" class="btn btn-default btn-sm" onclick="zip7()">Download File No.7</button>
+                                        <button type="button" class="btn btn-default btn-sm" onclick="zip13()">Download File No.13</button>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[12]; ?></td>
@@ -1667,8 +1725,8 @@
                                             if($s_upload[13] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment9"> <?php echo $upload[13]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip1()">Download File No.8</button></a>
+                                              <span class="attachment11"> <?php echo $upload[13]; ?></span></div>
+                                              <a href="<?php echo 'upload/'.$upload[13]; ?>"><button type="button" class="btn btn-default btn-sm"onclick="zip14()">Download File No.14</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[13]; ?></td>
@@ -1741,8 +1799,8 @@
                                             if($s_upload[14] == 1){?>
                                               <br>
                                             <div style="display: none;">
-                                              <span class="attachment9"> <?php echo $upload[14]; ?></span></div>
-                                              <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip9()">Download File No.9</button></a>
+                                              <span class="attachment12"> <?php echo $upload[14]; ?></span></div>
+                                              <a href="<?php echo 'upload/'.$upload[14]; ?>"><button type="button" class="btn btn-default btn-sm" onclick="zip15()">Download File No.15</button></a>
                                        <?php }}?>
                           </td>
                           <td><?php echo $skor1[14]; ?></td>
@@ -3417,6 +3475,16 @@
         window.print();
       }
 
+      function zip0(){
+        var arr = [];
+        $('.attachment0').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no0';
+      }
+
       function zip1(){
         var arr = [];
         $('.attachment1').each(function() {
@@ -3504,6 +3572,76 @@
 
         var $combine = 'name[]=' + arr.join('&name[]=');
         window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no9';
+      }
+
+      function zip10(){
+        var arr = [];
+        $('.attachment10').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no10';
+      }
+
+      function zip11(){
+        var arr = [];
+        $('.attachment11').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no11';
+      }
+
+      function zip12(){
+        var arr = [];
+        $('.attachment12').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no12';
+      }
+
+      function zip13(){
+        var arr = [];
+        $('.attachment13').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no13';
+      }
+
+      function zip14(){
+        var arr = [];
+        $('.attachment14').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no14';
+      }
+
+      function zip15(){
+        var arr = [];
+        $('.attachment15').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no15';
+      }
+
+      function zip16(){
+        var arr = [];
+        $('.attachment16').each(function() {
+          arr.push($(this).html());
+        });
+
+        var $combine = 'name[]=' + arr.join('&name[]=');
+        window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_no16';
       }
 
     </script>
