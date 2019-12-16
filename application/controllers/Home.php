@@ -1707,18 +1707,15 @@ class Home extends CI_Controller {
 
 		   redirect('Home/nextinclomplete2/'.$idp);
 	   }else{
-<<<<<<< HEAD
+
 		   redirect('Home/nextinclomplete2/'.$idp);
 	   }
 
-	   if($_POST['next'] == 'submit'){
-		redirect('Home/nextinclomplete2/'.$id);
-	}else{
-		redirect('Home');
-	}
-=======
-		   redirect('Home/');
-	   }
+// 	   if($_POST['next'] == 'submit'){
+// 		redirect('Home/nextinclomplete2/'.$id);
+// 	}else{
+// 		redirect('Home');
+// 	}
 
  		if($_POST['next'] == 'submit'){
  			 if(($_POST['f1'] != '' || $_POST['f1'] != NULL) && ($_POST['f2'] != '' || $_POST['f2'] != NULL) && ($_POST['f3'] != '' || $_POST['f3'] != NULL)  && ($_POST['f4'] != '' || $_POST['f4'] != NULL) && ($_POST['f5'] != '' || $_POST['f5'] != NULL) && ($_POST['f6'] != '' || $_POST['f6'] != NULL) && ($_POST['f7'] != '' || $_POST['f7'] != NULL) && ($_POST['f8'] != '' || $_POST['f8'] != NULL) && ($_POST['f9'] != '' || $_POST['f9'] != NULL) && ($_POST['f10'] != '' || $_POST['f110'] != NULL) && ($_POST['f11'] != '' || $_POST['f11'] != NULL) && ($_POST['f12'] != '' || $_POST['f12'] != NULL)  && ($_POST['f13'] != '' || $_POST['f13'] != NULL) && ($_POST['f14'] != '' || $_POST['f14'] != NULL) && ($_POST['f15'] != '' || $_POST['f15'] != NULL) && ($_POST['f16'] != '' || $_POST['f16'] != NULL) && ($_POST['f17'] != '' || $_POST['f17'] != NULL) && ($_POST['f18'] != '' || $_POST['f18'] != NULL) && ($_POST['f19'] != '' || $_POST['f19'] != NULL) && ($_POST['f20'] != '' || $_POST['f20'] != NULL) && ($_POST['f21'] != '' || $_POST['f21'] != NULL) && ($_POST['f22'] != '' || $_POST['f22'] != NULL) && ($_POST['f23'] != '' || $_POST['f23'] != NULL) && ($_POST['f24'] != '' || $_POST['f24'] != NULL)){
@@ -1732,7 +1729,7 @@ class Home extends CI_Controller {
  		}else{
  			redirect('Home/nextinclomplete2/'.$idp);
  		}
->>>>>>> b3379dfdf0099ef51fab4c985d4e8352db94fc16
+
 	}
 
 
@@ -1742,7 +1739,6 @@ class Home extends CI_Controller {
 		$data['active2'] = '';
 		
 		$sid = $this->session->userdata("id_user");
-
 		$data['sektor'] = $this->Home_model->getSektor();
 		$data['kementerian'] = $this->Home_model->getKementerian();
 		$data['lpnk'] = $this->Home_model->getNonKementrian();
