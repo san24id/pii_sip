@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        DATA ASSESMENT &nbsp; 
+        IMP DATA ASSESMENT &nbsp; 
         <!-- <a href="Dashboard/submissionpagePDF?<?php echo $_SERVER['QUERY_STRING']; ?>"><button class="btn btn-primary btn-sm">Export to PDF</button></a> -->
         <small></small>
       </h1>
@@ -18,6 +18,15 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah">Tambah</button> 
+                <?php if($sum == 100){ ?>
+                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#disclamer">Import</button>
+                <?php }else{ ?>
+                   <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#disclamer" disabled>Import</button>
+                <?php } ?>
+                <br>
+                Total Bobot : <b><?php echo $sum; ?></b>
+                <br>
                 <!-- <p1>Bobot Pertanyaan sudah mencapai angka : <?php echo $sum;?> </p1> -->
                 <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -31,6 +40,7 @@
                   <th>Intruksi Upload</th>
                   <th>Informasi Upload</th>
                   <th>Status Upload</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,6 +66,12 @@
 
                         ?>      
                     </td>
+                               
+                  <td>                    
+                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_ass; ?>">Ubah</button>
+                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row->id_ass; ?>">Hapus</button>
+                    
+                  </td>
                 </tr>
               <?php  } ?>
               </tbody>
@@ -140,19 +156,9 @@
                   <td><input type="text" name="creteria" class="form-control"></td>
                 </tr>
                 <tr>
-                  <th>Instruksi Upload</th>
-                  <td>:</td>
-                  <td><input type="text" name="intruksi_upload" class="form-control"></td>
-                </tr>                
-                <tr>
                   <th>Penjelasan</th>
                   <td>:</td>
                   <td><input type="text" name="penjelasan" class="form-control"></td>
-                </tr>
-                <tr>
-                  <th>Informasi Upload</th>
-                  <td>:</td>
-                  <td><input type="text" name="informasi_upload" class="form-control"></td>
                 </tr>
                 <tr>
                   <th>Respon</th>
@@ -164,7 +170,24 @@
                   <td>:</td>
                   <td><input type="text" name="bobot" class="form-control"></td>
                 </tr>
-                  </td>
+                <tr>
+                  <th>Instruksi Upload</th>
+                  <td>:</td>
+                  <td><input type="text" name="intruksi_upload" class="form-control"></td>
+                </tr>                
+
+                <tr>
+                  <th>Informasi Upload</th>
+                  <td>:</td>
+                  <td><input type="text" name="informasi_upload" class="form-control"></td>
+                </tr>
+                <tr>
+                  <th>Status upload</th>
+                  <td>:</td>
+                  <td><select name="supload" class="form-control">
+                      <option value="0">OFF</option>
+                      <option value="1">ON</option>
+                  </select></td>
                 </tr>
              </table>
           </h5>
@@ -208,20 +231,10 @@
                   <td>:</td>
                   <td><input type="text" name="creteria" class="form-control" value="<?php echo $row->creteria; ?>"></td>
                 </tr>
-                <tr>
-                  <th>Instruksi Upload</th>
-                  <td>:</td>
-                  <td><input type="text" name="intruksi_upload" class="form-control" value="<?php echo $row->intruksi_upload; ?>"></td>
-                </tr>                
-                <tr>
+                 <tr>
                   <th>Penjelasan</th>
                   <td>:</td>
                   <td><input type="text" name="penjelasan" class="form-control" value="<?php echo $row->penjelasan; ?>"></td>
-                </tr>
-                <tr>
-                  <th>Informasi Upload</th>
-                  <td>:</td>
-                  <td><input type="text" name="informasi_upload" class="form-control" value="<?php echo $row->informasi_upload; ?>"></td>
                 </tr>
                 <tr>
                   <th>Respon</th>
@@ -242,6 +255,33 @@
                             echo "Nilai Bobot Harus 100, tolong diperbaiki!";
                           }
                   ?> -->
+                </tr>
+                <tr>
+                  <th>Instruksi Upload</th>
+                  <td>:</td>
+                  <td><input type="text" name="intruksi_upload" class="form-control" value="<?php echo $row->intruksi_upload; ?>"></td>
+                </tr>                
+                <tr>
+                  <th>Informasi Upload</th>
+                  <td>:</td>
+                  <td><input type="text" name="informasi_upload" class="form-control" value="<?php echo $row->informasi_upload; ?>"></td>
+                </tr>
+                <tr>
+                  <th>Status Upload</th>
+                  <td>:</td>
+                  <td>
+                    <select name="supload" class="form-control">
+                      <?php if($row->s_upload == 1){ ?>
+                        <option value="0">OFF</option>
+                        <option value="1" selected>ON</option>
+                      <?php }else if($row->s_upload == 0){ ?>
+                        <option value="0" selected>OFF</option>
+                        <option value="1">ON</option>
+                      <?php }else{ ?>
+                        <option value="0">OFF</option>
+                        <option value="1">ON</option>
+                      <?php } ?>
+                  </select></td>
                 </tr>
               </table>
           </h5>
@@ -275,6 +315,24 @@
   </div>
 </div>
 <?php } ?>
+
+          <div class="modal fade" id="disclamer" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
+          
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                <form method="post" action="superadm/importassesment">
+                  <h5><p align="justify">Apa anda yakin melakukan ini ?</p></h5>
+
+                </div>
+                    <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                     <button type="submit" name="next" value="next" class="btn btn-success" id="next">Ya</button>
+                    </div>
+                <</form>
+                </div>
+              </div>
+            </div>
 
 <!-- jQuery 2.2.3 -->
 <script src="assets/superadm/plugins/jQuery/jquery-2.2.3.min.js"></script>

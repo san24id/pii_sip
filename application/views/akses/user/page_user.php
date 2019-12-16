@@ -75,7 +75,7 @@
                   <td><?php echo $row->nama_projek; ?></td>
                   <td><?php echo $row->lokasi ?></td>
                   <td><?php echo $row->estimasi; ?></td>
-                  <td><?php echo date("d-m-Y H:i:s", strtotime($row->log_update)); ?></td>
+                  <td><?php echo $row->log_update; ?></td>
                   <td>
                     <?php if($row->status == 1){ ?>
                             <a href="Home/form_edit/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">Edit</button></a>

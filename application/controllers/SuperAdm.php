@@ -129,19 +129,20 @@ class SuperAdm extends CI_Controller {
 			'penjelasan' =>  $_POST['penjelasan'],
 			'informasi_upload' =>  $_POST['informasi_upload'],
 			'respon' => $_POST['respon'],
-			'bobot' => $_POST['bobot']
+			'bobot' => $_POST['bobot'],
+			's_upload' => $_POST['supload']
 		);
 
 		$this->SuperAdm_model->addassesment($add);
 
-		redirect('SuperAdm');
+		redirect('superadm/impassesment');
 	}
 
 	public function deleteassesment(){
 
 		$this->SuperAdm_model->deleteassesment($_POST['id_ass']);
 
-		redirect('SuperAdm');
+		redirect('superadm/impassesment');
 
 	}
 
@@ -154,12 +155,13 @@ class SuperAdm extends CI_Controller {
 			'penjelasan' =>  $_POST['penjelasan'],
 			'informasi_upload' =>  $_POST['informasi_upload'],
 			'respon' => $_POST['respon'],
-			'bobot' => $_POST['bobot']
+			'bobot' => $_POST['bobot'],
+			's_upload' => $_POST['supload']
 		);
 
 		$this->SuperAdm_model->updateassesment($upd);
 
-		redirect('SuperAdm');
+		redirect('superadm/impassesment');
 	}
 
 	public function m1(){
@@ -178,25 +180,21 @@ class SuperAdm extends CI_Controller {
 		$add = array(
 
 			'id_ass' => $_POST['id_ass'],
-			'nomor_urut' => $_POST['nomor_urut'],
 			'urut' => $_POST['urut'],
 			'a' =>  $_POST['a'],
 			'b' =>  $_POST['b']
-			// 'su' =>  $_POST['informasi_upload']
-			// 'respon' => $_POST['respon'],
-			// 'bobot' => $_POST['bobot']
 		);
 
 		$this->SuperAdm_model->addm1($add);
 
-		redirect('SuperAdm');
+		redirect('superadm/impm1');
 	}
 
 	public function deletem1(){
 
 		$this->SuperAdm_model->deletem1($_POST['id']);
 
-		redirect('SuperAdm');
+		redirect('superadm/impm1');
 
 	}
 
@@ -207,12 +205,11 @@ class SuperAdm extends CI_Controller {
 			'urut' => $_POST['urut'],
 			'a' =>  $_POST['a'],
 			'b' =>  $_POST['b']
-			// 'su' =>  $_POST['informasi_upload']
 		);
 
 		$this->SuperAdm_model->updatem1($upd);
 
-		redirect('SuperAdm');
+		redirect('superadm/impm1');
 	}
 
 	public function kementrian(){
@@ -557,4 +554,36 @@ class SuperAdm extends CI_Controller {
 
 		redirect('SuperAdm');
 	}
+
+
+	public function impassesment(){
+		$data['active1'] = 'active';
+		$data['active2'] = '';
+		$data['active3'] = '';
+		
+		$data['asses'] = $this->SuperAdm_model->getimpassesment();
+		$data['sum'] = $this->SuperAdm_model->getsumimpassesment();		
+		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/imp_ass_superadmin', $data);
+	}
+
+	public function impm1(){
+		$data['active1'] = 'active';
+		$data['active2'] = '';
+		$data['active3'] = '';
+
+		
+		$data['m1s'] = $this->SuperAdm_model->getimpm1();
+		$data['asses'] = $this->SuperAdm_model->getimpassesment();
+
+		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/imp_m1_superadmin', $data);
+	}
+
+
+	public function importassesment(){
+		$this->SuperAdm_model->importass();
+		redirect('superadm/impassesment');
+	}
+
 }

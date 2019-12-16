@@ -16,28 +16,48 @@ class SuperAdm_model extends CI_model {
         }
 
     function addassesment($add){
-        $cari_jumlah_bobot = "SELECT SUM(bobot) FROM t_assessment";
-        $jumlah_bobot = $this->db->query($cari_jumlah_bobot);
-        $penjumlahan = $add['bobot'];
-        $hasil_penjumlahan = $jumlah_bobot + $penjumlahan; 
-        var_dump($jumlah_bobot);exit;
-        if($hasil_penjumlahan <= 100){        
-	        $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
-            VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
-            '".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."')";
+        // $cari_jumlah_bobot = "SELECT SUM(bobot) FROM t_assessment";
+        // $jumlah_bobot = $this->db->query($cari_jumlah_bobot);
+        // $penjumlahan = $add['bobot'];
+        // $hasil_penjumlahan = $jumlah_bobot + $penjumlahan; 
+        // // var_dump($jumlah_bobot);exit;
+        // if($hasil_penjumlahan <= 100){        
+	       //  $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
+        //     VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
+        //     '".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."')";
         
-	        $query = $this->db->query($sql);
+	       //  $query = $this->db->query($sql);
         
-	        return $query;
-            }else{
-	            die('Bobot Maksimal 100!!!');
-        }
+	       //  return $query;
+        //     }else{
+	       //      die('Bobot Maksimal 100!!!');
+        // }
+
+          $sql = "INSERT INTO `imp_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot`, s_upload, s_upload2) 
+                    VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
+                 '".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."', '".$add['s_upload']."', 0)";
+        
+         $query = $this->db->query($sql);
+
+         $rid = $this->db->insert_id();
+
+        $sql = "DELETE FROM `imp_m1` WHERE `imp_m1`.`idass` = $rid";
+
+        $query = $this->db->query($sql);
+
+        $sql = "INSERT INTO `imp_m1`(`idass`, `nomor_urut`, `urut`, `a`, `b`, `su`) VALUES ('".$rid."','".$add['nomor_urut']."','0','','not','0')";
+
+        $query = $this->db->query($sql);
+
+        return $query;
+
+
         
     }
        
     function updateassesment($upd){
-        $sql = "UPDATE `t_assessment` SET `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
-        `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."' WHERE `id_ass`='".$upd['id_ass']."'"; 
+        $sql = "UPDATE `imp_assessment` SET `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
+        `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."', s_upload = '".$upd['s_upload']."' WHERE `id_ass`='".$upd['id_ass']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -45,7 +65,11 @@ class SuperAdm_model extends CI_model {
     }
 
     function deleteassesment($id){
-        $sql = "DELETE FROM `t_assessment` WHERE `t_assessment`.`id_ass` = $id";
+        $sql = "DELETE FROM `imp_assessment` WHERE `imp_assessment`.`id_ass` = $id";
+
+        $query = $this->db->query($sql);
+
+        $sql = "DELETE FROM `imp_m1` WHERE `imp_m1`.`idass` = $id";
 
         $query = $this->db->query($sql);
 
@@ -61,8 +85,8 @@ class SuperAdm_model extends CI_model {
     }
 
     function addm1($add){
-        $sql = "INSERT INTO `m1`(`id_ass`, `nomor_urut`, `urut`, `a`, `b`, `su` ) 
-        VALUES ('".$add['id_ass']."','".$add['nomor_urut']."','".$add['urut']."','".$add['a']."','".$add['b']."','".$add['su']."')";
+        $sql = "INSERT INTO `imp_m1`(`idass`, `nomor_urut`, `urut`, `a`, `b`, `su` ) 
+        VALUES ('".$add['id_ass']."',(SELECT nomor_urut FROM imp_assessment WHERE id_ass = '".$add['id_ass']."'),'".$add['urut']."','".$add['a']."','".$add['b']."','0')";
 
         $query = $this->db->query($sql);
 
@@ -70,8 +94,8 @@ class SuperAdm_model extends CI_model {
     }
 
     function updatem1($upd){
-        $sql = "UPDATE `m1` SET `id_ass`='".$upd['id_ass']."',`nomor_urut`='".$upd['nomor_urut']."',`urut`='".$upd['urut']."',`a`='".$upd['a']."',
-        `b`='".$upd['b']."',`su`='".$upd['su']."'WHERE `id`='".$upd['id']."'"; 
+        $sql = "UPDATE `imp_m1` SET `idass`='".$upd['id_ass']."',`nomor_urut`='".$upd['nomor_urut']."',`urut`='".$upd['urut']."',`a`='".$upd['a']."',
+        `b`='".$upd['b']."',`su`='0' WHERE `id`='".$upd['id']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -79,7 +103,7 @@ class SuperAdm_model extends CI_model {
     }
 
     function deletem1($id){
-        $sql = "DELETE FROM `m1` WHERE `m1`.`id` = $id";
+        $sql = "DELETE FROM `imp_m1` WHERE `imp_m1`.`id` = $id";
 
         $query = $this->db->query($sql);
 
@@ -296,5 +320,33 @@ class SuperAdm_model extends CI_model {
 
         return $query;
     }
+
+    public function getimpassesment(){
+        $sql = "SELECT * FROM imp_assessment";
+        $query = $this->db->query($sql)->result();
+
+        return $query;
+    }
+
+    public function getimpm1(){
+        $sql = "SELECT * FROM imp_m1 a, imp_assessment b WHERE a.idass = b.id_ass";
+        
+        $query = $this->db->query($sql)->result();
+
+        return $query;
+    }
+
+
+    function getsumimpassesment(){
+        $sql = "SELECT SUM(bobot) as bobot FROM imp_assessment";
+        $result = $this->db->query($sql);
+
+        return $result->row()->bobot;
+    }
+
+    function importass(){
+        
+    }
+
 
 }

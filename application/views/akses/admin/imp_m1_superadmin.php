@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        DATA Deskripsi Proyek &nbsp; 
+       IMP DATA Deskripsi Proyek &nbsp; 
         <!-- <a href="Dashboard/submissionpagePDF?<?php echo $_SERVER['QUERY_STRING']; ?>"><button class="btn btn-primary btn-sm">Export to PDF</button></a> -->
         <small></small>
       </h1>
@@ -18,6 +18,8 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambah">Tambah</button>
+                <br><br>
                 <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -27,6 +29,7 @@
                   <th>Urut</th>
                   <th>Deskripsi</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,6 +46,11 @@
                   <td><?php echo $row->a; ?></td>
                   <td><?php echo $row->b; ?></td>
                   <!-- <td><?php echo $row->su ?></td> -->
+                 
+                  <td>                    
+                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id; ?>">Ubah</button>
+                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus<?php echo $row->id; ?>">Hapus</button>                    
+                  </td>
                   </tr>
               <?php  } ?>
               </tbody>
@@ -116,14 +124,15 @@
             <form method="post" action="superadm/addm1">
              <table class="table">
                 <tr>
-                <th>Nomor Pertanyaan</th>
+                <th>Pertanyaan</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control"></td>
-                </tr>
-                <tr>
-                  <th>Nomor Urut</th>
-                  <td>:</td>
-                  <td><input type="text" name="nomor_urut" class="form-control"></td>
+                  <td>
+                    <select name="id_ass" class="form-control">
+                      <?php foreach ($asses as $key => $value) { ?>
+                        <option value="<?php echo $value->id_ass ?>"><?php echo $value->creteria; ?></option>
+                      <?php } ?>
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <th>Urut</th>
@@ -131,25 +140,22 @@
                   <td><input type="text" name="urut" class="form-control"></td>
                 </tr>                
                 <tr>
-                  <th>A</th>
+                  <th>Deskripsi</th>
                   <td>:</td>
                   <td><input type="text" name="a" class="form-control"></td>
                 </tr>
                 <tr>
-                  <th>B</th>
+                  <th>status</th>
                   <td>:</td>
-                  <td><input type="text" name="b" class="form-control"></td>
+                  <td>
+                      <select name="b" class="form-control">
+                        <option value="not">not</option>
+                        <option value="label">label</option>
+                        <option value="checkbox">checkbox</option>
+                        <option value="text">text</option>
+                      </select>
+                  </td>
                 </tr>
-                <!-- <tr>
-                  <th>Respon</th>
-                  <td>:</td>
-                  <td><input type="text" name="respon" class="form-control"></td>
-                </tr>
-                <tr>
-                  <th>Bobot</th>
-                  <td>:</td>
-                  <td><input type="text" name="bobot" class="form-control"></td>
-                </tr> -->
                   </td>
                 </tr>
              </table>
@@ -187,12 +193,12 @@
                 <tr>
                   <th>Nomor Pertanyaan</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control" value="<?php echo $row->idass; ?>"></td>
+                  <td><input readonly type="text" name="id_ass" class="form-control" value="<?php echo $row->creteria; ?>"></td>
                 </tr>
                 <tr>
                   <th>Nomor Urut</th>
                   <td>:</td>
-                  <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nomor_urut; ?>"></td>
+                  <td><input readonly type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nomor_urut; ?>"></td>
                 </tr>
                 <tr>
                   <th>Urut</th>
@@ -200,25 +206,44 @@
                   <td><input type="text" name="urut" class="form-control" value="<?php echo $row->urut; ?>"></td>
                 </tr>                
                 <tr>
-                  <th>A</th>
+                  <th>Deskripsi</th>
                   <td>:</td>
                   <td><input type="text" name="a" class="form-control" value="<?php echo $row->a; ?>"></td>
                 </tr>
                 <tr>
-                  <th>B</th>
+                  <th>status</th>
                   <td>:</td>
-                  <td><input type="text" name="b" class="form-control" value="<?php echo $row->b; ?>"></td>
+                  <td>
+                      <select name="b" class="form-control" disabled>
+                        <?php if($row->b == 'not'){ ?>
+                          <option value="not" selected>not</option>
+                          <option value="label">label</option>
+                          <option value="checkbox">checkbox</option>
+                          <option value="text">text</option>
+                        <?php }else if($row->b == 'label'){ ?>
+                          <option value="not">not</option>
+                          <option value="label" selected>label</option>
+                          <option value="checkbox">checkbox</option>
+                          <option value="text">text</option>
+                        <?php }else if($row->b == 'checkbox'){ ?>
+                          <option value="not">not</option>
+                          <option value="label">label</option>
+                          <option value="checkbox" selected>checkbox</option>
+                          <option value="text">text</option>
+                        <?php }else if($row->b == 'text'){ ?>
+                          <option value="not">not</option>
+                          <option value="label">label</option>
+                          <option value="checkbox">checkbox</option>
+                          <option value="text" selected>text</option>
+                        <?php }else{ ?>
+                          <option value="not">not</option>
+                          <option value="label">label</option>
+                          <option value="checkbox">checkbox</option>
+                          <option value="text">text</option>
+                        <?php } ?>
+                      </select>
+                  </td>
                 </tr>
-                <!-- <tr>
-                  <th>Respon</th>
-                  <td>:</td>
-                  <td><input type="text" name="respon" class="form-control"></td>
-                </tr>
-                <tr>
-                  <th>Bobot</th>
-                  <td>:</td>
-                  <td><input type="text" name="bobot" class="form-control"></td>
-                </tr> -->
               </table>
               </h5>
         </div>

@@ -81,21 +81,8 @@ class Home extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['assesment'] = $this->Home_model->assesment();
-		$data['noass0'] = $this->Home_model->getno1();
-		$data['noass1'] = $this->Home_model->getno2();
-		$data['noass2'] = $this->Home_model->getno3();
-		$data['noass3'] = $this->Home_model->getno4();
-		$data['noass4'] = $this->Home_model->getno5();
-		$data['noass5'] = $this->Home_model->getno6();
-		$data['noass6'] = $this->Home_model->getno7();
-		$data['noass7'] = $this->Home_model->getno8();
-		$data['noass8'] = $this->Home_model->getno9();
-		$data['noass9'] = $this->Home_model->getno10();
-		$data['noass10'] = $this->Home_model->getno11();
-		$data['noass11'] = $this->Home_model->getno12();
-		$data['noass12'] = $this->Home_model->getno13();
-		$data['noass13'] = $this->Home_model->getno14();
-		$data['noass14'] = $this->Home_model->getno15();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();
+		$data['noass'] = $this->Home_model->getno();
 
 		$this->load->view('akses/user/header_user', $data);	
         $this->load->view('akses/user/form_pengajuan', $data);
@@ -115,25 +102,12 @@ class Home extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
 		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
 
 		if($this->Home_model->getIdProfilProjekUser($idp, $sid) == TRUE){
 			
@@ -310,10 +284,10 @@ class Home extends CI_Controller {
 				$_POST['respon'][$key];
 			}
 
-			// echo $value.'&nbsp;|&nbsp;'.$_POST['nomor'][$key].'&nbsp;|&nbsp;'.$_POST['p'.$i].'&nbsp;|&nbsp;'.$_POST['Y'][$key].'&nbsp;|&nbsp;'.$_POST['N'][$key].'&nbsp;|&nbsp;'.$_POST['bobot'][$key].'&nbsp;|&nbsp;'.$_POST['respon'][$key].'<br>';
+			// echo $value.'&nbsp;|&nbsp;'.$_POST['section'][$key].'&nbsp;|&nbsp;'.$_POST['nomor'][$key].'&nbsp;|&nbsp;'.$_POST['pertanyaan'][$key].'&nbsp;|&nbsp;'.$_POST['intruksi_upload'][$key].'&nbsp;|&nbsp;'.$_POST['penjelasan'][$key].'&nbsp;|&nbsp;'.$_POST['informasi_upload'][$key].'&nbsp;|&nbsp;'.$_POST['p'.$i].'&nbsp;|&nbsp;'.$_POST['Y'][$key].'&nbsp;|&nbsp;'.$_POST['N'][$key].'&nbsp;|&nbsp;'.$_POST['bobot'][$key].'&nbsp;|&nbsp;'.$_POST['respon'][$key].'&nbsp;|&nbsp;'.$_POST['s_upload'][$key].'<br>';
 
-			$sql = "INSERT INTO `t_skor`(`id_projek`, `idass`, `nomor_urut`, `pilihan`, `Y`, `N`, `skor`, `respon`) VALUES 
-			('".$id."','".$value."','".$_POST['nomor'][$key]."','".$_POST['p'.$i]."','".$_POST['Y'][$key]."','".$_POST['N'][$key]."','".$_POST['bobot'][$key]."','".$_POST['respon'][$key]."');";
+			$sql = "INSERT INTO `t_skor`(`id_projek`, `idass`, `section`, `nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `pilihan`, `Y`, `N`, `skor`, `respon`, `s_upload`) 
+			VALUES ('".$id."','".$value."','".$_POST['section'][$key]."','".$_POST['nomor'][$key]."','".$_POST['pertanyaan'][$key]."','".$_POST['intruksi_upload'][$key]."','".$_POST['penjelasan'][$key]."','".$_POST['informasi_upload'][$key]."','".$_POST['p'.$i]."','".$_POST['Y'][$key]."','".$_POST['N'][$key]."','".$_POST['bobot'][$key]."','".$_POST['respon'][$key]."','".$_POST['s_upload'][$key]."');";
 
 			$query = $this->db->query($sql);
 		}
@@ -469,8 +443,8 @@ class Home extends CI_Controller {
 				$_POST['respon'][$key];
 			}
 
-			$sql = "INSERT INTO `t_skor`(`id_projek`, `idass`, `nomor_urut`, `pilihan`, `Y`, `N`, `skor`, `respon`) VALUES 
-			('".$rid."','".$value."','".$_POST['nomor'][$key]."','".$_POST['p'.$i]."','".$_POST['Y'][$key]."','".$_POST['N'][$key]."','".$_POST['bobot'][$key]."','".$_POST['respon'][$key]."');";
+			$sql = "INSERT INTO `t_skor`(`id_projek`, `idass`, `section`, `nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `pilihan`, `Y`, `N`, `skor`, `respon`, `s_upload`) 
+			VALUES ('".$rid."','".$value."','".$_POST['section'][$key]."','".$_POST['nomor'][$key]."','".$_POST['pertanyaan'][$key]."','".$_POST['intruksi_upload'][$key]."','".$_POST['penjelasan'][$key]."','".$_POST['informasi_upload'][$key]."','".$_POST['p'.$i]."','".$_POST['Y'][$key]."','".$_POST['N'][$key]."','".$_POST['bobot'][$key]."','".$_POST['respon'][$key]."','".$_POST['s_upload'][$key]."');";
 
 			$query = $this->db->query($sql);
 		}
@@ -578,10 +552,12 @@ class Home extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment_u();	
+		$data['assesment'] = $this->Home_model->assesmentskor_u($idp);
+		$data['cn_assesment'] = $this->Home_model->cn_assesmentskor_u($idp);	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
 		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
 		$data['noassu0'] = $this->Home_model->gettu3($idp);
 		$data['noassu1'] = $this->Home_model->gettu5($idp);
 		$data['noassu2'] = $this->Home_model->gettu6($idp);
@@ -591,22 +567,6 @@ class Home extends CI_Controller {
 		$data['noassu6'] = $this->Home_model->gettu13($idp);
 		$data['noassu7'] = $this->Home_model->gettu14($idp);
 		$data['noassu8'] = $this->Home_model->gettu15($idp);
-		
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
 
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 
@@ -944,792 +904,63 @@ class Home extends CI_Controller {
 		redirect('Home/myprofile');
 
 	}
-	
-	public function Insertfile($idp){
-		
-      //Check if file is not empty
-      if(!empty($_FILES['up1']['name'])){
 
-      	unlink('upload/'.$_POST['g1']);
 
-        $config['upload_path'] = 'upload/';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k1'];
-        $config['max_size'] = 1024;
+	public function forminssert_file($idp){
+		$i = -1;
+		foreach ($_POST['box1'] as $key => $value) {
+			$i++;
+
+			// echo $i."_up".$key."<br>";
+
+			if(!empty($_FILES['up'.$key]['name'])){
+
+			    // echo $idp.'&nbsp;|&nbsp;'.$_POST['nmr'][$key].'&nbsp;|&nbsp;'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$idp.'_'.$_POST['nmr'][$key].$_POST['kup'][$key].'_'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$value.'&nbsp;|&nbsp;'.$_FILES['up']['name'][$key]."<br />";
+			   unlink('upload/'.$_POST['gup'][$key]);
+
+        	   $config['upload_path'] = 'upload/';
+               //restrict uploads to this mime types
+        	   $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
+        	   $config['file_name'] = $idp.'_'.$_POST['nmr'][$key].$_POST['kup'][$key].'_'.$_POST['nom'][$key];
+        	   $config['max_size'] = 1024;
         
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up1')){
+               //Load upload library and initialize configuration
+        	   $this->load->library('upload', $config);
+        	   $this->upload->initialize($config);
 
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
+        	   if($this->upload->do_upload('up'.$key)){
+            		$uploadData = $this->upload->data();
+            		$filename = $uploadData['file_name'];
 
-        //set file data to insert to database
-            $file1['upload'] = $filename;
+        			//set file data to insert to database
+            		$file1['upload'] = $filename;
 
-            	$query = $this->Home_model->updatefile1($file1, $idp);         
+            		$sql = "UPDATE `t_m1profil` SET `upload`='".$file1['upload']."' WHERE id = '".$value."' AND id_projek = '".$idp."';";
 
-       		}else{
-       			unlink('upload/'.$_POST['g1']);
-       			$query = $this->Home_model->updatefile1_error1($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
+					$query=$this->db->query($sql);       
 
-       			$this->session->set_flashdata('msg','inv');
-       		}
- 		}
+       			}else{
+       				 unlink('upload/'.$_POST['gup'][$key]);
 
- 		if(!empty($_FILES['up2']['name'])){
+       				 $sql = "UPDATE `t_m1profil` SET `upload`='' WHERE id = '".$value."' AND id_projek = '".$idp."';";
 
-      	unlink('upload/'.$_POST['g2']);
+					 $query=$this->db->query($sql); 
 
-        $config['upload_path'] = 'upload/';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k2'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up2')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
+       				 $sql = "UPDATE `t_projekprofil` SET `status`= '2' WHERE id_projek = '".$idp."';";
 
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile2($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g2']);
-       			$query = $this->Home_model->updatefile1_error2($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg1','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up3']['name'])){
-
-      	unlink('upload/'.$_POST['g3']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k3'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up3')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile3($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g3']);
-       			$query = $this->Home_model->updatefile1_error3($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg2','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up4']['name'])){
-
-      	unlink('upload/'.$_POST['g4']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k4'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up4')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile4($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g4']);
-       			$query = $this->Home_model->updatefile1_error4($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg3','inv');
-       		}
- 		}
-
- 		
- 		if(!empty($_FILES['up5']['name'])){
-
-      	unlink('upload/'.$_POST['g5']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k5'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up5')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile5($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g5']);
-       			$query = $this->Home_model->updatefile1_error5($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg4','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up6']['name'])){
-
-      	unlink('upload/'.$_POST['g6']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k6'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up6')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile6($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g6']);
-       			$query = $this->Home_model->updatefile1_error6($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg5','inv');
-       		}
- 		}
-
-
- 		if(!empty($_FILES['up7']['name'])){
-
-      	unlink('upload/'.$_POST['g7']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k7'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up7')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile7($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g7']);
-       			$query = $this->Home_model->updatefile1_error7($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg6','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up8']['name'])){
-
-      	unlink('upload/'.$_POST['g8']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k8'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up8')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile8($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g8']);
-       			$query = $this->Home_model->updatefile1_error8($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg7','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up9']['name'])){
-
-      	unlink('upload/'.$_POST['g9']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k9'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up9')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile9($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g9']);
-       			$query = $this->Home_model->updatefile1_error10($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg8','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up10']['name'])){
-
-      	unlink('upload/'.$_POST['g10']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k10'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up10')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile10($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g10']);
-       			$query = $this->Home_model->updatefile1_error10($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg9','inv');
-       		}
- 		}
-
- 		
- 		if(!empty($_FILES['up11']['name'])){
-
-      	unlink('upload/'.$_POST['g11']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k11'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up11')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile11($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g11']);
-       			$query = $this->Home_model->updatefile1_error11($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg10','inv');
-       		}
- 		} 		
-
- 		if(!empty($_FILES['up12']['name'])){
-
-      	unlink('upload/'.$_POST['g12']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k12'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up12')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile12($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g12']);
-       			$query = $this->Home_model->updatefile1_error12($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg11','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up13']['name'])){
-
-      	unlink('upload/'.$_POST['g13']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k13'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up13')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile13($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g13']);
-       			$query = $this->Home_model->updatefile1_error13($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg12','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up14']['name'])){
-
-      	unlink('upload/'.$_POST['g14']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k14'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up14')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile14($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g14']);
-       			$query = $this->Home_model->updatefile1_error14($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg13','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up15']['name'])){
-
-      	unlink('upload/'.$_POST['g15']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k15'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up15')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile15($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g15']);
-       			$query = $this->Home_model->updatefile1_error15($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg14','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up16']['name'])){
-
-      	unlink('upload/'.$_POST['g16']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k16'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up16')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile16($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g16']);
-       			$query = $this->Home_model->updatefile1_error16($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg15','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up17']['name'])){
-
-      	unlink('upload/'.$_POST['g17']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k17'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up17')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile17($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g17']);
-       			$query = $this->Home_model->updatefile1_error17($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg16','inv');
-       		}
- 		}
-
-
- 		if(!empty($_FILES['up18']['name'])){
-
-      	unlink('upload/'.$_POST['g18']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k18'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up18')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile18($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g18']);
-       			$query = $this->Home_model->updatefile1_error18($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg17','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up19']['name'])){
-
-      	unlink('upload/'.$_POST['g19']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k19'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up19')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile19($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g19']);
-       			$query = $this->Home_model->updatefile1_error19($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg18','inv');
-       		}
- 		}
-
-
- 		if(!empty($_FILES['up20']['name'])){
-
-      	unlink('upload/'.$_POST['g20']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k20'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up20')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile20($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g20']);
-       			$query = $this->Home_model->updatefile1_error20($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg19','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up21']['name'])){
-
-      	unlink('upload/'.$_POST['g21']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k21'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up21')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile21($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g21']);
-       			$query = $this->Home_model->updatefile1_error21($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg20','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up22']['name'])){
-
-      	unlink('upload/'.$_POST['g22']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k22'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up22')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile22($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g22']);
-       			$query = $this->Home_model->updatefile1_error22($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg21','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up23']['name'])){
-
-      	unlink('upload/'.$_POST['g23']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k23'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up23')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile23($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g23']);
-       			$query = $this->Home_model->updatefile1_error23($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg22','inv');
-       		}
- 		}
-
- 		if(!empty($_FILES['up24']['name'])){
-
-      	unlink('upload/'.$_POST['g24']);
-
-        $config['upload_path'] = 'upload/';
-            //restrict uploads to this mime types
-        $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
-        $config['file_name'] = $_POST['k24'];
-        $config['max_size'] = 1024;
-        
-            //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
-        
-        if($this->upload->do_upload('up24')){
-            $uploadData = $this->upload->data();
-            $filename = $uploadData['file_name'];
-
-        //set file data to insert to database
-            $file1['upload'] = $filename;
-
-            $query = $this->Home_model->updatefile24($file1, $idp);         
-
-       		}else{
-       			unlink('upload/'.$_POST['g24']);
-       			$query = $this->Home_model->updatefile1_error24($idp);
-       			$query = $this->Home_model->updatefileprofil_error($idp);
-       			$this->session->set_flashdata('msg23','inv');
-       		}
-		 }
-		 
-		 if($_POST['next'] == 'upload'){
-			if(($_POST['f1'] != '' || $_POST['f1'] != NULL) && ($_POST['f2'] != '' || $_POST['f2'] != NULL) && ($_POST['f3'] != '' || $_POST['f3'] != NULL)  && ($_POST['f4'] != '' || $_POST['f4'] != NULL) && ($_POST['f5'] != '' || $_POST['f5'] != NULL) && ($_POST['f6'] != '' || $_POST['f6'] != NULL) && ($_POST['f7'] != '' || $_POST['f7'] != NULL) && ($_POST['f8'] != '' || $_POST['f8'] != NULL) && ($_POST['f9'] != '' || $_POST['f9'] != NULL) && ($_POST['f10'] != '' || $_POST['f110'] != NULL) && ($_POST['f11'] != '' || $_POST['f11'] != NULL) && ($_POST['f12'] != '' || $_POST['f12'] != NULL)  && ($_POST['f13'] != '' || $_POST['f13'] != NULL) && ($_POST['f14'] != '' || $_POST['f14'] != NULL) && ($_POST['f15'] != '' || $_POST['f15'] != NULL) && ($_POST['f16'] != '' || $_POST['f16'] != NULL) && ($_POST['f17'] != '' || $_POST['f17'] != NULL) && ($_POST['f18'] != '' || $_POST['f18'] != NULL) && ($_POST['f19'] != '' || $_POST['f19'] != NULL) && ($_POST['f20'] != '' || $_POST['f20'] != NULL) && ($_POST['f21'] != '' || $_POST['f21'] != NULL) && ($_POST['f22'] != '' || $_POST['f22'] != NULL) && ($_POST['f23'] != '' || $_POST['f23'] != NULL) && ($_POST['f24'] != '' || $_POST['f24'] != NULL)){
-
-				   $query = $this->Home_model->updatefileprofil($idp);
-		   }else{
-			   $query = $this->Home_model->updatefileprofil_error($idp);
-		   }
-
-		   redirect('Home/nextinclomplete2/'.$idp);
-	   }else{
-
-		   redirect('Home/nextinclomplete2/'.$idp);
-	   }
-
-// 	   if($_POST['next'] == 'submit'){
-// 		redirect('Home/nextinclomplete2/'.$id);
-// 	}else{
-// 		redirect('Home');
-// 	}
-
- 		if($_POST['next'] == 'submit'){
- 			 if(($_POST['f1'] != '' || $_POST['f1'] != NULL) && ($_POST['f2'] != '' || $_POST['f2'] != NULL) && ($_POST['f3'] != '' || $_POST['f3'] != NULL)  && ($_POST['f4'] != '' || $_POST['f4'] != NULL) && ($_POST['f5'] != '' || $_POST['f5'] != NULL) && ($_POST['f6'] != '' || $_POST['f6'] != NULL) && ($_POST['f7'] != '' || $_POST['f7'] != NULL) && ($_POST['f8'] != '' || $_POST['f8'] != NULL) && ($_POST['f9'] != '' || $_POST['f9'] != NULL) && ($_POST['f10'] != '' || $_POST['f110'] != NULL) && ($_POST['f11'] != '' || $_POST['f11'] != NULL) && ($_POST['f12'] != '' || $_POST['f12'] != NULL)  && ($_POST['f13'] != '' || $_POST['f13'] != NULL) && ($_POST['f14'] != '' || $_POST['f14'] != NULL) && ($_POST['f15'] != '' || $_POST['f15'] != NULL) && ($_POST['f16'] != '' || $_POST['f16'] != NULL) && ($_POST['f17'] != '' || $_POST['f17'] != NULL) && ($_POST['f18'] != '' || $_POST['f18'] != NULL) && ($_POST['f19'] != '' || $_POST['f19'] != NULL) && ($_POST['f20'] != '' || $_POST['f20'] != NULL) && ($_POST['f21'] != '' || $_POST['f21'] != NULL) && ($_POST['f22'] != '' || $_POST['f22'] != NULL) && ($_POST['f23'] != '' || $_POST['f23'] != NULL) && ($_POST['f24'] != '' || $_POST['f24'] != NULL)){
-
- 					$query = $this->Home_model->updatefileprofil($idp);
- 			}else{
- 				$query = $this->Home_model->updatefileprofil_error($idp);
+					 $query=$this->db->query($sql);
+       				// $this->session->set_flashdata('msg23','inv');
+       				}
  			}
+		}
+		if($_POST['next'] == 'submit'){
+ 			
+ 			$query = $this->Home_model->updatefileprofil($idp);
 
  			redirect('Home/nextinclomplete2/'.$idp);
  		}else{
  			redirect('Home/nextinclomplete2/'.$idp);
  		}
-
 	}
 
 
@@ -1739,6 +970,7 @@ class Home extends CI_Controller {
 		$data['active2'] = '';
 		
 		$sid = $this->session->userdata("id_user");
+
 		$data['sektor'] = $this->Home_model->getSektor();
 		$data['kementerian'] = $this->Home_model->getKementerian();
 		$data['lpnk'] = $this->Home_model->getNonKementrian();
@@ -1869,7 +1101,7 @@ class Home extends CI_Controller {
 				$_POST['respon'][$key];
 			}
 
-			echo $value.'&nbsp;|&nbsp;'.$_POST['nomor'][$key].'&nbsp;|&nbsp;'.$_POST['p'.$i].'&nbsp;|&nbsp;'.$_POST['Y'][$key].'&nbsp;|&nbsp;'.$_POST['N'][$key].'&nbsp;|&nbsp;'.$_POST['bobot'][$key].'&nbsp;|&nbsp;'.$_POST['respon'][$key].'<br>';
+			echo $value.'&nbsp;|&nbsp;'.$_POST['section'][$key].'&nbsp;|&nbsp;'.$_POST['nomor'][$key].'&nbsp;|&nbsp;'.$_POST['pertanyaan'][$key].'&nbsp;|&nbsp;'.$_POST['intruksi_upload'][$key].'&nbsp;|&nbsp;'.$_POST['penjelasan'][$key].'&nbsp;|&nbsp;'.$_POST['informasi_upload'][$key].'&nbsp;|&nbsp;'.$_POST['p'.$i].'&nbsp;|&nbsp;'.$_POST['Y'][$key].'&nbsp;|&nbsp;'.$_POST['N'][$key].'&nbsp;|&nbsp;'.$_POST['bobot'][$key].'&nbsp;|&nbsp;'.$_POST['respon'][$key].'&nbsp;|&nbsp;'.$_POST['s_upload'][$key].'<br>';
 
 		}
 
@@ -1879,6 +1111,56 @@ class Home extends CI_Controller {
 			echo '1'.'&nbsp;|&nbsp;'.$_POST['box2'][$key].'&nbsp;|&nbsp;'.$_POST['box3'][$key].'&nbsp;|&nbsp;'.$_POST['box7'][$key].'&nbsp;|&nbsp;'.$_POST['box4'][$key].'&nbsp;|&nbsp;'.$_POST['box5'][$key].'&nbsp;|&nbsp;'.$_POST['box6'][$key].'<br>';
 		}
 
-	}		
+	}
+	
+	public function cekarrayupload($idp){
+// echo "<pre>";
+// print_r($_POST);
+// print_r($_FILES['up']['name'][6]);
+// exit;
+
+		
+		foreach ($_POST['box1'] as $key => $value) {
+
+ 		  if(!empty($_FILES['up'.$key]['name'])){
+
+			echo $idp.'&nbsp;|&nbsp;'.$_POST['nmr'][$key].'&nbsp;|&nbsp;'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$idp.'_'.$_POST['nmr'][$key].$_POST['kup'][$key].'_'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$value.'&nbsp;|&nbsp;'.$_FILES['up'.$key]['name'][$key]."<br />";
+
+		  }
+		}
+
+	}
+
+
+	public function testupload(){
+			if(!empty($_FILES['up1']['name'])){
+
+			    // echo $idp.'&nbsp;|&nbsp;'.$_POST['nmr'][$key].'&nbsp;|&nbsp;'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$idp.'_'.$_POST['nmr'][$key].$_POST['kup'][$key].'_'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$value.'&nbsp;|&nbsp;'.$_FILES['up']['name'][$key]."<br />";
+
+        	   $config['upload_path'] = 'upload/';
+               //restrict uploads to this mime types
+        	   $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
+        	   $config['file_name'] = 'testupload';
+        	   $config['max_size'] = 1024;
+        
+               //Load upload library and initialize configuration
+        	   $this->load->library('upload', $config);
+        	   $this->upload->initialize($config);
+
+        	   if($this->upload->do_upload('up1')){
+            		$uploadData = $this->upload->data();
+            		$filename = $uploadData['file_name'];
+
+        			//set file data to insert to database
+            		$file1['upload'] = $filename;
+
+					echo $filename; 
+
+       			}else{
+
+       					echo "gagal";
+       				}
+			}
+	}
 
 }

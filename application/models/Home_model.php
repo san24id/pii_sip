@@ -10,10 +10,45 @@ class Home_model extends CI_Model{
         return $query;
     }
 
-    public function assesment_u() {
-        $sql = "SELECT * FROM `t_assessment` WHERE s_upload = 1";
+    public function cn_assesment() {
+        $sql = "SELECT * FROM `t_assessment`";
+                
+        $query = $this->db->query($sql)->num_rows();
+        return $query;
+    }
+
+    public function assesmentskor($idp) {
+        $sql = "SELECT * FROM `t_skor` WHERE id_projek = '$idp'";
                 
         $query = $this->db->query($sql)->result();
+        return $query;
+    }
+
+    public function cn_assesmentskor($idp) {
+		$sql = "SELECT * FROM `t_skor`  WHERE id_projek = '$idp'";
+		$query = $this->db->query($sql)->num_rows();
+				
+		return $query;
+	}
+
+    public function assesmentskor_u($idp) {
+        $sql = "SELECT @no:=@no+1 AS nomor, a.* FROM `t_skor` a, (SELECT @no:=0)w WHERE a.id_projek = '$idp'";
+                
+        $query = $this->db->query($sql)->result();
+        return $query;
+    }
+
+    public function cn_assesmentskor_u($idp) {
+        $sql = "SELECT @no:=@no+1 AS nomor, a.* FROM `t_skor` a, (SELECT @no:=0)w WHERE a.id_projek = '$idp'";
+                
+        $query = $this->db->query($sql)->num_rows();
+        return $query;
+    }
+
+    public function getno(){
+        $sql = "SELECT * FROM `m1` ORDER BY `idass`, nomor_urut, urut ASC";
+        $query =  $this->db->query($sql)->result();
+        
         return $query;
     }
 
@@ -246,6 +281,13 @@ class Home_model extends CI_Model{
         return $query; 
     }
 
+    public function gett($idp) {
+		$sql = "SELECT * FROM `t_m1profil`  WHERE id_projek = '$idp' ORDER BY `idass`, nomor_urut, urut ASC";
+		$query =  $this->db->query($sql)->result();
+				
+		return $query;
+	}
+
 	public function gett1($idp) {
 		$sql = "SELECT * FROM `t_m1profil`  WHERE id_projek = '$idp' AND nomor_urut = '1' ORDER BY `idass`, nomor_urut, urut ASC";
 		$query =  $this->db->query($sql)->result();
@@ -352,6 +394,13 @@ class Home_model extends CI_Model{
 		return $query;
 	}
 
+    public function gettu($idp) {
+        $sql = "SELECT * FROM `t_m1profil` a, t_skor b WHERE a.idass = b.idass AND b.s_upload = 1 AND a.id_projek = '$idp' AND b.id_projek = '$idp'  ORDER BY a.`idass`, a.nomor_urut, urut ASC";
+		$query =  $this->db->query($sql)->result();
+				
+		return $query;
+    }
+    
     public function gettu1($idp) {
         $sql = "SELECT * FROM `t_m1profil` a, t_assessment b WHERE a.idass = b.id_ass AND b.s_upload = 1 AND a.id_projek = '$idp' AND a.nomor_urut = '1' ORDER BY a.`idass`, a.nomor_urut, urut ASC";
         $query =  $this->db->query($sql)->result();
@@ -676,7 +725,7 @@ class Home_model extends CI_Model{
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png|pdf';
-        $config['file_name']            = $this->nama_user;
+        $config['file_name']            = 'testnama';
         $config['overwrite']            = true;
         $config['max_size']             = 1024; // 1MB
         // $config['max_width']            = 1024;
@@ -722,14 +771,6 @@ class Home_model extends CI_Model{
 
         return $query;
 
-    }
-
-    function uploaduser($file, $id){
-        $sql = "UPDATE `t_user` SET `foto`= '".$file['foto']."' WHERE id_projek = $id";
-
-        $query = $this->db->query($sql);
-
-        return true;
     }
 
     function updatefile1($file, $id){
