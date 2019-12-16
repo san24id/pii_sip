@@ -20,7 +20,7 @@ class SuperAdm_model extends CI_model {
         $jumlah_bobot = $this->db->query($cari_jumlah_bobot);
         $penjumlahan = $add['bobot'];
         $hasil_penjumlahan = $jumlah_bobot + $penjumlahan; 
-        // var_dump($jumlah_bobot);exit;
+        var_dump($jumlah_bobot);exit;
         if($hasil_penjumlahan <= 100){        
 	        $sql = "INSERT INTO `t_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot` ) 
             VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
