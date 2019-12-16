@@ -1,6 +1,7 @@
  <?php
 
 class SuperAdm_model extends CI_model {
+
     public function getassesment(){
         $sql = "SELECT * FROM t_assessment";
         $query = $this->db->query($sql)->result();
@@ -33,8 +34,8 @@ class SuperAdm_model extends CI_model {
 	       //      die('Bobot Maksimal 100!!!');
         // }
 
-          $sql = "INSERT INTO `imp_assessment`(`nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot`, s_upload, s_upload2) 
-                    VALUES ('".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
+          $sql = "INSERT INTO `imp_assessment`(section, `nomor_urut`, `creteria`, `intruksi_upload`, `penjelasan`, `informasi_upload`, `respon`, `bobot`, s_upload, s_upload2) 
+                    VALUES ('".$add['section']."', '".$add['nomor_urut']."','".$add['creteria']."','".$add['intruksi_upload']."','".$add['penjelasan']."',
                  '".$add['informasi_upload']."','".$add['respon']."','".$add['bobot']."', '".$add['s_upload']."', 0)";
         
          $query = $this->db->query($sql);
@@ -56,8 +57,12 @@ class SuperAdm_model extends CI_model {
     }
        
     function updateassesment($upd){
-        $sql = "UPDATE `imp_assessment` SET `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
+        $sql = "UPDATE `imp_assessment` SET section = '".$upd['section']."', `nomor_urut`='".$upd['nomor_urut']."',`creteria`='".$upd['creteria']."',`intruksi_upload`='".$upd['intruksi_upload']."',`penjelasan`='".$upd['penjelasan']."',
         `informasi_upload`='".$upd['informasi_upload']."',`respon`='".$upd['respon']."',`bobot`='".$upd['bobot']."', s_upload = '".$upd['s_upload']."' WHERE `id_ass`='".$upd['id_ass']."'"; 
+        
+        $query = $this->db->query($sql);
+
+        $sql = "UPDATE `imp_m1` SET `nomor_urut`='".$upd['nomor_urut']."' WHERE `id`='".$upd['id']."'"; 
         
         $query = $this->db->query($sql);
 
@@ -322,7 +327,7 @@ class SuperAdm_model extends CI_model {
     }
 
     public function getimpassesment(){
-        $sql = "SELECT * FROM imp_assessment";
+        $sql = "SELECT * FROM imp_assessment ORDER BY nomor_urut ASC";
         $query = $this->db->query($sql)->result();
 
         return $query;

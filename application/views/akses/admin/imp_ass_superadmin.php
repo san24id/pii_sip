@@ -33,6 +33,7 @@
                 <tr>
                   <!-- <th>NO.</th> -->
                   <th>Nomor Urut</th>
+                  <th>Section</th>
                   <th>Kriteria</th>
                   <th>Penjelasan</th>
                   <th>Respon</th>
@@ -49,8 +50,15 @@
                     foreach ($asses as $row){
                    ?>
                 <tr>
-                  <!-- <td><?php echo $i++; ?></td>                   -->
+                  <!-- <td><?php echo $i++; ?></td>-->
                   <td><?php echo $row->nomor_urut; ?></td>
+                  <td width="10%"><?php if($row->section == 1){
+                                echo "Deskripsi Proyek";
+                              }else if($row->section == 2){
+                                echo "Potensi Proyek untuk Dikerjasamakan"; 
+                              }else if($row->section == 3){
+                                echo "Kesiapan PJPK"; 
+                              } ?></td>
                   <td><?php echo $row->creteria; ?></td>
                   <td><?php echo $row->penjelasan; ?></td>
                   <td><?php echo $row->respon; ?></td>
@@ -151,6 +159,15 @@
                   <td><input type="text" name="nomor_urut" class="form-control"></td>
                 </tr>
                 <tr>
+                  <th>Section</th>
+                  <td>:</td>
+                  <td><select name="section" class="form-control">
+                    <option value="1">Deskripsi Proyek</option>
+                    <option value="2">Potensi Proyek untuk Dikerjasamakan</option>
+                    <option value="3">Kesiapan PJPK</option>
+                  </select></td>
+                </tr>
+                <tr>
                   <th>Kriteria</th>
                   <td>:</td>
                   <td><input type="text" name="creteria" class="form-control"></td>
@@ -225,6 +242,31 @@
                   <th>Nomor Urut</th>
                   <td>:</td>
                   <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nomor_urut; ?>"></td>
+                </tr>
+                <tr>
+                  <th>Section</th>
+                  <td>:</td>
+                  <td>
+                    <select name="section" class="form-control">
+                      <?php if($row->section == 1){ ?>
+                          <option value="1" selected>Deskripsi Proyek</option>
+                          <option value="2">Potensi Proyek untuk Dikerjasamakan</option>
+                          <option value="3">Kesiapan PJPK</option>
+                      <?php }else if($row->section == 2){ ?>
+                          <option value="1">Deskripsi Proyek</option>
+                          <option value="2" selected>Potensi Proyek untuk Dikerjasamakan</option>
+                          <option value="3">Kesiapan PJPK</option>
+                      <?php }else if($row->section == 3){ ?>
+                         <option value="1">Deskripsi Proyek</option>
+                         <option value="2">Potensi Proyek untuk Dikerjasamakan</option>
+                         <option value="3" selected>Kesiapan PJPK</option>
+                      <?php }else{ ?>
+                         <option value="1">Deskripsi Proyek</option>
+                         <option value="2">Potensi Proyek untuk Dikerjasamakan</option>
+                         <option value="3">Kesiapan PJPK</option>
+                      <?php } ?>
+                    </select>
+                </td>
                 </tr>
                 <tr>
                   <th>Kriteria</th>
@@ -329,7 +371,7 @@
                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                      <button type="submit" name="next" value="next" class="btn btn-success" id="next">Ya</button>
                     </div>
-                <</form>
+                </form>
                 </div>
               </div>
             </div>

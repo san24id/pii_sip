@@ -323,4 +323,11 @@ class Dashboard_model extends CI_Model{
         return $query;
     }
 
+    function getsum($idp){
+        $sql = "SELECT SUM(skor) as bobot FROM t_skor WHERE id_projek = $idp";
+        $result = $this->db->query($sql);
+
+        return $result->row()->bobot;
+    }
+
 }

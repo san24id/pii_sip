@@ -101,7 +101,7 @@
                   <td><?php echo $row->lokasi ?></td>
                   <td><?php echo $row->estimasi; ?></td>
                   <td><?php echo $row->total_skor; ?></td>
-                  <td><?php echo date("d-m-Y H:i:s", strtotime($row->log_update)); ?></td>
+                  <td><?php echo $row->log_update; ?></td>
                   <td>
 
                     <?php if($this->session->userdata('role') == 2){ ?>
@@ -109,7 +109,7 @@
                         <?php 
                           if($row->status == 3 || $row->status == 5 ){
                         ?>
-                          <!-- <a href="javascript:;"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdl-approval" onclick="setHdn('<?php echo $row->id_projek; ?>')">Send to Approval</button></a> -->
+                          <a href="javascript:;"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdl-approval" onclick="setHdn('<?php echo $row->id_projek; ?>')">Send to Approval</button></a>
                         <?php 
                           }
                         ?>

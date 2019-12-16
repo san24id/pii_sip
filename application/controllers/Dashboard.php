@@ -243,24 +243,14 @@ class Dashboard extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 
@@ -280,26 +270,16 @@ class Dashboard extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
 
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 		$data['ss'] = $ss;
 		
 		$this->load->view('akses/admin/header_portal');
@@ -339,24 +319,14 @@ class Dashboard extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 
@@ -498,27 +468,16 @@ class Dashboard extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
 
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
-		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);		
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);	
 
 
 		$this->load->view('akses/admin/header_portal');
@@ -720,42 +679,6 @@ class Dashboard extends CI_Controller {
 			
 		 $this->load->view('akses/admin/form_periksa_pdf', $data);
 	}
-
-	// function FormVerifikasiProyekView2($idp)
-	// {
-
-	// 	$data['sektor'] = $this->Home_model->getSektor();
-	// 	$data['kementerian'] = $this->Home_model->getKementerian();
-	// 	$data['lpnk'] = $this->Home_model->getNonKementrian();
-	// 	$data['provinsi'] = $this->Home_model->getProvinsi();
-	// 	$data['kota'] = $this->Home_model->getKota();	
-	// 	$data['kabupaten'] = $this->Home_model->getKabupaten();	
-	// 	$data['kotakabu'] = $this->Home_model->getKotaKabu();
-	// 	$data['assesment'] = $this->Home_model->assesment();	
-	// 	$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
-	// 	$data['profiladm'] = $this->Dashboard_model->getIdProfilProjekadm($idp);
-	// 	$data['profiladm2'] = $this->Dashboard_model->getIdProfilProjekadm2($idp);
-	// 	$data['g1'] = $this->Home_model->gett1($idp);
-	// 	$data['g2'] = $this->Home_model->gett2($idp);
-	// 	$data['g3'] = $this->Home_model->gett3($idp);
-	// 	$data['g4'] = $this->Home_model->gett4($idp);
-	// 	$data['g5'] = $this->Home_model->gett5($idp);
-	// 	$data['g6'] = $this->Home_model->gett6($idp);
-	// 	$data['g7'] = $this->Home_model->gett7($idp);
-	// 	$data['g8'] = $this->Home_model->gett8($idp);
-	// 	$data['g9'] = $this->Home_model->gett9($idp);
-	// 	$data['g10'] = $this->Home_model->gett10($idp);
-	// 	$data['g11'] = $this->Home_model->gett11($idp);
-	// 	$data['g12'] = $this->Home_model->gett12($idp);
-	// 	$data['g13'] = $this->Home_model->gett13($idp);
-	// 	$data['g14'] = $this->Home_model->gett14($idp);
-	// 	$data['g15'] = $this->Home_model->gett15($idp);
-
-	// 	$data['getrespon'] = $this->Home_model->getrespon($idp);
-	// 	$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
-			
-	// 	 $this->load->view('akses/admin/form_periksa_pdf2', $data);
-	// }
 
 	public function listKotabu(){
 		// Ambil data ID Provinsi yang dikirim via ajax post

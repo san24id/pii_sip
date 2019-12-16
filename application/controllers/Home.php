@@ -134,25 +134,12 @@ class Home extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
 		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
 
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 
@@ -1025,25 +1012,13 @@ class Home extends CI_Controller {
 		$data['kota'] = $this->Home_model->getKota();	
 		$data['kabupaten'] = $this->Home_model->getKabupaten();	
 		$data['kotakabu'] = $this->Home_model->getKotaKabu();
-		$data['assesment'] = $this->Home_model->assesment();	
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
 		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
 		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
-		$data['noass0'] = $this->Home_model->gett1($idp);
-		$data['noass1'] = $this->Home_model->gett2($idp);
-		$data['noass2'] = $this->Home_model->gett3($idp);
-		$data['noass3'] = $this->Home_model->gett4($idp);
-		$data['noass4'] = $this->Home_model->gett5($idp);
-		$data['noass5'] = $this->Home_model->gett6($idp);
-		$data['noass6'] = $this->Home_model->gett7($idp);
-		$data['noass7'] = $this->Home_model->gett8($idp);
-		$data['noass8'] = $this->Home_model->gett9($idp);
-		$data['noass9'] = $this->Home_model->gett10($idp);
-		$data['noass10'] = $this->Home_model->gett11($idp);
-		$data['noass11'] = $this->Home_model->gett12($idp);
-		$data['noass12'] = $this->Home_model->gett13($idp);
-		$data['noass13'] = $this->Home_model->gett14($idp);
-		$data['noass14'] = $this->Home_model->gett15($idp);	
+		$data['noass'] = $this->Home_model->gett($idp);
+	
 			
 			$this->load->view('akses/user/header_user', $data);	
         	$this->load->view('akses/user/form_view', $data);	

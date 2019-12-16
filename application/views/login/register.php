@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>Register</title>
-  <link rel="icon" type="image/png" href="<?=base_url('assets/login/images/sip1.png');?>"/>
   <meta charset="UTF-8">
   <base href="<?php echo base_url() ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,13 +71,6 @@ function acakangka($panjang)
                     <?php } ?>
 
                     <form method="POST" action="register/newmember">
-                        <div class="input-group" style="width: 100%">
-                            <input class="input--style-1" type="text" placeholder="NIK" name="nik" value="<?php echo $this->session->flashdata('nik') ?>" required="required" style="width: 100%; border: none;">
-                        </div>
-                        <div class="input-group" style="width: 100%">
-                        <p>Upload NIK</p>
-                            <?php echo form_open_multipart('register/_upload'); ?><input type="file" placeholder="Upload NIK" name="foto">
-                        </div>
                         <div class="input-group" style="width: 100%">
                             <input class="input--style-1" type="text" placeholder="Nama Lengkap" name="nama_user" value="<?php echo $this->session->flashdata('nama_user') ?>" required="required" style="width: 100%; border: none;">
                         </div>

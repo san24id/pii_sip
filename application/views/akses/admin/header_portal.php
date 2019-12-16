@@ -164,18 +164,18 @@
                <li class=""><a href="dashboard/submitprofilstatus/kembali/?ss=kembali"><i class="glyphicon glyphicon-folder-open"></i><span>Kembali</span><small class="label pull-right bg-red"><?php echo $count_kembali; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
-        <?php }else if($this->session->userdata("role") == 3 || $this->session->userdata("role") == 4){ ?>
+        <?php }else if($this->session->userdata("role") == 3){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_apl; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
-        <!-- <?php }else if($this->session->userdata("role") == 4){ ?>
+        <?php }else if($this->session->userdata("role") == 4){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_apl; ?></small></a></li>
                <li class="header">Other</li>
-               <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li> -->
+               <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
         <?php }else if($this->session->userdata("role") == 5){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>

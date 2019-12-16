@@ -123,6 +123,7 @@ class SuperAdm extends CI_Controller {
 	public function addassesment(){
 		$add = array(
 
+			'section' => $_POST['section'],
 			'nomor_urut' => $_POST['nomor_urut'],
 			'creteria' => $_POST['creteria'],
 			'intruksi_upload' =>  $_POST['intruksi_upload'],
@@ -149,6 +150,7 @@ class SuperAdm extends CI_Controller {
 	public function updateassesment(){
 		$upd = array(
 			'id_ass' => $_POST['id_ass'],
+			'section' => $_POST['section'],
 			'nomor_urut' => $_POST['nomor_urut'],
 			'creteria' => $_POST['creteria'],
 			'intruksi_upload' =>  $_POST['intruksi_upload'],

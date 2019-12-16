@@ -618,10 +618,9 @@
                 <?php if($status[0] > 2){ ?>
                    <button type="button" data-toggle="modal" data-target="#modalNext" class="btn btn-primary">Rekomendasi</button>
                 <?php }else{ ?>
-                  <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Back" /></a>
+                  <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="back" /></a>
                   <button type="submit" class="btn btn-primary btn-sm" name="upload" value="upload"><i class="glyphicon glyphicon-upload"></i>&nbsp;Upload File</button>
-                  <a href="Home"<?php echo $id_projek[0] ?>"><input class="btn btn-primary btn-sm" type="button" value="Save Draft" /></a>
-                  <!-- <button type="submit" class="btn btn-primary btn-sm" name="save" value="save">Save Draft</button> -->
+                  <button type="submit" class="btn btn-primary btn-sm" name="save" value="save">Save Draft</button>
                   <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-success btn-sm" id="next">Submit</button>
                   <?php } ?>
                 </div>
@@ -822,7 +821,6 @@
                           <center><b><font style="font-family: sans-serif;">Sekretariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
-                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.id </p></center>
                       </h5>
                     </div>
                       </div>
