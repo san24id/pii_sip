@@ -773,6 +773,12 @@ class Home_model extends CI_Model{
 
     }
 
+    function uploaduser($file, $id){
+        $sql = "UPDATE `t_user` SET `foto`= '".$file['foto']."' WHERE id_user = $id";
+        $query = $this->db->query($sql);
+        return true;
+    }
+
     function updatefile1($file, $id){
         $sql = "UPDATE `t_skor` SET `upload`= '".$file['upload']."' WHERE nomor_urut = 3 AND id_projek = $id";
 

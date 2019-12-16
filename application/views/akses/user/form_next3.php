@@ -618,9 +618,10 @@
                 <?php if($status[0] > 2){ ?>
                    <button type="button" data-toggle="modal" data-target="#modalNext" class="btn btn-primary">Rekomendasi</button>
                 <?php }else{ ?>
-                  <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="back" /></a>
+                  <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Back" /></a>
                   <button type="submit" class="btn btn-primary btn-sm" name="upload" value="upload"><i class="glyphicon glyphicon-upload"></i>&nbsp;Upload File</button>
-                  <button type="submit" class="btn btn-primary btn-sm" name="save" value="save">Save Draft</button>
+                  <a href="Home"<?php echo $id_projek[0] ?>"><input class="btn btn-primary btn-sm" type="button" value="Save Draft" /></a>
+                  <!-- <button type="submit" class="btn btn-primary btn-sm" name="save" value="save">Save Draft</button> -->
                   <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-success btn-sm" id="next">Submit</button>
                   <?php } ?>
                 </div>

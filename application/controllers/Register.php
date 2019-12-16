@@ -69,7 +69,36 @@ class Register extends CI_Controller{
 		$this->load->view('login/register', $data);
 	}
 
+    public function _upload($regist)
+  {
+    $upload_path = './upload';
+    $config['upload_path']          = $upload_path;
+    $config['allowed_types']        = 'jpg|png|jpeg|pdf';
+    $config['file_name']            = 'User' . '-' . date('YmdHis');
+    $config['overwrite']            = true;
+    $config['max_size']             = 2048;
+    $this->load->library('upload', $config);
+    $this->upload->initialize($config);
+    if (!$this->upload->do_upload('img')) {
+      $error = array('error' => $this->upload->display_errors());
+      return 'default.png';
+    } else {
+      $datafile = $this->upload->data();
+      return $datafile['file_name'];
+    }
+  }
+  public function _deleteimg($id)
+  {
+    $customer = $this->Login_model->get($id);
+    if ($customer->img != 'default.png') {
+      $filename = explode(".", $customer->img)[0];
+      return array_map('unlink', glob(FCPATH . "/upload/product/$filename.*"));
+    }
+  }
+
 	public function newmember(){
+        $this->form_validation->set_rules('nik', 'NIK', 'required|max_length[17]');
+        $this->form_validation->set_rules('foto', 'Upload NIK', 'required');
 		$this->form_validation->set_rules('nama_user', 'Nama', 'required');
 		$this->form_validation->set_rules('instansi', 'Instansi', 'required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
@@ -82,19 +111,21 @@ class Register extends CI_Controller{
 
         if ( $this->form_validation->run() == false )
         {
-            $this->deleteCaptcha();
-        	$this->session->set_flashdata('nama_user',$_POST['nama_user']);
-        	$this->session->set_flashdata('instansi',$_POST['instansi']);
-        	$this->session->set_flashdata('jabatan',$_POST['jabatan']);
+            $this->session->set_flashdata('nik',$_POST['nik']);
+            $this->session->set_flashdata('foto',$_POST['foto']);
+          	$this->session->set_flashdata('nama_user',$_POST['nama_user']);
+          	$this->session->set_flashdata('instansi',$_POST['instansi']);
+          	$this->session->set_flashdata('jabatan',$_POST['jabatan']);
         	$this->session->set_flashdata('telepon',$_POST['telepon']);
         	$this->session->set_flashdata('email',$_POST['email']);
-        	$this->session->set_flashdata('username',$_POST['username']);
+          	$this->session->set_flashdata('username',$_POST['username']);
         	$this->index();
         }
         else
         {
 			$regist = array(
-
+                 'nik' => $_POST['nik'], 
+                 'foto' => $_POST['foto'], 
 				 'nama_user' => $_POST['nama_user'], 
 				 'instansi' => $_POST['instansi'], 
 				 'jabatan' => $_POST['jabatan'], 
