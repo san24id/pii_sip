@@ -1483,7 +1483,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary btn-sm" id="draft">Save Draft</button>
-                  <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-success btn-sm">Next</button>
+                  <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-success btn-sm" id="next">Next</button>
                 </div>
               </div>
               <!-- /.box-body -->
