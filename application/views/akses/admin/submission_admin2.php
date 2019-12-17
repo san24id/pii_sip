@@ -324,8 +324,8 @@
                  <table id="" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="width: 10%">NO.</th>
-                  <th style="width: 10%">Status</th>
+                  <th>NO.</th>
+                  <th>Status</th>
                   <th>Keterangan</th>
                 </tr>
                 </thead>

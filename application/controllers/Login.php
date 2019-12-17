@@ -228,7 +228,7 @@ class Login extends CI_Controller {
         $mail->isHTML(true);
         
         // Email body content
-        $mailContent = "username&nbsp;:&nbsp;".$username."<br>new password&nbsp;:&nbsp;". $_POST['password']." <p>Login : <a href='http://localhost:7777/pii_sip3/login/loginconfirm'>Konfirmasi Login</a></p>";
+        $mailContent = "username&nbsp;:&nbsp;".$username."<br>new password&nbsp;:&nbsp;". $_POST['password']." <p>Konfirmasi Lupa Password dengan Link Berikut : <a href='http://application.iigf.co.id/pii_sip/login/loginconfirm'>Konfirmasi Login</a></p>";
         $mail->Body = $mailContent;
         
         // Send email

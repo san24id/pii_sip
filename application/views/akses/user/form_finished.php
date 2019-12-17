@@ -503,7 +503,7 @@
                                                   $nn = "display:block";
                                                 }
                                                ?>
-                                                <button type="button" id="dw<?php echo $row->nomor_urut; ?>" class="btn btn-default btn-sm" style="<?php echo $nn; ?>">Download FIle <?php echo $row->nomor_urut; ?></button>
+                                                <button type="button" id="dw<?php echo $row->nomor_urut; ?>" class="btn btn-default btn-sm" style="<?php echo $nn; ?>">Download File <?php echo $row->nomor_urut; ?></button>
                                                 <script type="text/javascript">
                                                   document.getElementById('dw<?php echo $row->nomor_urut; ?>').addEventListener("click", function(){
                                                   var arr = [];
@@ -535,7 +535,7 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                           }else if($row->b == 'textarea'){
                                           if($status[0] > 2 && $s_upload[$x] == 1){ ?>
-                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                                 <div style="">
 
                                               </div>
@@ -798,6 +798,25 @@
     <script src="assets/dashboard/bower_components/select2/dist/js/select2.full.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script>
+
+function printElement(elem) {
+          var domClone = elem.cloneNode(true);
+          
+          var $printSection = document.getElementById("printSection");
+          
+          if (!$printSection) {
+              var $printSection = document.createElement("div");
+              $printSection.id = "printSection";
+              document.body.appendChild($printSection);
+          }
+          
+          $printSection.innerHTML = "";
+          $printSection.appendChild(domClone);
+      }
+      document.getElementById("print").onclick = function () {
+        window.print();
+      }
+
       $('.select2').select2()
       
       $(function () {
@@ -1249,6 +1268,6 @@ $('#disclamer').modal('hide');
 
 });
 
-    </script>
+    </script> 
   </body>
 </html>

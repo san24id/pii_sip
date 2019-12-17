@@ -151,8 +151,8 @@
                  <table id="" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th style="width: 10%">NO.</th>
-                  <th style="width: 10%">Status</th>
+                  <th>NO.</th>
+                  <th>Status</th>
                   <th>Keterangan</th>
                 </tr>
                 </thead>
@@ -174,22 +174,22 @@
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td><img src="assets/dashboard/images/legend/sendtoadminapp.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/sendtoadminapp.png"></td>
                   <td>Send to Admin Approval</td>
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td><img src="assets/dashboard/images/legend/sendtoadminuser.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/sendtoadminuser.png"></td>
                   <td>Send to Admin User</td>
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td><img src="assets/dashboard/images/legend/respontoadminuser.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/respontoadminuser.png"></td>
                   <td>Respon From Admin User</td>
                 </tr>
                 <tr>
                   <td>7</td>
-                  <td><img src="assets/dashboard/images/legend/responformpp.png" width="55%"></td>
+                  <td><img src="assets/dashboard/images/legend/responformpp.png"></td>
                   <td>Respon From Admin Approval</td>
                 </tr>
                 <tr>

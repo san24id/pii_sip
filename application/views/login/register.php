@@ -77,7 +77,7 @@ function acakangka($panjang)
                         </div>
                         <div class="input-group" style="width: 100%">
                         <p>Upload NIK</p>
-                            <input type="file" placeholder="Upload NIK" name="foto">
+                            <input type="file" placeholder="Upload NIK" name="foto" required="required">
                         </div>
                         <div class="input-group" style="width: 100%">
                             <input class="input--style-1" type="text" placeholder="Nama Lengkap" name="nama_user" value="<?php echo $this->session->flashdata('nama_user') ?>" required="required" style="width: 100%; border: none;">
