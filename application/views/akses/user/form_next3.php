@@ -450,7 +450,7 @@
                       </tr>
                       <tr>
                         <td>
-                           <p>* File upload maksimal < 1 MB</p>
+                           <b>* File upload maksimal < 1 MB</b>
                         </td>
                       </tr>
                       <tr>
@@ -588,7 +588,7 @@
                                   <input type="hidden" name="gup[<?php echo $key; ?>]" value="<?php echo $row->upload; ?>" id="gup<?php echo $key; ?>">
                                    <a href="<?php echo 'upload/'.$row->upload; ?>"> <?php echo $row->upload; ?></a> 
                                   <?php }else if($status[0] > 2){ ?>
-                                    <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                    <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                       <div style="">
 
                                       </div>
@@ -602,7 +602,7 @@
                                   <input type="hidden" name="gup[<?php echo $key; ?>]" value="<?php echo $row->upload; ?>" id="gup<?php echo $key; ?>">
                                    <a href="<?php echo 'upload/'.$row->upload; ?>"> <?php echo $row->upload; ?></a> 
                                   <?php }else if($status[0] > 2){ ?>
-                                    <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                    <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                   <?php } ?>                                       
                               <?php }}} ?>             
                             </td>
@@ -618,6 +618,7 @@
                 <?php if($status[0] > 2){ ?>
                    <button type="button" data-toggle="modal" data-target="#modalNext" class="btn btn-primary">Rekomendasi</button>
                 <?php }else{ ?>
+                  <!-- <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-warning btn-sm" id="back">Back</button> -->
                   <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Back" /></a>
                   <button type="submit" class="btn btn-primary btn-sm" name="upload" value="upload"><i class="glyphicon glyphicon-upload"></i>&nbsp;Upload File</button>
                   <a href="Home"<?php echo $id_projek[0] ?>"><input class="btn btn-primary btn-sm" type="button" value="Save Draft" /></a>
@@ -631,6 +632,24 @@
             <!-- /.box -->
             <!-- /.row -->
           </section>
+
+          <!-- <div class="modal fade" id="back" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
+          
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+        
+                  <h5><p align="justify">Apakah anda yakin ingin mengisi form pengajuan kembali? File yang telah diupload akan hilang</p></h5>
+
+                </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-secondary" >Tidak</button>
+                      <button type="submit" name="next" value="submit" class="btn btn-success" >Ya</button>
+                    </div>
+                </div>
+              </div>
+            </div> -->
+
           <div class="modal fade" id="disclamer" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
           
             <div class="modal-dialog" role="document">
