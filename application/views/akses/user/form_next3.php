@@ -618,8 +618,8 @@
                 <?php if($status[0] > 2){ ?>
                    <button type="button" data-toggle="modal" data-target="#modalNext" class="btn btn-primary">Rekomendasi</button>
                 <?php }else{ ?>
-                  <button type="button" data-toggle="modal" data-target="#disclamer" class="btn btn-success btn-sm" id="next">Back</button>
-                  <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Back" /></a>
+                  <button type="button" data-toggle="modal" data-target="#disclamer1" class="btn btn-warning btn-sm">Back</button>
+                  <!-- <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Back" /></a> -->
                   <button type="submit" class="btn btn-primary btn-sm" name="upload" value="upload"><i class="glyphicon glyphicon-upload"></i>&nbsp;Upload File</button>
                   <a href="Home"<?php echo $id_projek[0] ?>"><input class="btn btn-primary btn-sm" type="button" value="Save Draft" /></a>
                   <!-- <button type="submit" class="btn btn-primary btn-sm" name="save" value="save">Save Draft</button> -->
@@ -631,24 +631,7 @@
             </div>
             <!-- /.box -->
             <!-- /.row -->
-          </section>
-
-          <div class="modal fade" id="back" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
-          
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-        
-                  <h5><p align="justify">Apakah anda yakin ingin mengisi form pengajuan kembali? File yang telah diupload akan hilang</p></h5>
-
-                </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-secondary" >Tidak</button>
-                      <button type="button" class="btn btn-success" >Ya</button>
-                    </div>
-                </div>
-              </div>
-            </div>
+          </section>       
 
           <div class="modal fade" id="disclamer" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">
           
@@ -667,6 +650,20 @@
               </div>
             </div>
         </form>
+
+        <div class="modal fade" id="disclamer1" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">          
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">        
+                  <h5><p align="justify">Apakah anda yakin ingin mengisi form pengajuan kembali? File yang telah diupload akan hilang</p></h5>
+                </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-secondary" >Tidak</button>
+                      <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Ya" /></a>
+                    </div>
+                </div>
+              </div>
+            </div>
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
