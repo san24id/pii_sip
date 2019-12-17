@@ -189,10 +189,10 @@
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
         <?php }else{ ?>
-          <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-          <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
-          <li class="header">Other</li>
-          <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="header">Other</li>
+               <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
         <?php } ?>
       </ul>
     </section>
