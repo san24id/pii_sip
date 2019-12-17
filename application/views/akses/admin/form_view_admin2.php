@@ -671,7 +671,7 @@
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdl-approval" onclick="setHdn('<?php echo $row->id_projek; ?>')">Send to Approval</button>
                   <?php } ?>
                    <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $row->id_projek; ?>" target="_blank"><button type="button" class="btn btn-primary btn-sm">Export Informasi Proyek</button></a>
-                   <a href="dashboard/submissionpage" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
+                   <a href="Dashboard/FormVerifikasiProyekPDF2/<?php echo $row->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
                 </div>
               </div>
               <!-- /.box-body -->

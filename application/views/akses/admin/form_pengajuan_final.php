@@ -665,9 +665,9 @@
             </div>
 
                 <div class="box-footer">
-                  <a href="dashboard/submissionpage"><button type="button" class="btn btn-warning btn-sm">Kembali</button></a>                   
-                  <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-primary btn-sm">Export Informasi Proyek</button></a>
-                  <a href="Dashboard/FormVerifikasiProyekPDF2/<?php echo $rowp->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
+                   <a href="dashboard/submissionpage"><button type="button" class="btn btn-warning btn-sm">Kembali</button></a>                   
+                   <a href="Dashboard/FormVerifikasiProyekPDF/<?php echo $row->id_projek; ?>" target="_blank"><button type="button" class="btn btn-primary btn-sm">Export Informasi Proyek</button></a>
+                   <a href="Dashboard/FormVerifikasiProyekPDF2/<?php echo $row->id_projek; ?>" target="_blank"><button type="button" class="btn btn-success btn-sm">Export Laporan Tindak Lanjut</button></a>
                 </div>
               </div>
               <!-- /.box-body -->

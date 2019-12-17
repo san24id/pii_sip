@@ -32,12 +32,18 @@
                 <thead>
                 <tr>
                   <th>NO.</th>
-                  <th>Status</th>
-                  <th>Nomor Register</th>
-                  <th>Nama User</th>
+                  <th>Nomor User</th>
+                  <th>NIK</th>
+                  <th>Kartu NIK</th>
+                  <th>Nama</th>
                   <th>Instansi</th>
                   <th>Jabatan</th>
-                  <th>Email</th>
+                  <th>Telepon</th>
+                  <th>Username</th>
+                  <th>Status</th>
+                  <!-- <th>Estimasi Nilai</th>
+                  <th>Skor</th>
+                  <th>Log Update</th> -->
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -62,13 +68,18 @@
                         ?> 
                   </td>
                   <td><?php echo $row->nomor_user; ?></td>
+                  <td><?php echo $row->nik; ?></td>
+                  <td><img src="foto/<?php echo $row->foto; ?>" width="100" /></td>                  
                   <td><?php echo $row->nama_user; ?></td>
                   <td><?php echo $row->instansi; ?></td>
                   <td><?php echo $row->jabatan; ?></td>
-                  <td><?php echo $row->email; ?></td>
+                  <td><?php echo $row->telepon ?></td>
+                  <td><?php echo $row->username ?></td>
+                  <td><?php echo $row->status ?></td>
                   <td>
                     <table>
-                      <td><a href="dashboard/viewuser/<?php echo $row->id_user; ?>"><button class="btn btn-primary btn-sm">view</button></a></td>
+                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_user; ?>">Ubah</button>    
+                      <td><a href="dashboard/viewuser/<?php echo $row->id_user; ?>"><button class="btn btn-primary btn-sm">View</button></a></td>
                       <td>
                         <?php
                           if ( $row->status_1 == 0 )
