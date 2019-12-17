@@ -121,7 +121,7 @@
                <li class=""><a href="superadm/impassesment"><i class="glyphicon glyphicon-th-list"></i><span>IMP Assessment</span></a></li>
                <li class=""><a href="superadm/impm1"><i class="glyphicon glyphicon-th-list"></i><span>IMP Deskripsi Proyek</span></a></li>
                <li class=""><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
-               <li class=""><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskrpsi Proyek</span></a></li>
+               <li class=""><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskripsi Proyek</span></a></li>
                <li class=""><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementrian</span></a></li>
                <li class=""><a href="superadm/lpnk"><i class="glyphicon glyphicon-list-alt"></i><span>LPNK</span></a></li>
                <li class=""><a href="superadm/sektor"><i class="glyphicon glyphicon-info-sign"></i><span>Sektor</span></a></li>

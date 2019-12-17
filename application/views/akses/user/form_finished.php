@@ -1,4 +1,4 @@
-      <style type="text/css">
+<style type="text/css">
       @media print {
         body * {
           visibility: hidden;
@@ -474,7 +474,7 @@
                                          if($row->nomor_urut == $x+1){
                                            if($row->b == 'not'){
                                              if($status[0] > 2 && $s_upload[$x] == 1){ ?>
-                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                           <?php } 
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";

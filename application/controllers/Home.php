@@ -1018,8 +1018,7 @@ class Home extends CI_Controller {
 		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
 		$data['skor'] = $this->Home_model->getskor($idp);
 		$data['noass'] = $this->Home_model->gett($idp);
-	
-			
+				
 			$this->load->view('akses/user/header_user', $data);	
         	$this->load->view('akses/user/form_view', $data);	
 	}

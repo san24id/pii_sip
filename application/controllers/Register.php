@@ -69,9 +69,9 @@ class Register extends CI_Controller{
 		$this->load->view('login/register', $data);
 	}
 
-    public function _upload($regist)
+    public function _upload()
   {
-    $upload_path = './upload';
+    $upload_path = './foto';
     $config['upload_path']          = $upload_path;
     $config['allowed_types']        = 'jpg|png|jpeg|pdf';
     $config['file_name']            = 'User' . '-' . date('YmdHis');
@@ -87,18 +87,19 @@ class Register extends CI_Controller{
       return $datafile['file_name'];
     }
   }
+
   public function _deleteimg($id)
   {
     $customer = $this->Login_model->get($id);
     if ($customer->img != 'default.png') {
       $filename = explode(".", $customer->img)[0];
-      return array_map('unlink', glob(FCPATH . "/upload/product/$filename.*"));
+      return array_map('unlink', glob(FCPATH . "/foto/$filename.*"));
     }
   }
 
 	public function newmember(){
         $this->form_validation->set_rules('nik', 'NIK', 'required|max_length[17]');
-        $this->form_validation->set_rules('foto', 'Upload NIK', 'required');
+      //
 		$this->form_validation->set_rules('nama_user', 'Nama', 'required');
 		$this->form_validation->set_rules('instansi', 'Instansi', 'required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
@@ -123,16 +124,57 @@ class Register extends CI_Controller{
         }
         else
         {
-			$regist = array(
+            if(!empty($_FILES['foto']['name'])){
+
+			    // echo $idp.'&nbsp;|&nbsp;'.$_POST['nmr'][$key].'&nbsp;|&nbsp;'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$idp.'_'.$_POST['nmr'][$key].$_POST['kup'][$key].'_'.$_POST['nom'][$key].'&nbsp;|&nbsp;'.$value.'&nbsp;|&nbsp;'.$_FILES['up']['name'][$key]."<br />";
+			   unlink('foto/'.$_POST['nik'].$_FILES['foto']['name']);
+
+        	   $config['upload_path'] = 'foto/';
+               //restrict uploads to this mime types
+        	   $config['allowed_types'] = 'jpg|jpeg|png|gif|rar|zip|doc|docx|xls|xlsx|pdf|ppt|pptx';
+        	   $config['file_name'] = $_POST['nik'].$_FILES['foto']['name'];
+        	   $config['max_size'] = 2048;
+        
+               //Load upload library and initialize configuration
+        	   $this->load->library('upload', $config);
+        	   $this->upload->initialize($config);
+
+        	   if($this->upload->do_upload('foto')){
+            		$uploadData = $this->upload->data();
+            		$filename = $uploadData['file_name'];
+
+        			//set file data to insert to database
+            		$file1['upload'] = $filename;
+
+            	// 	$sql = "UPDATE `t_m1profil` SET `upload`='".$file1['upload']."' WHERE id = '".$value."' AND id_projek = '".$idp."';";
+
+				// 	$query=$this->db->query($sql);       
+
+       			}else{
+              $error = array('error' => $this->upload->display_errors());
+       			// 	 unlink('foto/'.$_POST['gup'][$key]);
+
+       			// 	 $sql = "UPDATE `t_m1profil` SET `upload`='' WHERE id = '".$value."' AND id_projek = '".$idp."';";
+
+				// 	 $query=$this->db->query($sql); 
+
+       			// 	 $sql = "UPDATE `t_projekprofil` SET `status`= '2' WHERE id_projek = '".$idp."';";
+
+				// 	 $query=$this->db->query($sql);
+       				// $this->session->set_flashdata('msg23','inv');
+       				}
+ 			}
+            
+            $regist = array(
                  'nik' => $_POST['nik'], 
-                 'foto' => $_POST['foto'], 
-				 'nama_user' => $_POST['nama_user'], 
-				 'instansi' => $_POST['instansi'], 
-				 'jabatan' => $_POST['jabatan'], 
-				 'telepon' => $_POST['telepon'], 
-				 'email' => $_POST['email'],
-				 'username' => $_POST['username'],
-				 'password' => $_POST['password']
+                 'foto' => $_POST['nik'].$_FILES['foto']['name'], 
+				         'nama_user' => $_POST['nama_user'], 
+				         'instansi' => $_POST['instansi'], 
+				         'jabatan' => $_POST['jabatan'], 
+				         'telepon' => $_POST['telepon'], 
+				         'email' => $_POST['email'],
+				         'username' => $_POST['username'],
+				         'password' => $_POST['password']
 			);
 
 
