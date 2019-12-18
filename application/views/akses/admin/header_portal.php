@@ -203,9 +203,9 @@
 
          $count_kembali = $this->db->query($sql)->num_rows();
 
-        $sql = "SELECT *, concat(LPAD(a.kategori,2,0),'-',LPAD(a.sektor,2,0),'-', LPAD(a.id_projek, 3, '0')) as 
-        act_code FROM t_projekprofil a, t_kategori b, t_sektor c WHERE a.kategori = b.id_kategori AND a.sektor = c.id_sektor AND 
-        a.status = 4";
+         $sql = "SELECT *, concat(LPAD(a.kategori,2,0),'-',LPAD(a.sektor,2,0),'-', LPAD(a.id_projek, 3, '0')) as 
+         act_code FROM t_projekprofil a, t_kategori b, t_sektor c WHERE a.kategori = b.id_kategori AND a.sektor = c.id_sektor AND 
+         a.status = 4";
 
          $count_apl = $this->db->query($sql)->num_rows();
 
@@ -215,11 +215,11 @@
  
           $count_dataproyek = $this->db->query($sql)->num_rows(); 
 
-          $sql = "SELECT *, concat(LPAD(a.kategori,2,0),'-',LPAD(a.sektor,2,0),'-', LPAD(a.id_projek, 3, '0')) as 
-          act_code FROM t_projekprofil a, t_kategori b, t_sektor c WHERE a.kategori = b.id_kategori AND a.sektor = c.id_sektor AND 
-          a.status = 7";
+         $sql = "SELECT *, concat(LPAD(a.kategori,2,0),'-',LPAD(a.sektor,2,0),'-', LPAD(a.id_projek, 3, '0')) as 
+         act_code FROM t_projekprofil a, t_kategori b, t_sektor c WHERE a.kategori = b.id_kategori AND a.sektor = c.id_sektor AND 
+         a.status = 7";
   
-           $count_dataproyekuser = $this->db->query($sql)->num_rows();
+         $count_dataproyekuser = $this->db->query($sql)->num_rows();
 
       ?>
   <aside class="main-sidebar">
@@ -231,8 +231,8 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <?php 
-            if($this->session->userdata("role") == 1){?>
+        <!-- <?php 
+            // if($this->session->userdata("role") == 1){?>
                <li class=""><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
                <li class=""><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
                <li class=""><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
@@ -242,9 +242,9 @@
                <li class=""><a href="superadm/sektor"><i class="glyphicon glyphicon-sector"></i><span>Sektor</span></a></li>
                <li class=""><a href="superadm/subsektor"><i class="glyphicon glyphicon-info-sign"></i><span>Subsektor</span></a></li>
                <li class=""><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
-               <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li>
-        <?php }else if($this->session->userdata("role") == 2){ ?>
-               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li> -->
+        <?php if($this->session->userdata("role") == 2){ ?>
+               <li class="<?php echo $active1['dashboard']?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class="header">Data Proyek</li>
                <li class=""><a href="dashboard/submitprofilstatus/high/?ss=high"><i class="glyphicon glyphicon-folder-open"></i><span>High</span></a></li>
@@ -268,13 +268,13 @@
         <?php }else if($this->session->userdata("role") == 5){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
-               <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyek; ?></small></a></li>
+               <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyekuser; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
         <?php }else if($this->session->userdata("role") == 6){ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
-               <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyekuser; ?></small></a></li>
+               <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyek; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
         <?php }else{ ?>

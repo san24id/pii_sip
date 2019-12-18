@@ -53,7 +53,7 @@
 					<div class="row">
 						<center>
 							<div class="col-md-6">
-								<img width="100%" src="<?=base_url('assets/login/images/sip3.png');?>" >
+								<img width="250px" src="<?=base_url('assets/login/images/sip3.png');?>" >
 							</div>
 						</center>
 					</div>

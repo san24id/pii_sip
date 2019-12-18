@@ -656,7 +656,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-body">        
-                  <h5><p align="justify">Apakah anda yakin ingin mengisi form pengajuan kembali? File yang telah diupload akan hilang</p></h5>
+                  <h5><p align="justify">Apakah anda yakin ingin kembali ke Form Pengajuan? Jika "Ya" File yang sudah diupload akan hilang</p></h5>
                 </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
