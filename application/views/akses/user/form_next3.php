@@ -659,11 +659,11 @@
                 </div>
                     <div class="modal-footer">
                       <button type="submit" class="btn btn-secondary" >Tidak</button>
-                      <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><input class="btn btn-warning btn-sm" type="button" value="Ya" /></a>
-                    </div>
-                </div>
+                      <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><button type="submit" class="btn btn-warning" >Ya</button>
               </div>
             </div>
+        </div>
+         
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->

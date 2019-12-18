@@ -109,7 +109,7 @@
                         <?php 
                           if($row->status == 3 || $row->status == 5 ){
                         ?>
-                          <a href="javascript:;"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdl-approval" onclick="setHdn('<?php echo $row->id_projek; ?>')">Send to Approval</button></a>
+                          <!-- <a href="javascript:;"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mdl-approval" onclick="setHdn('<?php echo $row->id_projek; ?>')">Send to Approval</button></a> -->
                         <?php 
                           }
                         ?>

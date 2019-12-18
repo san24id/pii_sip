@@ -32,6 +32,7 @@
                 <thead>
                 <tr>
                   <th>NO.</th>
+                  <th>Status User</th>
                   <th>Nomor User</th>
                   <th>NIK</th>
                   <th>Kartu NIK</th>
