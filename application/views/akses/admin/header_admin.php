@@ -116,7 +116,7 @@
       <ul class="sidebar-menu">
         <?php 
             if($this->session->userdata("role") == 1){?>
-                <li class=""><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
+               <li class=""><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
                <li class=""><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
                <li class=""><a href="superadm/impassesment"><i class="glyphicon glyphicon-th-list"></i><span>IMP Assessment</span></a></li>
                <li class=""><a href="superadm/impm1"><i class="glyphicon glyphicon-th-list"></i><span>IMP Deskripsi Proyek</span></a></li>

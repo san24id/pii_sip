@@ -498,6 +498,7 @@
                                        <input type="hidden" name="bobot[]" value="<?php echo $bobot[$x]; ?>" class = 'bb<?php echo $x; ?>'> 
                                        <input type="hidden" name="respon[]" value="<?php echo $respon[$x]; ?>" class = 'rs<?php echo $x; ?>'>
                                        <input type="hidden" name="s_upload[]" value="<?php echo $s_upload[$x]; ?>">
+                                       
                                        <div class="dp<?php echo $x; ?>" style="display: none;">
                                        <?php 
                                         foreach ($noass as $key => $row) {
@@ -643,7 +644,7 @@
 
                 </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-secondary" >Tidak</button>
+                      <button type="submit" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                       <button type="submit" name="next" value="submit" class="btn btn-success" >Ya</button>
                     </div>
                 </div>
@@ -658,7 +659,7 @@
                   <h5><p align="justify">Apakah anda yakin ingin mengisi form pengajuan kembali? File yang telah diupload akan hilang</p></h5>
                 </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-secondary" >Tidak</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                       <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><button type="submit" class="btn btn-warning" >Ya</button>
               </div>
             </div>
@@ -838,7 +839,7 @@
                           <center><b><font style="font-family: sans-serif;">Sekretariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
-                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.id </p></center>
+                          <center><p style="font-family: sans-serif;">Email : info.pppindonesia@gmail.com </p></center>
                       </h5>
                     </div>
                       </div>
@@ -916,6 +917,25 @@
           $('#lemba').show();
       }
       
+      function validasiFile(){
+    var inputFile = document.getElementById('file');
+    var pathFile = inputFile.value;
+    var ekstensiOk = /(\.jpg|\.jpeg|\.png|\.gif|\.rar|\.zip|\.doc|\.docx|\.xls|\.xlsx|\.pdf|\.ppt|\.pptx)$/i;
+    if(!ekstensiOk.exec(pathFile)){
+        alert('File tidak lebih dari 1mb');
+        inputFile.value = '';
+        return false;
+    }else{
+        //Pratinjau gambar
+        if (inputFile.files && inputFile.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('pratinjauFile').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(inputFile.files[0]);
+        }
+    }
+}
       
             $(document).ready(function(){ // Ketika halaman sudah siap (sudah selesai di load)    // Kita sembunyikan dulu untuk loadingnya 
       

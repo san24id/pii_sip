@@ -30,47 +30,38 @@
                 <div class="form-group">
                   <label>2. Nama Lengkap :</label>
                   <input type="text" class="form-control" name="nama_user" required="required" value="<?php echo $row->nama_user; ?>">
-                </div>
-
-                <div class="form-row">
-                   <div class="form-group col-md-6">
+                </div>            
+                <div class="form-group">
                       <label>3. Instansi :</label>
                       <input type="text" class="form-control" name="instansi" required="required" value="<?php echo $row->instansi; ?>">
                     </div>
-                  <div class="form-group col-md-6">
+                <div class="form-group">
                       <label>4. Jabatan :</label>
                       <input type="text" class="form-control" name="jabatan" required="required" value="<?php echo $row->jabatan; ?>">
-                  </div>
                 </div>
 
-                 <div class="form-row">
-                 <div class="form-group col-md-6">
+                <div class="form-group">                 
                   <label>5. Nomor Telepon :</label>
                     <input type="text" class="form-control" onkeypress="return wajibAngka(event)" name="telepon" required="required" value="<?php echo $row->telepon; ?>">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group">
                   <label>6. Alamat Email :</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>
+                    <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>                
                 </div>
-                </div>
-
                 <div class="form-group">
                   <label>7. Username :</label>
                   <input type="text" class="form-control" name="username" value="<?php echo $row->username; ?>" readonly>
                 </div>
-
                 <div class="form-group">
-                  <b><center>8. Ubah Password</center></b>
+                  <label>8. Ubah Password</label>
                 </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
+               
+                <div class="form-group">
                   <input type="text" class="form-control" name="password" placeholder="Password Lama">
                 </div>
-              <div class="form-group col-md-6">
+                <div class="form-group">
                   <input type="text" class="form-control" name="password_baru" placeholder="Password Baru (minimal 6 karakter)">
-              </div>
-              </div>
+                </div>              
 
               <script type="text/javascript">
                     function wajibAngka(evt) {
@@ -78,7 +69,7 @@
                     if (charCode > 31 && (charCode < 48 || charCode > 57))
                     return false;
                    }
-            </script>
+              </script>
 
 
         <button type="submit" class="btn btn-primary">Save</button>

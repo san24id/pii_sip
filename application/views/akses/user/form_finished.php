@@ -763,7 +763,7 @@
                           <center><b><font style="font-family: sans-serif;">Sekretariat:</font></b></center>
                           <br>
                           <center><p style="font-family: sans-serif;">Capital Place Building, 7-8th Floor, Jl. Jenderal Gatot Subroto Kav.18 Jakarta Selatan, DKI Jakarta </p></center>
-                          <center><p style="font-family: sans-serif;">Email : xxx@iigf.co.if </p></center>
+                          <center><p style="font-family: sans-serif;">Email : info.pppindonesia@gmail.com </p></center>
                       </h5>
                     </div>
                       </div>
