@@ -6,7 +6,7 @@
    <base href="<?php echo base_url() ?>">
   <title>SIP</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <link rel="icon" type="image/png" href="<?=base_url('assets/login/images/sip1.png');?>"/>
+  <link rel="icon" type="image/png" href="<?=base_url('assets/login/images/sip2.png');?>"/>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="assets/dashboard/bootstrap/css/bootstrap.min.css">
@@ -133,7 +133,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>IP</span>
       <!-- logo for regular state and mobile devices -->
-      <span><img width="100%" height="60px;" src="<?=base_url('assets/dashboard/images/SIP 3.png');?>" /></span>
+      <span><img width="60px" height="35px;" src="<?=base_url('assets/login/images/sip2.png');?>" /></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

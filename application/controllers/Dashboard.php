@@ -26,6 +26,8 @@ class Dashboard extends CI_Controller {
 		$this->load->model('Home_model');
 		$this->load->library('Pdf');
 
+		$sid = $this->session->userdata("username");
+
 		$this->load->library('session');
  		
  		if ($this->session->userdata('username')) {
@@ -38,9 +40,14 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		$sid = $this->session->userdata("username");
+		// var_dump($sid);exit;
+
 		$data['active1'] = 'active';
+		// var_dump($data);exit;
+
 		$data['active2'] = '';
-		$data['active3'] = '';
+		// $data['active3'] = '';
 
 		$data['profil'] = $this->Dashboard_model->getProfilProjek();
 		$data['status'] = $this->Dashboard_model->getstatus();
@@ -50,13 +57,13 @@ class Dashboard extends CI_Controller {
 		$data['kategoricount'] = $this->Dashboard_model->getkategoricount();
 		$data['sektorcount'] = $this->Dashboard_model->getsektorcount();
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/dasboard_admin', $data);
 	}
 
 	public function datauser()
 	{
-		$data['active1'] = 'active';
+		$data['active7'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
@@ -64,7 +71,7 @@ class Dashboard extends CI_Controller {
 		$data['sektor'] = $this->Home_model->getSektor();
 		$data['user'] = $this->Dashboard_model->getuser($_GET['filter_status']);
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/data_pjpk', $data);
 	}
 
@@ -84,8 +91,8 @@ class Dashboard extends CI_Controller {
 
 	public function submissionpage()
 	{
-		$data['active1'] = 'active';
-		$data['active2'] = '';
+		$data['active1'] = '';
+		$data['active2'] = 'active';
 		$data['active3'] = '';
 		$data['profil'] = $this->Dashboard_model->getProfilProjek($_GET['filter_status']);
 		$data['user'] = $this->Dashboard_model->getuser();
@@ -93,16 +100,20 @@ class Dashboard extends CI_Controller {
 		$data['sektor'] = $this->Home_model->getSektor();
 		$data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/submission_admin', $data);
 	}
 
 	
-	public function submitprofilstatus($status)
+	public function submitprofilstatushigh($status)
 	{
-		$data['active1'] = 'active';
+		$data['active1'] = '';
 		$data['active2'] = '';
-		$data['active3'] = '';
+		$data['active3'] = 'active'; 
+		$data['active4'] = ''; 
+		$data['active5'] = ''; 
+		$data['active6'] = ''; 
+		
 		$data['user'] = $this->Dashboard_model->getuser();
 		$data['adminpii'] = $this->Dashboard_model->getadminpii();
 		$data['sektor'] = $this->Home_model->getSektor();
@@ -110,7 +121,67 @@ class Dashboard extends CI_Controller {
 
 		$data['profil'] = $this->Dashboard_model->getProfilProjekStatus($_GET['filter_status'], $status);
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/submission_admin2', $data);
+	}
+
+	public function submitprofilstatusmedium($status)
+	{
+		$data['active1'] = '';
+		$data['active2'] = '';
+		$data['active3'] = ''; 
+		$data['active4'] = 'active'; 
+		$data['active5'] = ''; 
+		$data['active6'] = ''; 
+		
+		$data['user'] = $this->Dashboard_model->getuser();
+		$data['adminpii'] = $this->Dashboard_model->getadminpii();
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
+
+		$data['profil'] = $this->Dashboard_model->getProfilProjekStatus($_GET['filter_status'], $status);
+
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/submission_admin2', $data);
+	}
+
+	public function submitprofilstatuslow($status)
+	{
+		$data['active1'] = '';
+		$data['active2'] = '';
+		$data['active3'] = ''; 
+		$data['active4'] = ''; 
+		$data['active5'] = 'active'; 
+		$data['active6'] = ''; 
+		
+		$data['user'] = $this->Dashboard_model->getuser();
+		$data['adminpii'] = $this->Dashboard_model->getadminpii();
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
+
+		$data['profil'] = $this->Dashboard_model->getProfilProjekStatus($_GET['filter_status'], $status);
+
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/submission_admin2', $data);
+	}
+
+	public function submitprofilstatuskembali($status)
+	{
+		$data['active1'] = '';
+		$data['active2'] = '';
+		$data['active3'] = ''; 
+		$data['active4'] = ''; 
+		$data['active5'] = ''; 
+		$data['active6'] = 'active'; 
+		
+		$data['user'] = $this->Dashboard_model->getuser();
+		$data['adminpii'] = $this->Dashboard_model->getadminpii();
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
+
+		$data['profil'] = $this->Dashboard_model->getProfilProjekStatus($_GET['filter_status'], $status);
+
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/submission_admin2', $data);
 	}
 
@@ -231,8 +302,8 @@ class Dashboard extends CI_Controller {
 
 	public function formview($idp)
 	{
-		$data['active1'] = 'active';
-		$data['active2'] = '';
+		$data['active1'] = '';
+		$data['active2'] = 'active';
 		$data['active3'] = '';
 		$data['active4'] = '';
 
@@ -254,13 +325,13 @@ class Dashboard extends CI_Controller {
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/form_view_admin', $data);
 	}
 
 	public function formviewproyek($ss, $idp)
 	{
-		$data['active1'] = 'active';
+		$data['active5'] = 'active';
 		$data['active2'] = '';
 
 		$data['sektor'] = $this->Home_model->getSektor();
@@ -282,7 +353,7 @@ class Dashboard extends CI_Controller {
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 		$data['ss'] = $ss;
 		
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/form_view_admin2', $data);
 	}
 

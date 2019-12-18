@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <base href="<?php echo base_url() ?>">
   <title>Aplikasi Scanning System</title>
-  <link rel="icon" type="image/png" href="<?=base_url('assets/login/images/sip1.png');?>"/>
+  
+  <link rel="icon" type="image/png" href="<?=base_url('assets/login/images/sip2.png');?>"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -125,7 +126,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>IP</span>
       <!-- logo for regular state and mobile devices -->
-      <span><img width="100%" height="60px;" src="<?=base_url('assets/dashboard/images/SIP 3.png');?>" /></span>
+      <span><img width="60px" height="35px;" src="<?=base_url('assets/dashboard/images/sip2.png');?>" /></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -222,6 +223,7 @@
          $count_dataproyekuser = $this->db->query($sql)->num_rows();
 
       ?>
+
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -244,39 +246,44 @@
                <li class=""><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
                <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li> -->
         <?php if($this->session->userdata("role") == 2){ ?>
-               <li class="<?php echo $active1['dashboard']?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="<?php echo $active1?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class="<?php echo $active2?>"><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class="header">Data Proyek</li>
-               <li class=""><a href="dashboard/submitprofilstatus/high/?ss=high"><i class="glyphicon glyphicon-folder-open"></i><span>High</span></a></li>
-               <li class=""><a href="dashboard/submitprofilstatus/medium/?ss=medium"><i class="glyphicon glyphicon-folder-open"></i><span>Medium</span></a></li>
-               <li class=""><a href="dashboard/submitprofilstatus/low/?ss=low"><i class="glyphicon glyphicon-folder-open"></i><span>Low</span></a></li>
-               <li class=""><a href="dashboard/submitprofilstatus/kembali/?ss=kembali"><i class="glyphicon glyphicon-folder-open"></i><span>Kembali</span><small class="label pull-right bg-red"><?php echo $count_kembali; ?></small></a></li>
+               <li class="<?php echo $active3?>"><a href="dashboard/submitprofilstatushigh/high/?ss=high"><i class="glyphicon glyphicon-folder-open"></i><span>High</span></a></li>
+               <li class="<?php echo $active4?>"><a href="dashboard/submitprofilstatusmedium/medium/?ss=medium"><i class="glyphicon glyphicon-folder-open"></i><span>Medium</span></a></li>
+               <li class="<?php echo $active5?>"><a href="dashboard/submitprofilstatuslow/low/?ss=low"><i class="glyphicon glyphicon-folder-open"></i><span>Low</span></a></li>
+               <li class="<?php echo $active6?>"><a href="dashboard/submitprofilstatuskembali/kembali/?ss=kembali"><i class="glyphicon glyphicon-folder-open"></i><span>Kembali</span><small class="label pull-right bg-red"><?php echo $count_kembali; ?></small></a></li>
                <li class="header">Other</li>
-               <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+               <li class="<?php echo $active7?>"><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+
         <?php }else if($this->session->userdata("role") == 3){ ?>
-               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="<?php echo $active1?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class="<?php echo $active2?>"><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_apl; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+
         <?php }else if($this->session->userdata("role") == 4){ ?>
-               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="<?php echo $active1?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class="<?php echo $active2?>"><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_apl; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+
         <?php }else if($this->session->userdata("role") == 5){ ?>
-               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="<?php echo $active1?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class="<?php echo $active2?>"><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyekuser; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+
         <?php }else if($this->session->userdata("role") == 6){ ?>
-               <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
-               <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
+               <li class="<?php echo $active1?>"><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
+               <li class="<?php echo $active2?>"><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
                <li class=""><a href="dashboard/submitprofilstatus/dataproyek?ss=dataproyek"><i class="glyphicon glyphicon-folder-open"></i><span>Data Proyek</span><small class="label pull-right bg-red"><?php echo $count_dataproyek; ?></small></a></li>
                <li class="header">Other</li>
                <li class=""><a href="dashboard/datauser"><i class="glyphicon glyphicon-user"></i><span>User</a></span></li>
+               
         <?php }else{ ?>
                <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
                <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>
