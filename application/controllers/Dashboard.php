@@ -79,12 +79,12 @@ class Dashboard extends CI_Controller {
 	public function viewuser($idp)
 	{
 		$data['active1'] = '';
-		$data['active2'] = 'active';
+		$data['active7'] = 'active';
 		//$data['daily'] = $this->Dashboard_model->getAll_DailyFlight();
 
 		$data['profil'] = $this->Dashboard_model->getuserid($idp);
 
-		$this->load->view('akses/admin/header_portal');	
+		$this->load->view('akses/admin/header_portal', $data);	
         $this->load->view('akses/admin/profiluser', $data);
 	} 
 
@@ -104,7 +104,26 @@ class Dashboard extends CI_Controller {
         $this->load->view('akses/admin/submission_admin', $data);
 	}
 
-	
+	public function submitprofilstatus($status)
+	{
+		$data['active1'] = '';
+		$data['active2'] = '';
+		$data['dataproyek'] = 'active'; 
+		$data['active4'] = ''; 
+		$data['active5'] = ''; 
+		$data['active6'] = ''; 
+		
+		$data['user'] = $this->Dashboard_model->getuser();
+		$data['adminpii'] = $this->Dashboard_model->getadminpii();
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['statusinf'] = $this->Dashboard_model->get_t_status_projek();
+
+		$data['profil'] = $this->Dashboard_model->getProfilProjekStatus($_GET['filter_status'], $status);
+
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/submission_admin2', $data);
+	}
+
 	public function submitprofilstatushigh($status)
 	{
 		$data['active1'] = '';
@@ -331,7 +350,119 @@ class Dashboard extends CI_Controller {
 
 	public function formviewproyek($ss, $idp)
 	{
+		$data['active'] = 'active';
+		$data['active2'] = '';
+
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['kementerian'] = $this->Home_model->getKementerian();
+		$data['lpnk'] = $this->Home_model->getNonKementrian();
+		$data['provinsi'] = $this->Home_model->getProvinsi();
+		$data['kota'] = $this->Home_model->getKota();	
+		$data['kabupaten'] = $this->Home_model->getKabupaten();	
+		$data['kotakabu'] = $this->Home_model->getKotaKabu();
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
+		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
+		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
+		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
+		$data['ss'] = $ss;
+		
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/form_view_admin2', $data);
+	}
+
+	public function formviewproyekhigh($ss, $idp)
+	{
+		$data['active3'] = 'active';
+		$data['active2'] = '';
+
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['kementerian'] = $this->Home_model->getKementerian();
+		$data['lpnk'] = $this->Home_model->getNonKementrian();
+		$data['provinsi'] = $this->Home_model->getProvinsi();
+		$data['kota'] = $this->Home_model->getKota();	
+		$data['kabupaten'] = $this->Home_model->getKabupaten();	
+		$data['kotakabu'] = $this->Home_model->getKotaKabu();
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
+		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
+		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
+		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
+		$data['ss'] = $ss;
+		
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/form_view_admin2', $data);
+	}
+
+	public function formviewproyekmedium($ss, $idp)
+	{
+		$data['active4'] = 'active';
+		$data['active2'] = '';
+
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['kementerian'] = $this->Home_model->getKementerian();
+		$data['lpnk'] = $this->Home_model->getNonKementrian();
+		$data['provinsi'] = $this->Home_model->getProvinsi();
+		$data['kota'] = $this->Home_model->getKota();	
+		$data['kabupaten'] = $this->Home_model->getKabupaten();	
+		$data['kotakabu'] = $this->Home_model->getKotaKabu();
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
+		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
+		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
+		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
+		$data['ss'] = $ss;
+		
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/form_view_admin2', $data);
+	}
+
+	public function formviewproyeklow($ss, $idp)
+	{
 		$data['active5'] = 'active';
+		$data['active2'] = '';
+
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['kementerian'] = $this->Home_model->getKementerian();
+		$data['lpnk'] = $this->Home_model->getNonKementrian();
+		$data['provinsi'] = $this->Home_model->getProvinsi();
+		$data['kota'] = $this->Home_model->getKota();	
+		$data['kabupaten'] = $this->Home_model->getKabupaten();	
+		$data['kotakabu'] = $this->Home_model->getKotaKabu();
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
+		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
+		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
+		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
+		$data['ss'] = $ss;
+		
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/form_view_admin2', $data);
+	}
+
+	public function formviewproyekkembali($ss, $idp)
+	{
+		$data['active6'] = 'active';
 		$data['active2'] = '';
 
 		$data['sektor'] = $this->Home_model->getSektor();
@@ -377,7 +508,7 @@ class Dashboard extends CI_Controller {
 
 	public function formfinal($idp)
 	{
-		$data['active1'] = 'active';
+		$data['dataproyek'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		$data['active4'] = '';
@@ -401,7 +532,7 @@ class Dashboard extends CI_Controller {
 		$data['getrespon'] = $this->Home_model->getrespon($idp);
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/form_pengajuan_final', $data);
 	}
 
@@ -526,7 +657,7 @@ class Dashboard extends CI_Controller {
 
 	public function formfinalsadmin($idp)
 	{
-		$data['active1'] = 'active';
+		$data['dataproyek'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		$data['active4'] = '';
@@ -551,7 +682,38 @@ class Dashboard extends CI_Controller {
 		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);		
 
 
-		$this->load->view('akses/admin/header_portal');
+		$this->load->view('akses/admin/header_portal', $data);
+        $this->load->view('akses/admin/formfinalsadmin', $data);
+	}
+
+	public function formfinalsadminview($idp)
+	{
+		$data['dataproyek'] = '';
+		$data['active2'] = 'active';
+		$data['active3'] = '';
+		$data['active4'] = '';
+		
+
+		$data['sektor'] = $this->Home_model->getSektor();
+		$data['kementerian'] = $this->Home_model->getKementerian();
+		$data['lpnk'] = $this->Home_model->getNonKementrian();
+		$data['provinsi'] = $this->Home_model->getProvinsi();
+		$data['kota'] = $this->Home_model->getKota();	
+		$data['kabupaten'] = $this->Home_model->getKabupaten();	
+		$data['kotakabu'] = $this->Home_model->getKotaKabu();
+		$data['assesment'] = $this->Home_model->assesment();
+		$data['cn_assesment'] = $this->Home_model->cn_assesment();	
+		$data['profil'] = $this->Home_model->getIdProfilProjek($idp);
+		$data['profilus'] = $this->Home_model->getIdProfilProjekUser($idp, $sid);
+		$data['skor'] = $this->Home_model->getskor($idp);
+		$data['noass'] = $this->Home_model->gett($idp);
+		$data['totskor'] = $this->Dashboard_model->getsum($idp);
+
+		$data['getrespon'] = $this->Home_model->getrespon($idp);
+		$data['resadmin'] = $this->Dashboard_model->getresadmin($idp);		
+
+
+		$this->load->view('akses/admin/header_portal', $data);
         $this->load->view('akses/admin/formfinalsadmin', $data);
 	}
 

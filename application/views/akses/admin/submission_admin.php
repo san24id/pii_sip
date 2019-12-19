@@ -115,7 +115,7 @@
                         ?>
 
                     <?php }else if($this->session->userdata('role') == 3 || $this->session->userdata('role') == 4 || $this->session->userdata('role') == 5 || $this->session->userdata('role') == 6){ ?>
-                         <a href="Dashboard/formfinalsadmin/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">View</button></a>
+                         <a href="Dashboard/formfinalsadminview/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">View</button></a>
                     <?php }else{ ?>
 
                       <?php if($row->status == 3){ ?>

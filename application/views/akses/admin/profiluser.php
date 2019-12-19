@@ -30,30 +30,23 @@
                 <div class="form-group">
                   <label>2. Nama Lengkap</label>
                   <input type="text" class="form-control" name="nama_user" required="required" value="<?php echo $row->nama_user; ?>" readonly>
+                </div>                
+                <div class="form-group">
+                  <label>3. Instansi</label>
+                  <input type="text" class="form-control" name="instansi" required="required" value="<?php echo $row->instansi; ?>" readonly>
                 </div>
-
-                <div class="form-row">
-                   <div class="form-group col-md-6">
-                      <label>3. Instansi</label>
-                      <input type="text" class="form-control" name="instansi" required="required" value="<?php echo $row->instansi; ?>" readonly>
-                    </div>
-                  <div class="form-group col-md-6">
-                      <label>4. Jabatan</label>
-                      <input type="text" class="form-control" name="jabatan" required="required" value="<?php echo $row->jabatan; ?>" readonly>
-                  </div>
-                </div>
-
-                 <div class="form-row">
-                 <div class="form-group col-md-6">
+                <div class="form-group">
+                  <label>4. Jabatan</label>
+                  <input type="text" class="form-control" name="jabatan" required="required" value="<?php echo $row->jabatan; ?>" readonly>
+                </div>                 
+                <div class="form-group">
                   <label>5. No Telepon</label>
-                    <input type="text" class="form-control" name="telepon" required="required" value="<?php echo $row->telepon; ?>" readonly>
+                  <input type="text" class="form-control" name="telepon" required="required" value="<?php echo $row->telepon; ?>" readonly>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group">
                   <label>6. Email</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>
+                    <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>                
                 </div>
-                </div>
-
                 <div class="form-group">
                   <label>7. Username</label>
                   <input type="text" class="form-control" name="username" value="<?php echo $row->username; ?>" readonly>
