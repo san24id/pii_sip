@@ -28,32 +28,41 @@
                   <input type="text" class="form-control" name="nomor_user" value="<?php echo $row->nomor_user; ?>" readonly>
                 </div>
                 <div class="form-group">
-                  <label>2. Nama Lengkap :</label>
+                  <label>2. NIK</label>
+                  <input type="hidden" name="nik" value="<?php echo $row->nik; ?>">
+                  <input type="text" class="form-control" name="nik" value="<?php echo $row->nik; ?>" readonly>
+                </div>
+                <div class="form-group">
+                  <label>3. Foto NIK</label><p></p>
+                  <img src="<?php echo base_url('foto/'.$row->foto.'');?>" height="180px" width="400px">">
+                  <input type="file" class="form-control" name="foto" value="<?php echo $row->foto; ?>" readonly>
+                </div>                
+                <div class="form-group">
+                  <label>4. Nama Lengkap :</label>
                   <input type="text" class="form-control" name="nama_user" required="required" value="<?php echo $row->nama_user; ?>">
                 </div>            
                 <div class="form-group">
-                      <label>3. Instansi :</label>
-                      <input type="text" class="form-control" name="instansi" required="required" value="<?php echo $row->instansi; ?>">
-                    </div>
-                <div class="form-group">
-                      <label>4. Jabatan :</label>
-                      <input type="text" class="form-control" name="jabatan" required="required" value="<?php echo $row->jabatan; ?>">
+                  <label>5. Instansi :</label>
+                  <input type="text" class="form-control" name="instansi" required="required" value="<?php echo $row->instansi; ?>">
                 </div>
-
+                <div class="form-group">
+                  <label>6. Jabatan :</label>
+                  <input type="text" class="form-control" name="jabatan" required="required" value="<?php echo $row->jabatan; ?>">
+                </div>
                 <div class="form-group">                 
-                  <label>5. Nomor Telepon :</label>
-                    <input type="text" class="form-control" onkeypress="return wajibAngka(event)" name="telepon" required="required" value="<?php echo $row->telepon; ?>">
+                  <label>7. Nomor Telepon :</label>
+                  <input type="text" class="form-control" onkeypress="return wajibAngka(event)" name="telepon" required="required" value="<?php echo $row->telepon; ?>">
                 </div>
                 <div class="form-group">
-                  <label>6. Alamat Email :</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>                
+                  <label>8. Alamat Email :</label>
+                  <input type="text" class="form-control" name="email" value="<?php echo $row->email; ?>" readonly>                
                 </div>
                 <div class="form-group">
-                  <label>7. Username :</label>
+                  <label>9. Username :</label>
                   <input type="text" class="form-control" name="username" value="<?php echo $row->username; ?>" readonly>
                 </div>
                 <div class="form-group">
-                  <label>8. Ubah Password</label>
+                  <label>10. Ubah Password</label>
                 </div>
                
                 <div class="form-group">
