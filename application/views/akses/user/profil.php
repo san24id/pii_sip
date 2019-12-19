@@ -34,8 +34,9 @@
                 </div>
                 <div class="form-group">
                   <label>3. Foto NIK</label><p></p>
-                  <img src="<?php echo base_url('foto/'.$row->foto.'');?>" height="180px" width="400px">">
-                  <input type="file" class="form-control" name="foto" value="<?php echo $row->foto; ?>" readonly>
+                  <a href="<?php echo 'foto/'.$row->foto; ?>" target="_blank"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->foto; ?></button></a>
+                  <!-- <img src="<?php echo base_url('foto/'.$row->foto.'');?>" height="180px" width="400px">">
+                  <input type="file" class="form-control" name="foto" value="<?php echo $row->foto; ?>" readonly> -->
                 </div>                
                 <div class="form-group">
                   <label>4. Nama Lengkap :</label>

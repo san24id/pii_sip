@@ -477,7 +477,7 @@
                                          if($row->nomor_urut == $x+1){
                                            if($row->b == 'not'){
                                              if($status[0] > 2 && $s_upload[$x] == 1){ ?>
-                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                           <?php } 
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
@@ -506,7 +506,7 @@
                                                   $nn = "display:block";
                                                 }
                                                ?>
-                                                <button type="button" id="dw<?php echo $row->nomor_urut; ?>" class="btn btn-default btn-sm" style="<?php echo $nn; ?>">Download FIle <?php echo $row->nomor_urut; ?></button>
+                                                <button type="button" id="dw<?php echo $row->nomor_urut; ?>" class="btn btn-default btn-sm" style="<?php echo $nn; ?>">Download File <?php echo $row->nomor_urut; ?></button>
                                                 <script type="text/javascript">
                                                   document.getElementById('dw<?php echo $row->nomor_urut; ?>').addEventListener("click", function(){
                                                   var arr = [];
@@ -538,7 +538,7 @@
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                           }else if($row->b == 'textarea'){
                                           if($status[0] > 2 && $s_upload[$x] == 1){ ?>
-                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download FIle <?php echo $row->nomor_urut; ?></button></a>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
                                                 <div style="">
 
                                               </div>

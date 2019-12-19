@@ -138,52 +138,52 @@
         <div class="modal-body">
           <h5>
             <form method="post" action="superadm/updateuser">
-              <input type="hidden" name="id" value="<?php echo $row->id_user; ?>">
+              <input type="hidden" name="id_user" value="<?php echo $row->id_user; ?>">
              <table class="table">
                 <tr>
                   <th>Nomor User</th>
                   <td>:</td>
-                  <td><input type="text" name="id_ass" class="form-control" value="<?php echo $row->nomor_user; ?>"></td>
+                  <td><input type="text" name="nomor_user" class="form-control" value="<?php echo $row->nomor_user; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>NIK</th>
                   <td>:</td>
-                  <td><input type="text" name="nomor_urut" class="form-control" value="<?php echo $row->nik; ?>"></td>
+                  <td><input type="text" name="nik" class="form-control" value="<?php echo $row->nik; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Kartu NIK</th>
                   <td>:</td>
-                  <td><input type="text" name="foto" class="form-control" value="<?php echo $row->foto; ?>"></td>
+                  <td><input type="text" name="foto" class="form-control" value="<?php echo $row->foto; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Nama</th>
                   <td>:</td>
-                  <td><input type="text" name="urut" class="form-control" value="<?php echo $row->nama_user; ?>"></td>
+                  <td><input type="text" name="nama_user" class="form-control" value="<?php echo $row->nama_user; ?>" readonly></td>
                 </tr>                
                 <tr>
                   <th>Instansi</th>
                   <td>:</td>
-                  <td><input type="text" name="a" class="form-control" value="<?php echo $row->instansi; ?>"></td>
+                  <td><input type="text" name="instansi" class="form-control" value="<?php echo $row->instansi; ?>"readonly></td>
                 </tr>
                 <tr>
                   <th>Jabatan</th>
                   <td>:</td>
-                  <td><input type="text" name="b" class="form-control" value="<?php echo $row->jabatan; ?>"></td>
+                  <td><input type="text" name="jabatan" class="form-control" value="<?php echo $row->jabatan; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Telepon</th>
                   <td>:</td>
-                  <td><input type="text" name="respon" class="form-control"value="<?php echo $row->telepon; ?>"></td>
+                  <td><input type="text" name="telepon" class="form-control"value="<?php echo $row->telepon; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Username</th>
                   <td>:</td>
-                  <td><input type="text" name="bobot" class="form-control"value="<?php echo $row->username; ?>"></td>
+                  <td><input type="text" name="username" class="form-control"value="<?php echo $row->username; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Status</th>
                   <td>:</td>
-                  <td><input type="text" name="bobot" class="form-control" value="<?php echo $row->status; ?>"></td>
+                  <td><input type="text" name="status" class="form-control" value="<?php echo $row->status; ?>"></td>
                 </tr>
               </table>
               </h5>
@@ -208,9 +208,9 @@
       </div>
       <div class="modal-footer">
       <form method="post" action="superadm/deleteuser">
-          <input type="hidden" name="id" value="<?php echo $row->id_user; ?>">
+          <input type="hidden" name="id_user" value="<?php echo $row->id_user; ?>">
           <button type="submit" class="btn btn-success">Yes</button>
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>
       </div>
     </div>

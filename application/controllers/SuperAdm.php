@@ -241,14 +241,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addkementrian($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kementrian');
 	}
 
 	public function deletekementrian(){
 
 		$this->SuperAdm_model->deletekementrian($_POST['id_kementerian']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kementrian');
 
 	}
 
@@ -265,7 +265,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatekementrian($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kementrian');
 	}
 
 	public function lpnk(){
@@ -294,14 +294,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addlpnk($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/lpnk');
 	}
 
 	public function deletelpnk(){
 
 		$this->SuperAdm_model->deletelpnk($_POST['id_lpnk']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/lpnk');
 
 	}
 
@@ -317,7 +317,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatelpnk($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/lpnk');
 	}
 
 	public function sektor(){
@@ -346,14 +346,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addsektor($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/sektor');
 	}
 
 	public function deletesektor(){
 
 		$this->SuperAdm_model->deletesektor($_POST['id_sektor']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/sektor');
 
 	}
 
@@ -369,7 +369,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatesektor($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/sektor');
 	}
 	
 	public function subsektor(){
@@ -399,14 +399,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addssektor($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/subsektor');
 	}
 
 	public function deletessektor(){
 
 		$this->SuperAdm_model->deletessektor($_POST['id_subsektor']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/subsektor');
 
 	}
 
@@ -423,7 +423,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatessektor($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/subsektor');
 	}
 
 	public function provinsi(){
@@ -452,14 +452,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addprov($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/provinsi');
 	}
 
 	public function deleteprov(){
 
 		$this->SuperAdm_model->deleteprov($_POST['id_provinsi']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/provinsi');
 
 	}
 
@@ -475,7 +475,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updateprov($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/provinsi');
 	}
 
 	public function kotakabu(){
@@ -504,14 +504,14 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->addkotakabu($add);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kotakabu');
 	}
 
 	public function deletekotakabu(){
 
 		$this->SuperAdm_model->deletekotakabu($_POST['id_kotakabu']);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kotakabu');
 
 	}
 
@@ -528,7 +528,7 @@ class SuperAdm extends CI_Controller {
 
 		$this->SuperAdm_model->updatekotakabu($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/kotakabu');
 	}
 
 	public function user(){
@@ -544,18 +544,27 @@ class SuperAdm extends CI_Controller {
 
 	public function updateuser(){
 		$upd = array(
-			'id_kotakabu' => $_POST['id_kotakabu'],
-			'id_provinsi' => $_POST['id_provinsi'],
-			'nama_daerah' => $_POST['nama_daerah']
-			// 'urut' => $_POST['urut'],
-			// 'a' =>  $_POST['a'],
-			// 'b' =>  $_POST['b']
-			// 'su' =>  $_POST['informasi_upload']
+			'id_user' => $_POST['id_user'],
+			'nomor_user' => $_POST['nomor_user'],
+			'nik' => $_POST['nik'],
+			'foto' => $_POST['foto'],
+			'nama_user' =>  $_POST['nama_user'],
+			'instansi' =>  $_POST['instansi'],
+			'jabatan' =>  $_POST['jabatan'],
+			'email' => $_POST['email'],
+			'telepon' => $_POST['telepon'],
+			'username' => $_POST['username'],
+			'password' => $POST['password'],
+			'status' => $_POST['status']
+			// 'status_1' => $_POST['status_1'],
+			// 'log_create' => $_POST['log_create'],
+			// 'log_update' => $_POST['log_update'],
+			// 'last_login' => $_POST['las_login']
 		);
 
 		$this->SuperAdm_model->updateuser($upd);
 
-		redirect('SuperAdm');
+		redirect('SuperAdm/user');
 	}
 
 

@@ -79,7 +79,7 @@
                   <td><?php echo $row->status ?></td>
                   <td>
                     <table>
-                      <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_user; ?>">Ubah</button>    
+                      <!-- <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ubah<?php echo $row->id_user; ?>">Ubah</button>     -->
                       <td><a href="dashboard/viewuser/<?php echo $row->id_user; ?>"><button class="btn btn-primary btn-sm">View</button></a></td>
                       <td>
                         <?php
