@@ -116,18 +116,18 @@
       <ul class="sidebar-menu">
         <?php 
             if($this->session->userdata("role") == 1){?>
-               <li class=""><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
-               <li class=""><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
-               <li class=""><a href="superadm/impassesment"><i class="glyphicon glyphicon-th-list"></i><span>IMP Assessment</span></a></li>
-               <li class=""><a href="superadm/impm1"><i class="glyphicon glyphicon-th-list"></i><span>IMP Deskripsi Proyek</span></a></li>
-               <li class=""><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
-               <li class=""><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskripsi Proyek</span></a></li>
-               <li class=""><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementrian</span></a></li>
-               <li class=""><a href="superadm/lpnk"><i class="glyphicon glyphicon-list-alt"></i><span>LPNK</span></a></li>
-               <li class=""><a href="superadm/sektor"><i class="glyphicon glyphicon-info-sign"></i><span>Sektor</span></a></li>
-               <li class=""><a href="superadm/subsektor"><i class="glyphicon glyphicon-info-sign"></i><span>Subsektor</span></a></li>
-               <li class=""><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
-               <li class=""><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li>
+               <li class="<?php echo $active1?>"><a href="superadm"><i class="glyphicon glyphicon-user"></i><span>Admin Staff</span></a></li>
+               <li class="<?php echo $data_user?>"><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
+               <li class="<?php echo $impasses?>"><a href="superadm/impassesment"><i class="glyphicon glyphicon-th-list"></i><span>IMP Assessment</span></a></li>
+               <li class="<?php echo $impm1?>"><a href="superadm/impm1"><i class="glyphicon glyphicon-th-list"></i><span>IMP Deskripsi Proyek</span></a></li>
+               <li class="<?php echo $assesment?>"><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
+               <li class="<?php echo $m1?>"><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskripsi Proyek</span></a></li>
+               <li class="<?php echo $kementrian?>"><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementrian</span></a></li>
+               <li class="<?php echo $lpnk?>"><a href="superadm/lpnk"><i class="glyphicon glyphicon-list-alt"></i><span>LPNK</span></a></li>
+               <li class="<?php echo $sektor?>"><a href="superadm/sektor"><i class="glyphicon glyphicon-info-sign"></i><span>Sektor</span></a></li>
+               <li class="<?php echo $subsektor?>"><a href="superadm/subsektor"><i class="glyphicon glyphicon-info-sign"></i><span>Subsektor</span></a></li>
+               <li class="<?php echo $prov?>"><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
+               <li class="<?php echo $kotakab?>"><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li>
         <?php }else{ ?>
           <li class=""><a href="dashboard"><i class="glyphicon glyphicon-blackboard"></i><span>Dashboard</span></a></li>
           <li class=""><a href="dashboard/submissionpage"><i class="glyphicon glyphicon-hdd"></i><span>Master Data</span></a></li>

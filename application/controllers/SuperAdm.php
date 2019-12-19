@@ -52,7 +52,7 @@ class SuperAdm extends CI_Controller {
 		$data['sektorcount'] = $this->Dashboard_model->getsektorcount();
 		$data['admstaff'] = $this->Dashboard_model->data_adminstaff();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
         $this->load->view('akses/admin/data_admin', $data);
 	}
 
@@ -110,13 +110,14 @@ class SuperAdm extends CI_Controller {
 	// }
 
 	public function assesment(){
-		$data['active1'] = 'active';
+		$data['assesment'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		
 		$data['asses'] = $this->SuperAdm_model->getassesment();
 		$data['sum'] = $this->SuperAdm_model->getsum();		
-		$this->load->view('akses/admin/header_admin');
+
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/submission_superadmin', $data);
 	}
 
@@ -167,14 +168,14 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function m1(){
-		$data['active1'] = 'active';
+		$data['m1'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		
 		$data['m1s'] = $this->SuperAdm_model->getm1();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/m1_superadmin', $data);
 	}
 
@@ -215,13 +216,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function kementrian(){
-		$data['active1'] = 'active';
+		$data['kementrian'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		$data['mentri'] = $this->SuperAdm_model->getkementrian();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/kementrian_superadm', $data);
 	}
 
@@ -268,13 +269,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function lpnk(){
-		$data['active1'] = 'active';
+		$data['lpnk'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		
 		$data['llpnk'] = $this->SuperAdm_model->getlpnk();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/lpnk_superadm', $data);
 	}
 
@@ -320,13 +321,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function sektor(){
-		$data['active1'] = 'active';
+		$data['sektor'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		
 		$data['sektor'] = $this->SuperAdm_model->getsektor();
 	
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/sektor_superadm', $data);
 	}
 
@@ -372,13 +373,13 @@ class SuperAdm extends CI_Controller {
 	}
 	
 	public function subsektor(){
-		$data['active1'] = 'active';
+		$data['subsektor'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		$data['ssektor'] = $this->SuperAdm_model->getssektor();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/subsektor_superadm', $data);
 	}
 
@@ -426,13 +427,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function provinsi(){
-		$data['active1'] = 'active';
+		$data['prov'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		$data['provinsi'] = $this->SuperAdm_model->getprovinsi();		
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/provinsi_superadm', $data);
 	}
 
@@ -478,13 +479,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function kotakabu(){
-		$data['active1'] = 'active';
+		$data['kotakab'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		$data['kkotakabu'] = $this->SuperAdm_model->getkotakabu();
 		
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/kotakabu_superadm', $data);
 	}
 
@@ -531,13 +532,13 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function user(){
-		$data['active1'] = 'active';
+		$data['data_user'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
 		$data['user'] = $this->SuperAdm_model->getuser();
 		
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/user_superadm', $data);
 	}
 
@@ -559,18 +560,18 @@ class SuperAdm extends CI_Controller {
 
 
 	public function impassesment(){
-		$data['active1'] = 'active';
+		$data['impasses'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		
 		$data['asses'] = $this->SuperAdm_model->getimpassesment();
 		$data['sum'] = $this->SuperAdm_model->getsumimpassesment();		
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/imp_ass_superadmin', $data);
 	}
 
 	public function impm1(){
-		$data['active1'] = 'active';
+		$data['impm1'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 
@@ -578,7 +579,7 @@ class SuperAdm extends CI_Controller {
 		$data['m1s'] = $this->SuperAdm_model->getimpm1();
 		$data['asses'] = $this->SuperAdm_model->getimpassesment();
 
-		$this->load->view('akses/admin/header_admin');
+		$this->load->view('akses/admin/header_admin', $data);
 		$this->load->view('akses/admin/imp_m1_superadmin', $data);
 	}
 
