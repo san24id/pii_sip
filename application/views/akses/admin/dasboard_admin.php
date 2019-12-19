@@ -313,7 +313,7 @@
           enabled: false
       },
       tooltip: {
-          pointFormat: '{series.name}: <b>{point.name}</b>'
+          pointFormat: '{series.name}: <b>{point.y}</b>'
       },
       plotOptions: {
           pie: {
@@ -354,7 +354,7 @@
           enabled: false
       },
       tooltip: {
-          pointFormat: '{series.name}: <b>{point.name}</b>'
+          pointFormat: '{series.name}: <b>{point.y}</b>'
       },
       plotOptions: {
           pie: {

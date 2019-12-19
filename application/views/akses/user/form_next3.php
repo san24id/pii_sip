@@ -550,7 +550,8 @@
                             ?>
 
                                 <?php if($status[0] < 3){ ?>
-                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" onchange="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" id="file" onsubmit="return validasiFile()" onchange="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <div id="pratinjauGambar" >
                                   <input type="hidden" name="nmr[<?php echo $key; ?>]" value="<?php echo $row->nomor_urut; ?>" />
                                   <input type="hidden" name="nom[<?php echo $key; ?>]" value="<?php echo $row->urut; ?>">
                                   <input type="hidden" name="kup[<?php echo $key; ?>]" value="<?php echo substr($profil[0]->nama_projek,0,25); ?>" />
@@ -650,20 +651,7 @@
                 </div>
               </div>
             </div>
-        </form>
-
-        <div class="modal fade" id="disclamer1" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">          
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">        
-                  <h5><p align="justify">Apakah anda yakin ingin kembali ke Form Pengajuan? Jika "Ya" File yang sudah diupload akan hilang</p></h5>
-                </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                      <a href="Home/form_edit/<?php echo $id_projek[0] ?>"><button type="submit" class="btn btn-warning" >Ya</button>
-              </div>
-            </div>
-        </div>
+        </form>      
          
         <!-- /.content -->
       </div>
@@ -673,6 +661,20 @@
         </div>
         <strong>Copyright &copy; 2019 
       </footer>
+
+      <div class="modal fade" id="disclamer1" tabindex="-1" role="dialog" aria-labelledby="disclamer" aria-hidden="true">          
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">        
+                  <h5><p align="justify">Apakah anda yakin ingin kembali ke Form Pengajuan? Jika "Ya" File yang sudah diupload akan hilang</p></h5>
+                </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                      <a data-toggle="modal" href="Home/form_edit/<?php echo $id_projek[0] ?>" class="btn btn-warning">Ya</a>
+                      <!-- <button href="Home/form_edit/<?php echo $id_projek[0] ?>" type="button" class="btn btn-warning" >Ya</a></button> -->
+              </div>
+            </div>
+        </div>
       <!-- Control Sidebar -->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -922,7 +924,7 @@
     var pathFile = inputFile.value;
     var ekstensiOk = /(\.jpg|\.jpeg|\.png|\.gif|\.rar|\.zip|\.doc|\.docx|\.xls|\.xlsx|\.pdf|\.ppt|\.pptx)$/i;
     if(!ekstensiOk.exec(pathFile)){
-        alert('File tidak lebih dari 1mb');
+        alert('File tidak lebih dari 1mb dan format jpg,jpeg,png,gif,rar,zip,doc,docx,xls,xlsx,pdf,ppt,pptx');
         inputFile.value = '';
         return false;
     }else{
