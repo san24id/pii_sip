@@ -703,7 +703,7 @@
         </div>
         <div class="modal-footer">          
           <button type="submit" class="btn btn-primary" id="sbmt-back-admin">Send</button>
-          <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -832,7 +832,7 @@
     //   });
     // }
     
-    $("#sbmt-back-admin").on('click', function(){
+    $("#sbmt-back-admin").on('click','input, textarea', function(){
       // if($("form-back-admin")[0].checkValidity()) {
       //   //your form execution code
       // }else alert("invalid form")      
