@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        My Profil
+        User Profile
         <small></small>
       </h1>
     </section>

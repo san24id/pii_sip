@@ -138,9 +138,9 @@
                          <?php if($row->status == 6 || $row->status == 7){ ?>
                            <a href="Dashboard/formview/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">Review</button></a>
                         <?php }else if($row->status == 8){ ?>
-                             <a href="Dashboard/formviewproyek/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">view</button></a>
+                             <a href="Dashboard/formviewproyek/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">View</button></a>
                         <?php }else if($row->status == 9 || $row->status == 10){ ?>
-                             <a href="Dashboard/formviewproyek/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">view</button></a>
+                             <a href="Dashboard/formviewproyek/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">View</button></a>
                         <?php } ?>
                     <?php }else{ ?>
 
@@ -285,7 +285,7 @@
                          <?php if($row->status == 6 || $row->status == 7){ ?>
                            <a href="Dashboard/formfinal/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">Review</button></a>
                         <?php }else if($row->status == 8 || $row->status == 9){ ?>
-                             <a href="Dashboard/formfinal/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">view</button></a>
+                             <a href="Dashboard/formfinal/<?php echo $row->id_projek; ?>"><button class="btn btn-primary btn-sm">View</button></a>
                         <?php } ?>
                     <?php }else{ ?>
 
