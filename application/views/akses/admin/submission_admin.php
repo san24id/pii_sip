@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        DATA PROYEK VERIFY &nbsp; <a href="Dashboard/submissionpagePDF?<?php echo $_SERVER['QUERY_STRING']; ?>"><button class="btn btn-primary btn-sm">Export to PDF</button></a>
+        DATA PROYEK VERIFY &nbsp; <a href="Dashboard/submissionpagePDF?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank"><button class="btn btn-primary btn-sm">Export to PDF</button></a>
         <small></small>
       </h1>
     </section>
