@@ -28,7 +28,7 @@
                       {
                         if($this->session->userdata('role') == 2)
                         {
-                          if ( $value->id > 3 )
+                          if ( $value->id > 0 )
                           {
                     ?>
                             <option value="<?php echo $value->id; ?>" 
@@ -92,6 +92,7 @@
                              echo "<img src='assets/dashboard/images/legend/responformpp.png'>";
                           }    
                         ?>
+                  <!-- <?php echo $row->status; ?>  -->
                   </td>
                   <td><?php echo $row->nomor_projek; ?></td>
                   <td><?php echo $row->nama_pj; ?></td>
