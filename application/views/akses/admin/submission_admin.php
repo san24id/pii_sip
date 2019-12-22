@@ -61,6 +61,7 @@
                   <th>Lokasi</th>
                   <th>Estimasi Nilai</th>
                   <th>Skor</th>
+                  <th>Status Pengerjaan</th>                  
                   <th>Log Update</th>
                   <th>Action</th>
                 </tr>
@@ -102,6 +103,31 @@
                   <td><?php echo $row->lokasi ?></td>
                   <td><?php echo $row->estimasi; ?></td>
                   <td><?php echo $row->total_skor; ?></td>
+                  <td>  
+                  <?php 
+                          if($row->status == 1){
+                              echo "Not Send To Admin";  
+                          }else if($row->status == 2){
+                             echo "Not Send To Admin";
+                          }else if($row->status == 3){
+                             echo "On Admin All";
+                          }else if($row->status == 4){
+                             echo "On Admin Approval";
+                          }else if($row->status == 5){
+                             echo "Back To Admin";
+                          }else if($row->status == 6){
+                             echo "Progress on Admin User PB";
+                          }else if($row->status == 7){   
+                            echo "Progress on Admin User GC";
+                          }else if($row->status == 8){
+                             echo "Finish on Admin User";
+                          }else if($row->status == 9){
+                             echo "Finish on Admin Approval PB";
+                          }else if($row->status == 10){
+                            echo "Finish on Admin Approval GC";
+                          }     
+                        ?>                  
+                  </td>
                   <td><?php echo date("d-m-Y H:i:s", strtotime($row->log_update)); ?></td>
                   <td>
 
