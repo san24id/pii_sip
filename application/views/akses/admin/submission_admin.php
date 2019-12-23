@@ -115,12 +115,16 @@
                              echo "On Admin Approval";
                           }else if($row->status == 5){
                              echo "Back To Admin";
-                          }else if($row->status == 6 || $row->status == 7){
-                             echo "Progress on Admin User";                          
+                          }else if($row->status == 6){
+                             echo "Progress on Admin User PB";
+                          }else if($row->status == 7){
+                            echo "Progress on Admin User GC";                                                   
                           }else if($row->status == 8){
                              echo "Finish on Admin User";
-                          }else if($row->status == 9 || $row->status == 10){
-                             echo "Finish on Admin Approval";
+                          }else if($row->status == 9){
+                             echo "Finish on Admin Approval PB";
+                          }else if($row->status == 10){
+                            echo "Finish on Admin Approval GC";
                           }
                         ?>                  
                   </td>
