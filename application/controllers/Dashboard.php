@@ -1053,9 +1053,6 @@ class Dashboard extends CI_Controller {
 		$q1 = "delete from t_adminapp where id_projek = ".$_POST['id_project'];
 		$q1 = $this->db->query($q1);
 
-		$this->db->query("UPDATE t_projekprofil SET status = 3 WHERE id_projek = ".$_POST['id_project']);
-		$this->db->query("insert into t_adminapp (id_projek, role) values (".$_POST['id_project'].", ".$_POST['role'].")");
-
 		$this->db->query("UPDATE t_projekprofil SET status = 4 WHERE id_projek = ".$_POST['id_project']);
 		$this->db->query("insert into t_adminapp (id_projek, role) values (".$_POST['id_project'].", ".$_POST['role'].")");
 
@@ -1071,10 +1068,10 @@ class Dashboard extends CI_Controller {
 			$this->db->query("insert into t_adminuser (id_projek, username) values (".$_POST['id_project'].", '".$value."')");
 		}
 
-		$this->db->query("UPDATE t_projekprofil SET status = 7, komen1 = '".$_POST['komen1']."' WHERE id_projek = ".$_POST['id_project']);
-		foreach ($_POST['username'] as $key => $value) {
-			$this->db->query("insert into t_adminuser (id_projek, username) values (".$_POST['id_project'].", '".$value."')");
-		}
+		// $this->db->query("UPDATE t_projekprofil SET status = 7, komen1 = '".$_POST['komen1']."' WHERE id_projek = ".$_POST['id_project']);
+		// foreach ($_POST['username'] as $key => $value) {
+		// 	$this->db->query("insert into t_adminuser (id_projek, username) values (".$_POST['id_project'].", '".$value."')");
+		// }
 
 		return true;
 	}

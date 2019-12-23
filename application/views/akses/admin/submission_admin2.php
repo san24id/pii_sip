@@ -1,6 +1,5 @@
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -594,16 +593,15 @@
 <div class="modal fade" id="mdl-referensi" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
-
+       <form id="form-approval-user">
         <input type="hidden" name="id_project" class="hdnid_project" value="">
         <div class="modal-body">
           <div class="form">
             <div class="form-group">
               <label>Referensi</label>
-              <textarea class="form form-control" id="komen1"  placeholder="Referensi" onchange="document.getElementById('hdarea_project').value= (this.value);"></textarea>
-              <form id="form-approval-user">
-              <input type="hidden" name="id_project" class="hdnid_project" value="">
-              <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea>
+              <textarea class="form form-control" id="komen1"  placeholder="Referensi" onchange="document.getElementById('hdarea_project').value= (this.value);" required></textarea>
+                            
+              <!-- <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea> -->
               <div class="modal-body">
                <table class="table">
                 <tr>
@@ -730,7 +728,6 @@
   $(function () {
     $("#example1").DataTable();
     $("#send").DataTable();
-
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -740,12 +737,8 @@
       "autoWidth": false
     });
   });
-
-
     function view_daily($id)
     {
-
-
         $.ajax({
          type : 'post',
          url : 'Report/getreport/'+$id,
@@ -753,11 +746,9 @@
         {
             $('.fetched-data').html(data);//menampilkan data ke dalam modal
             $('#modal_view').modal('show'); // show bootstrap modal when complete loaded
-
         }
       });
     }
-
     function delete_daily($id)
     {
       if(confirm('Are you sure delete this data?'))
@@ -776,10 +767,8 @@
                 alert('Error deleting');
             }
         });
-
       }
     }
-
     $('#filter_status').on('change', function(){
       if ( $(this).val() == 0 ) {
         window.location = "<?php echo site_url('dashboard/submissionpage')?>";
@@ -787,7 +776,6 @@
         window.location = "<?php echo site_url('dashboard/submissionpage')?>?filter_status="+$(this).val();
       }
     });
-
     $("#sbmt-approval").on('click', function(){
       $.ajax({        
           type: "POST", // Method pengiriman data bisa dengan GET atau POST        
@@ -806,18 +794,17 @@
           type: "POST", // Method pengiriman data bisa dengan GET atau POST        
           url: "<?php echo base_url("index.php/dashboard/saveapprovaluser"); ?>", // Isi dengan url/path file php yang dituju       
           data: $("#form-approval-user").serialize(), // data yang akan dikirim ke file yang dituju        
-          success: function(response){ // Ketika proses pengiriman berhasil          
+          success: function(response){ // Ketika proses pengiriman berhasil    
+              $("#form-approval-user").required()      
               $("#mdl-approval-user").modal('hide'); // Sembunyikan loadingnya  
               location.reload();      
-              alert('Send Approval success')
+              alert('Send Admin User success')
           }      
       });
     });
-
     function setHdn(value){
       $(".hdnid_project").val(value);
     }
-
     // function backAdmin(value){
     //   $.ajax({        
     //       type: "POST", // Method pengiriman data bisa dengan GET atau POST        
