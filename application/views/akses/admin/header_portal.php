@@ -224,7 +224,7 @@
           
          $sql = "SELECT *, concat(LPAD(a.kategori,2,0),'-',LPAD(a.sektor,2,0),'-', LPAD(a.id_projek, 3, '0')) as 
          act_code FROM t_projekprofil a, t_kategori b, t_sektor c, t_adminuser d WHERE a.kategori = b.id_kategori AND a.sektor = c.id_sektor AND a.id_projek=d.id_projek AND 
-         a.status = '6' AND d.username = '".$this->session->userdata('username')."'";
+         a.status = '7' AND d.username = '".$this->session->userdata('username')."'";
   
          $count_dataproyekuser = $this->db->query($sql)->num_rows();
 
