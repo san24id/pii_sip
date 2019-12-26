@@ -1,4 +1,4 @@
-      <style type="text/css">
+<style type="text/css">
       @media print {
         body * {
           visibility: hidden;
@@ -583,7 +583,8 @@
                                   <?php } ?>                         
                             <?php }else if($row->b == 'textarea'){ ?>
                                   <?php if($status[0] < 3){ ?>
-                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" onchange="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" id="file" onchange="return validasiFile()" onsubmit="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <div id="pratinjauGambar" >
                                   <input type="hidden" name="nmr[<?php echo $key; ?>]" value="<?php echo $row->nomor_urut; ?>" />
                                   <input type="hidden" name="nom[<?php echo $key; ?>]" value="<?php echo $row->urut; ?>">
                                   <input type="hidden" name="kup[<?php echo $key; ?>]" value="<?php echo substr($profil[0]->nama_projek,0,25); ?>" />
@@ -597,7 +598,8 @@
                                   <?php } ?>                                     
                               <?php }else if($row->b == 'not'){ ?>
                                   <?php if($status[0] < 3){ ?>
-                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" onchange="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <input name="up<?php echo $key; ?>" type="file" class="btn-sm" id="file" onchange="return validasiFile()" onsubmit="document.getElementById('gup<?php echo $key; ?>').value = ''; $('#next').attr('disabled',true);">
+                                  <div id="pratinjauGambar" >
                                   <input type="hidden" name="nmr[<?php echo $key; ?>]" value="<?php echo $row->nomor_urut; ?>" />
                                   <input type="hidden" name="nom[<?php echo $key; ?>]" value="<?php echo $row->urut; ?>">
                                   <input type="hidden" name="kup[<?php echo $key; ?>]" value="<?php echo substr($profil[0]->nama_projek,0,25); ?>" />
