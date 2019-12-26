@@ -599,11 +599,9 @@
           <div class="form">
             <div class="form-group">
               <label>Referensi</label>
-              <textarea class="form form-control" id="komen1"  placeholder="Referensi" onchange="document.getElementById('hdarea_project').value= (this.value);" required></textarea>
-                            
-              <!-- <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea> -->
-              <div class="modal-body">
-               <table class="table">
+              <textarea class="form form-control" id="komen1"  placeholder="Referensi" onchange="document.getElementById('hdarea_project').value= (this.value);" required></textarea>                     
+              <!-- <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea> -->              
+                <table class="table">
                 <tr>
                 <th></th>
                 <th>Username</th>
@@ -612,7 +610,6 @@
                 <?php 
                  foreach ($adminpii as $key => $value) {
                 ?>
-
                 <tr>
                   <td><input type="checkbox" name="username[]" value="<?php echo $value->username; ?>"></td>
                   <td><?php echo $value->username; ?> 
@@ -622,33 +619,33 @@
                     }
                   ?>
                 </table>
-
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="sbmt-approval-user">Send Admin User</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-              </form>          
             </div>
           </div>
-
         </div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#mdl-approval-user">Send</button>
-          <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        </div> -->
-
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="sbmt-approval-user">Send Admin User</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="close">Close</button>
+              </div>
+      </form>          
     </div>
   </div>
 </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#mdl-approval-user">Send</button>
+          <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
 
-  <div class="modal fade" id="mdl-approval-user" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
+    </div>
+  </div>
+</div> -->
+
+  <!-- <div class="modal fade" id="mdl-approval-user" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="mdl-approval" tabindex="-1" role="dialog" aria-labelledby="anomor1" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
@@ -796,7 +793,7 @@
           data: $("#form-approval-user").serialize(), // data yang akan dikirim ke file yang dituju        
           success: function(response){ // Ketika proses pengiriman berhasil    
               $("#form-approval-user").required()      
-              $("#mdl-approval-user").modal('hide'); // Sembunyikan loadingnya  
+              $("#mdl-referensi").modal('hide'); // Sembunyikan loadingnya  
               location.reload();      
               alert('Send Admin User success')
           }      

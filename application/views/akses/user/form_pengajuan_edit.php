@@ -27,7 +27,7 @@
                         <label>Status : </label>
                         <?php 
                           if($rowp->status == 1){
-                              echo "<img src='assets/dashboard/images/legend/treatment.png'>&nbsp;Drafted";  
+                              echo "<img src='assets/dashboard/images/legend/treatment.png'>&nbsp;Draft";  
                           }else if($rowp->status == 2){
                              echo "<img src='assets/dashboard/images/legend/submit.png'>&nbsp;Incomplete";
                           }else if($rowp->status == 3){
