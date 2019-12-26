@@ -595,13 +595,17 @@
     <div class="modal-content">
        <form id="form-approval-user">
         <input type="hidden" name="id_project" class="hdnid_project" value="">
+        <!-- <input type="hidden" name="tes_paijo" id="tes_paijo" value=""> -->
+        <input type="hidden" class="form form-control" name="xxi_xxi" id="xxi_xxi" value="<?php echo $this->session->userdata('role'); ?>">
         <div class="modal-body">
           <div class="form">
             <div class="form-group">
               <label>Referensi</label>
-              <textarea class="form form-control" id="komen1"  placeholder="Referensi" onchange="document.getElementById('hdarea_project').value= (this.value);" required></textarea>                     
-              <!-- <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea> -->              
-                <table class="table">
+              <textarea class="form form-control" name="komen1" id="komen1"  placeholder="Referensi" onchange="document.getElementById('tes_paijo').value= (this.value);" required></textarea>
+                            
+              <!-- <textarea name="komen1" id="hdarea_project" style="display: none;"></textarea> -->
+              <div class="modal-body">
+               <table class="table">
                 <tr>
                 <th></th>
                 <th>Username</th>
@@ -610,7 +614,9 @@
                 <?php 
                  foreach ($adminpii as $key => $value) {
                 ?>
+
                 <tr>
+                 
                   <td><input type="checkbox" name="username[]" value="<?php echo $value->username; ?>"></td>
                   <td><?php echo $value->username; ?> 
                   <td><?php echo $value->username; ?>
@@ -619,17 +625,17 @@
                     }
                   ?>
                 </table>
-            </div>
-          </div>
-        </div>
+
+              </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" id="sbmt-approval-user">Send Admin User</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="close">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
-      </form>          
-    </div>
-  </div>
-</div>
+              </form>          
+            </div>
+          </div>
+
+        </div>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#mdl-approval-user">Send</button>
           <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -785,7 +791,6 @@
           }      
       });
     });
-
     $("#sbmt-approval-user").on('click', function(){
       $.ajax({        
           type: "POST", // Method pengiriman data bisa dengan GET atau POST        
