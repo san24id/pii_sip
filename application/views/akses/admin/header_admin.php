@@ -32,11 +32,11 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="Dashboard" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>IP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>S</b>IP</span>
+      <span><img width="60px" height="35px;" src="<?=base_url('assets/dashboard/images/sip2.png');?>" /></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -120,11 +120,11 @@
                <li class="<?php echo $data_user?>"><a href="superadm/user"><i class="glyphicon glyphicon-user"></i><span>Status User</span></a></li>
                <li class="<?php echo $impasses?>"><a href="superadm/impassesment"><i class="glyphicon glyphicon-th-list"></i><span>IMP Assessment</span></a></li>
                <li class="<?php echo $impm1?>"><a href="superadm/impm1"><i class="glyphicon glyphicon-th-list"></i><span>IMP Deskripsi Proyek</span></a></li>
-               <li class="<?php echo $assesment?>"><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assesment</span></a></li>
-               <li class="<?php echo $m1?>"><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskripsi Proyek</span></a></li>
-               <li class="<?php echo $kementrian?>"><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementrian</span></a></li>
+               <!-- <li class="<?php echo $assesment?>"><a href="superadm/assesment"><i class="glyphicon glyphicon-th-list"></i><span>Assessment</span></a></li>
+               <li class="<?php echo $m1?>"><a href="superadm/m1"><i class="glyphicon glyphicon-th-list"></i><span>Deskripsi Proyek</span></a></li> -->
+               <li class="<?php echo $kementrian?>"><a href="superadm/kementrian"><i class="glyphicon glyphicon-list-alt"></i><span>Kementerian</span></a></li>
                <li class="<?php echo $lpnk?>"><a href="superadm/lpnk"><i class="glyphicon glyphicon-list-alt"></i><span>LPNK</span></a></li>
-               <li class="<?php echo $sektor?>"><a href="superadm/sektor"><i class="glyphicon glyphicon-info-sign"></i><span>Sektor</span></a></li>
+               <li class="<?php echo $sektorr?>"><a href="superadm/sektor"><i class="glyphicon glyphicon-info-sign"></i><span>Sektor</span></a></li>
                <li class="<?php echo $subsektor?>"><a href="superadm/subsektor"><i class="glyphicon glyphicon-info-sign"></i><span>Subsektor</span></a></li>
                <li class="<?php echo $prov?>"><a href="superadm/provinsi"><i class="glyphicon glyphicon-chevron-right"></i><span>Provinsi</span></a></li>
                <li class="<?php echo $kotakab?>"><a href="superadm/kotakabu"><i class="glyphicon glyphicon-chevron-right"></i><span>Kota Kabupaten</span></a></li>

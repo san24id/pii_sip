@@ -364,7 +364,7 @@
               <div class="modal-content">
                 <div class="modal-body">
                 <form method="post" action="superadm/importassesment">
-                  <h5><p align="justify">Apa anda yakin melakukan ini ?</p></h5>
+                  <h5><p align="justify">Apakah anda yakin ingin melakukan import data assessment ke data deskripsi proyek ?</p></h5>
 
                 </div>
                     <div class="modal-footer">

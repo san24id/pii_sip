@@ -321,7 +321,7 @@ class SuperAdm extends CI_Controller {
 	}
 
 	public function sektor(){
-		$data['sektor'] = 'active';
+		$data['sektorr'] = 'active';
 		$data['active2'] = '';
 		$data['active3'] = '';
 		
