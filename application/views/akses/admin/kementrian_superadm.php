@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        DATA KEMENTRIAN VERIFY &nbsp; 
+        DATA KEMENTERIAN VERIFY &nbsp; 
         <!-- <a href="Dashboard/submissionpagePDF?<?php echo $_SERVER['QUERY_STRING']; ?>"><button class="btn btn-primary btn-sm">Export to PDF</button></a> -->
         <small></small>
       </h1>
@@ -24,7 +24,7 @@
                 <thead>
                   <th>NO.</th>
                   <!-- <th>ID Kementrian</th> -->
-                  <th>Nama Kementrian</th>
+                  <th>Nama Kementerian</th>
                   
                   <!-- <th>Lokasi</th>
                   <th>Estimasi Nilai</th>
@@ -116,14 +116,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Tambah Kementrian</h4>
+          <h4 class="modal-title">Tambah Kementerian</h4>
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/addkementrian">
+            <form id="acc" method="post" action="superadm/addkementrian">
              <table class="table">
                   <tr>
-                  <th>Nama Kementrian</th>
+                  <th>Nama Kementerian</th>
                   <td>:</td>
                   <td><input type="text" name="nama_kementerian" class="form-control"></td>
                 </tr>
@@ -163,7 +163,7 @@
           </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Add</button>
+          <button type="submit" class="btn btn-success" id="nambah">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -188,11 +188,11 @@
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/updatekementrian">
+            <form id="ganti" method="post" action="superadm/updatekementrian">
               <input type="hidden" name="id_kementerian" value="<?php echo $row->id_kementerian; ?>">
              <table class="table">                
                 <tr>
-                  <th>Nama Kementrian</th>
+                  <th>Nama Kementerian</th>
                   <td>:</td>
                   <td><input type="text" name="nama_kementerian" class="form-control" value="<?php echo $row->nama_kementerian; ?>"></td>
                 </tr>
@@ -230,7 +230,7 @@
           </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Save</button>
+          <button type="submit" class="btn btn-success" id="rubah">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -244,12 +244,12 @@
     <div class="modal-content">
 
       <div class="modal-body">
-       <p align="justify">Apa kamu yakin akan menghapus Data Kementrian :  <?=$row->id_kementerian?> Nama Kementrian : <?=$row->nama_kementerian?> </p>
+       <p align="justify">Apa kamu yakin akan menghapus Data Kementerian :  <?=$row->id_kementerian?> Nama Kementerian : <?=$row->nama_kementerian?> </p>
       </div>
       <div class="modal-footer">
-      <form method="post" action="superadm/deletekementrian">
+      <form id="deleted" method="post" action="superadm/deletekementrian">
           <input type="hidden" name="id_kementerian" value="<?php echo $row->id; ?>">
-          <button type="submit" class="btn btn-success">Yes</button>
+          <button type="submit" class="btn btn-success" id="bye">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>
       </div>
@@ -284,6 +284,45 @@
       "info": true,
       "autoWidth": false
     });
+  });
+
+  $("#nambah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/addstaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#acc").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#tambah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Create Admin success')
+          }      
+      });
+    });
+
+  $("#rubah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/updatestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#ganti").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#ubah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Update Admin success')
+          }      
+      });
+  });  
+
+  $("#bye").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/deletestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#deleted").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#hapus").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Deleted Admin success')
+          }      
+      });
   });
 </script>
 </body>

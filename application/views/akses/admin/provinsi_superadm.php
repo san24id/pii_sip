@@ -121,7 +121,7 @@
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/addprov">
+            <form id="acc" method="post" action="superadm/addprov">
              <table class="table">
                   <tr>
                   <th>Nama Provinsi</th>
@@ -133,7 +133,7 @@
           </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Add</button>
+          <button type="submit" class="btn btn-success" id="nambah">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -158,7 +158,7 @@
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/updateprov">
+            <form id="ganti" method="post" action="superadm/updateprov">
               <input type="hidden" name="id_provinsi" value="<?php echo $row->id_provinsi; ?>">
               <table class="table">
                 <tr>
@@ -200,7 +200,7 @@
           </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Save</button>
+          <button type="submit" class="btn btn-success" id="rubah">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -218,9 +218,9 @@
        <p> Nama Provinsi : <?=$row->nama_provinsi?> </p>
       </div>
       <div class="modal-footer">
-      <form method="post" action="superadm/deleteprov">
+      <form id="deleted" method="post" action="superadm/deleteprov">
           <input type="hidden" name="id_provinsi" value="<?php echo $row->id_provinsi; ?>">
-          <button type="submit" class="btn btn-success">Yes</button>
+          <button type="submit" class="btn btn-success" id="bye">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>
       </div>
@@ -256,6 +256,45 @@
       "autoWidth": false
     });
   });
+
+  $("#nambah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/addstaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#acc").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#tambah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Create Admin success')
+          }      
+      });
+    });
+
+  $("#rubah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/updatestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#ganti").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#ubah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Update Admin success')
+          }      
+      });
+  });  
+
+  $("#bye").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/deletestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#deleted").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#hapus").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Deleted Admin success')
+          }      
+      });
+  }); 
 </script>
 </body>
 </html>

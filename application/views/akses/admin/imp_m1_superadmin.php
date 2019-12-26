@@ -117,11 +117,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Tambah M1</h4>
+          <h4 class="modal-title">Tambah Deskripsi Proyek</h4>
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/addm1">
+            <form id="acc" method="post" action="superadm/addm1">
              <table class="table">
                 <tr>
                 <th>Pertanyaan</th>
@@ -153,6 +153,7 @@
                         <option value="label">label</option>
                         <option value="checkbox">checkbox</option>
                         <option value="text">text</option>
+                        <option value="textarea">textarea</option>
                       </select>
                   </td>
                 </tr>
@@ -162,7 +163,7 @@
              </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Add</button>
+          <button type="submit" class="btn btn-success" id="nambah">Add</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -183,11 +184,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ubah Pertanyaan</h4>
+          <h4 class="modal-title">Ubah Deskripsi Proyek</h4>
         </div>
         <div class="modal-body">
           <h5>
-            <form method="post" action="superadm/updatem1">
+            <form id="ganti" method="post" action="superadm/updatem1">
               <input type="hidden" name="id" value="<?php echo $row->id; ?>">
              <table class="table">
                 <tr>
@@ -220,21 +221,31 @@
                           <option value="label">label</option>
                           <option value="checkbox">checkbox</option>
                           <option value="text">text</option>
+                          <option value="textarea">textarea</option>
                         <?php }else if($row->b == 'label'){ ?>
                           <option value="not">not</option>
                           <option value="label" selected>label</option>
                           <option value="checkbox">checkbox</option>
                           <option value="text">text</option>
+                          <option value="textarea">textarea</option>
                         <?php }else if($row->b == 'checkbox'){ ?>
                           <option value="not">not</option>
                           <option value="label">label</option>
                           <option value="checkbox" selected>checkbox</option>
                           <option value="text">text</option>
+                          <option value="textarea">textarea</option>
                         <?php }else if($row->b == 'text'){ ?>
                           <option value="not">not</option>
                           <option value="label">label</option>
                           <option value="checkbox">checkbox</option>
                           <option value="text" selected>text</option>
+                          <option value="textarea">textarea</option>
+                          <?php }else if($row->b == 'textarea'){ ?>
+                          <option value="not">not</option>
+                          <option value="label">label</option>
+                          <option value="checkbox">checkbox</option>
+                          <option value="text">text</option>
+                          <option value="textarea" selected>textarea</option>  
                         <?php }else{ ?>
                           <option value="not">not</option>
                           <option value="label">label</option>
@@ -248,7 +259,7 @@
               </h5>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" >Save</button>
+          <button type="submit" class="btn btn-success" id="rubah">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </form>
         </div>
@@ -266,9 +277,9 @@
        <p> Pertanyaan : <?=$row->nomor_urut?> </p>
       </div>
       <div class="modal-footer">
-      <form method="post" action="superadm/deletem1">
+      <form id="deleted" method="post" action="superadm/deletem1">
           <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-          <button type="submit" class="btn btn-success">Yes</button>
+          <button type="submit" class="btn btn-success" id="bye">Yes</button>
            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </form>
       </div>
@@ -303,6 +314,45 @@
       "info": true,
       "autoWidth": false
     });
+  });
+
+  $("#nambah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/addstaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#acc").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#tambah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Create Admin success')
+          }      
+      });
+    });
+
+  $("#rubah").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/updatestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#ganti").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#ubah").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Update Admin success')
+          }      
+      });
+  });  
+
+  $("#bye").on('click', function(){
+      $.ajax({        
+          type: "POST", // Method pengiriman data bisa dengan GET atau POST        
+          // url: "<?php echo base_url("index.php/superadm/deletestaff"); ?>", // Isi dengan url/path file php yang dituju       
+          data: $("#deleted").serialize(), // data yang akan dikirim ke file yang dituju        
+          success: function(response){ // Ketika proses pengiriman berhasil          
+              $("#hapus").modal('hide'); // Sembunyikan loadingnya   
+               location.reload();       
+              alert('Deleted Admin success')
+          }      
+      });
   });
 </script>
 </body>
