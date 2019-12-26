@@ -30,6 +30,7 @@
                   <th>Nama</th>
                   <th>Instansi</th>
                   <th>Jabatan</th>
+                  <th>Email</th>
                   <th>Telepon</th>
                   <th>Username</th>
                   <th>Status</th>
@@ -53,6 +54,7 @@
                   <td><?php echo $row->nama_user; ?></td>
                   <td><?php echo $row->instansi; ?></td>
                   <td><?php echo $row->jabatan; ?></td>
+                  <td><?php echo $row->email; ?></td>                  
                   <td><?php echo $row->telepon ?></td>
                   <td><?php echo $row->username ?></td>
                   <td><?php echo $row->status ?></td>
@@ -169,6 +171,11 @@
                   <th>Jabatan</th>
                   <td>:</td>
                   <td><input type="text" name="jabatan" class="form-control" value="<?php echo $row->jabatan; ?>" readonly></td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td>:</td>
+                  <td><input type="text" name="email" class="form-control" value="<?php echo $row->email; ?>" readonly></td>
                 </tr>
                 <tr>
                   <th>Telepon</th>

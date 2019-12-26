@@ -317,8 +317,8 @@ class SuperAdm_model extends CI_model {
 
     function updateuser($upd){
         $sql = "UPDATE `t_user` SET `nomor_user`='".$upd['nomor_user']."',`nik`='".$upd['nik']."',`foto`='".$upd['foto']."',`nama_user`='".$upd['nama_user']."'
-        ,`instansi`='".$upd['instansi']."',`jabatan`='".$upd['jabatan']."',`telepon`='".$upd['telepon']."',`username`='".$upd['username']."'
-        ,`status`='".$upd['status']."',
+        ,`instansi`='".$upd['instansi']."',`jabatan`='".$upd['jabatan']."',`email`='".$upd['email']."',`telepon`='".$upd['telepon']."',`username`='".$upd['username']."'
+        ,`status`='".$upd['status']."'
         WHERE `id_user`='".$upd['id_user']."'"; 
         
         $query = $this->db->query($sql);

@@ -171,8 +171,7 @@
                 <tr>
                   <th>Nama Kota Kabupaten</th>
                   <td>:</td>
-                  <td> <?php var_dump($row) ?>
-                  <input type="text" name="nama_daerah" class="form-control" value="<?php echo $row->nama_daerah; ?>"></td>
+                  <td><input type="text" name="nama_daerah" class="form-control" value="<?php echo $row->nama_daerah; ?>"></td>
                 </tr>                
               </table>
           </h5>

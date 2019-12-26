@@ -553,8 +553,7 @@ class SuperAdm extends CI_Controller {
 			'jabatan' =>  $_POST['jabatan'],
 			'email' => $_POST['email'],
 			'telepon' => $_POST['telepon'],
-			'username' => $_POST['username'],
-			'password' => $POST['password'],
+			'username' => $_POST['username'],			
 			'status' => $_POST['status']
 			// 'status_1' => $_POST['status_1'],
 			// 'log_create' => $_POST['log_create'],
