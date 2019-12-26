@@ -251,6 +251,7 @@
                           <option value="label">label</option>
                           <option value="checkbox">checkbox</option>
                           <option value="text">text</option>
+                          <option value="textarea">textarea</option>
                         <?php } ?>
                       </select>
                   </td>
