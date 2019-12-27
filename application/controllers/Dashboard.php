@@ -1052,10 +1052,8 @@ class Dashboard extends CI_Controller {
 	public function saveapproval(){
 		$q1 = "delete from t_adminapp where id_projek = ".$_POST['id_project'];
 		$q1 = $this->db->query($q1);
-
 		$this->db->query("UPDATE t_projekprofil SET status = 4 WHERE id_projek = ".$_POST['id_project']);
 		$this->db->query("insert into t_adminapp (id_projek, role) values (".$_POST['id_project'].", ".$_POST['role'].")");
-
 		return true;
 	}
 
