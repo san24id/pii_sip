@@ -401,7 +401,7 @@
               endforeach; 
               
               ?>
-            <div class="row">
+              <div class="row">
               <div class="col-xs-12">
                 <!-- /.box -->
                 <div class="box">
@@ -410,31 +410,45 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body" id="form2">
-                    <table class="table table-bordered table-striped">
+                  <table class="table table-bordered table-striped">
                       <tbody>
-                      <?php if($id_ass[0] != '' || $id_ass[0] != NULL){ ?>
+                      <?php 
+                      for($x = 0; $x<$cn_assesment; $x++){
+                      if($id_ass[$x] != '' || $id_ass[$x] != NULL){ ?>
                         <tr>
-                          <td><?php echo $nomor[0]; ?></td>
-                          <td><?php echo $pertanyaan[0]; ?>&nbsp;<?php if($penjelasan[0] == NULL || $penjelasan[0] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor0"></i><?php } ?>
+                          <td><?php echo $nomor[$x]; ?></td>
+                          <td><?php echo $pertanyaan[$x]; ?>&nbsp;<?php if($penjelasan[$x] == NULL || $penjelasan[$x] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor<?php echo $x; ?>"></i><?php } ?>
                             <br>
-                                       <input type="radio" name="p0"  value="Y" class="pi0" <?php echo $Y[0]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p0"  value="N" class="pi0" <?php echo $N[0]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[0]; ?>" class="y0">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[0]; ?>" class="n0">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[0]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[0]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[0]; ?>" class = 'bb0'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[0]; ?>" class = 'rs0'>
-                                       <div class="dp0" style="display: none;">
-                                       <?php foreach ($noass0 as $row) {
+                                       <input disabled type="radio" name="p<?php echo $x; ?>"  value="Y" class="pi<?php echo $x; ?>" <?php echo $Y[$x]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <input disabled type="radio" name="p<?php echo $x; ?>"  value="N" class="pi<?php echo $x; ?>" <?php echo $N[$x]; ?>>&nbsp;&nbsp;Tidak
+                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[$x]; ?>">
+                                       <input type="hidden" name="section[]" value="<?php echo $section[$x]; ?>">
+                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[$x]; ?>">
+                                       <input type="hidden" name="pertanyaan[]" value="<?php echo $pertanyaan[$x]; ?>">
+                                       <input type="hidden" name="intruksi_upload[]" value="<?php echo $intruksi_upload[$x]; ?>">
+                                       <input type="hidden" name="penjelasan[]" value="<?php echo $penjelasan[$x]; ?>">
+                                       <input type="hidden" name="informasi_upload[]" value="<?php echo $informasi_upload[$x]; ?>">
+                                       <input type="hidden" name="Y[]" value="<?php echo $Y[$x]; ?>" class="y<?php echo $x; ?>">
+                                       <input type="hidden" name="N[]" value="<?php echo $N[$x]; ?>" class="n<?php echo $x; ?>"> 
+                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[$x]; ?>" class = 'bb<?php echo $x; ?>'> 
+                                       <input type="hidden" name="respon[]" value="<?php echo $respon[$x]; ?>" class = 'rs<?php echo $x; ?>'>
+                                       <input type="hidden" name="s_upload[]" value="<?php echo $s_upload[$x]; ?>">
+                                       <div class="dp<?php echo $x; ?>" style="display: none;">
+                                       <?php 
+                                        $xy = 0;
+                                        foreach ($noass as $row) {
+                                         if($row->nomor_urut == $x+1){
                                            if($row->b == 'not'){
+                                             if($status[0] > 2 && $s_upload[$x] == 1){ ?>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
+                                          <?php } 
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
                                               echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
                                               echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
                                               echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
                                               echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
+                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";  
                                            }else if($row->b == 'label'){
                                               echo "<label>".$row->a."</label><br>";
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
@@ -445,23 +459,53 @@
                                               echo "<input name='box6[]' type='hidden' value='label' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                            }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a0 ac0' $row->status>&nbsp;".$row->a."<br>";
+                                             if ($status[0] > 2 && $s_upload[$x] == 1) { ?>
+                                                  <span class="attachment<?php echo $row->nomor_urut; ?>" style="display: none;"><?php echo $row->upload; ?></span>
+                                              <?php
+                                                $xy++;
+                                                if($xy > 1){ 
+                                                  $nn = "display:none";
+                                                }else{
+                                                  $nn = "display:block";
+                                                }
+                                               ?>
+                                                <button type="button" id="dw<?php echo $row->nomor_urut; ?>" class="btn btn-default btn-sm" style="<?php echo $nn; ?>">Download File <?php echo $row->nomor_urut; ?></button>
+                                                <script type="text/javascript">
+                                                  document.getElementById('dw<?php echo $row->nomor_urut; ?>').addEventListener("click", function(){
+                                                  var arr = [];
+                                                    $('.attachment<?php echo $row->nomor_urut; ?>').each(function() {
+                                                    arr.push($(this).html());
+                                                    var $combine = 'name[]=' + arr.join('&name[]=');
+                                                    window.location = "<?php echo site_url('dashboard/zip'); ?>?"+$combine + '&filename=<?php echo $profil[0]->id_projek.'_'.substr($profil[0]->nama_projek,0,25); ?>_<?php echo $row->nomor_urut; ?>';
+                                                  });
+
+                                                  });
+                                              </script>
+                                          <?php 
+                                          }
+                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a$x ac$x' $row->status>&nbsp;".$row->a."<br>";
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
                                               echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
                                               echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
                                               echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b0' />";
+                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b$x' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
+                                             }else if($row->b == 'text'){
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
                                               echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a0' placeholder='Lainnya'/>";
+                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a$x' placeholder='Lainnya'/>";
                                               echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s0' />";
+                                              echo "<input name='box6[]' type='hidden' value='none' class='s$x' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
                                           }else if($row->b == 'textarea'){
+                                          if($status[0] > 2 && $s_upload[$x] == 1){ ?>
+                                                <a href="<?php echo 'upload/'.$row->upload; ?>"><button type="button" class="btn btn-default btn-sm">Download File <?php echo $row->nomor_urut; ?></button></a>
+                                                <div style="">
+
+                                              </div>
+                                          <?php } 
                                               echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
                                               echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
                                               echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
@@ -469,989 +513,14 @@
                                               echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
                                               echo "<input name='box6[]' type='hidden' value='textarea' />";
                                               echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
+                                            }
                                           }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                        </tr>
-                        <?php } ?>
-                        <?php if($id_ass[1] != '' || $id_ass[1] != NULL){ ?>
-                        <tr>
-                          <td><?php echo $nomor[1]; ?></td>
-                          <td><?php echo $pertanyaan[1]; ?>&nbsp;<?php if($penjelasan[1] == NULL || $penjelasan[1] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor1"></i><?php } ?>
-                                <br>
-                                       <input type="radio" name="p1"  value="Y" class="pi1" <?php echo $Y[1]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p1"  value="N" class="pi1" <?php echo $N[1]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[1]; ?>" class="y1">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[1]; ?>" class="n1">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[1]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[1]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[1]; ?>" class = 'bb1'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[1]; ?>" class = 'rs1'>
-                                       <div class="dp1" style="display: none;">
-                                       <?php foreach ($noass1 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a1 ac1' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b1' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a1' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s1' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                        </tr>
-                        <?php } ?>
-                        <?php if($id_ass[2] != '' || $id_ass[2] != NULL){ ?>
-                        <tr>
-                          <td><?php echo $nomor[2]; ?></td>
-                          <td><?php echo $pertanyaan[2]; ?>&nbsp;<?php if($penjelasan[2] == NULL || $penjelasan[2] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor2"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p2"  value="Y" class="pi2" <?php echo $Y[2]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p2"  value="N" class="pi2" <?php echo $N[2]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[2]; ?>" class="y2">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[2]; ?>" class="n2">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[2]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[2]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[2]; ?>" class = 'bb2'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[2]; ?>" class = 'rs2'>
-                                       <div class="dp2" style="display: none;">
-                                           <?php foreach ($noass2 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a2 ac2' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b2' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a2' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s2' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[3] != '' || $id_ass[3] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[3]; ?></td>
-                          <td><?php echo $pertanyaan[3]; ?>&nbsp;<?php if($penjelasan[3] == NULL || $penjelasan[3] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor3"></i><?php } ?>
-                            <br>
-                                       <input type="radio" name="p3"  value="Y" class="pi3" <?php echo $Y[3]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p3"  value="N" class="pi3" <?php echo $N[3]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[3]; ?>" class="y3">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[3]; ?>" class="n3">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[3]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[3]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[3]; ?>" class = 'bb3'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[3]; ?>" class = 'rs3'>
-                                       <div class="dp3" style="display: none;" >
-                                       <?php foreach ($noass3 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a3 ac3' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b3' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a3' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s3' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                        </tr>
-                        <?php } ?>
-                        <?php if($id_ass[4] != '' || $id_ass[4] != NULL){ ?>
-                        <tr>
-                          <td><?php echo $nomor[4]; ?></td>
-                          <td><?php echo $pertanyaan[4]; ?>&nbsp;<?php if($penjelasan[4] == NULL || $penjelasan[4] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor4"></i><?php } ?>
-                                <br>
-                                       <input type="radio" name="p4"  value="Y" class="pi4" <?php echo $Y[4]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p4"  value="N" class="pi4" <?php echo $N[4]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[4]; ?>" class="y4">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[4]; ?>" class="n4">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[4]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[4]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[4]; ?>" class = 'bb4'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[4]; ?>" class = 'rs4'>
-                                       <div class="dp4" style="display: none;">
-                                       <?php foreach ($noass4 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a4 ac4' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b4' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a4' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s4' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                        </tr>
-                        <?php } ?>
-                        <?php if($id_ass[5] != '' || $id_ass[5] != NULL){ ?>
-                        <tr>
-                          <td><?php echo $nomor[5]; ?></td>
-                          <td><?php echo $pertanyaan[5]; ?>&nbsp;<?php if($penjelasan[5] == NULL || $penjelasan[5] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor5"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p5"  value="Y" class="pi5" <?php echo $Y[5]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p5"  value="N" class="pi5" <?php echo $N[5]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[5]; ?>" class="y5">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[5]; ?>" class="n5">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[5]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[5]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[5]; ?>" class = 'bb5'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[5]; ?>" class = 'rs5'>
-                                       <div class="dp5" style="display: none;">
-                                           <?php foreach ($noass5 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a5 ac5' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b5' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a5' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s5' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[6] != '' || $id_ass[6] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[6]; ?></td>
-                          <td><?php echo $pertanyaan[6]; ?>&nbsp;<?php if($penjelasan[6] == NULL || $penjelasan[6] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor6"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p6"  value="Y" class="pi6" <?php echo $Y[6]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p6"  value="N" class="pi6" <?php echo $N[6]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[6]; ?>" class="y6">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[6]; ?>" class="n6">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[6]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[6]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[6]; ?>" class = 'bb6'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[6]; ?>" class = 'rs6'>
-                                       <div class="dp6" style="display: none;">
-                                           <?php foreach ($noass6 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a6 ac6' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b6' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a6' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s6' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea disabled  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[7] != '' || $id_ass[7] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[7]; ?></td>
-                          <td><?php echo $pertanyaan[7]; ?>&nbsp;<?php if($penjelasan[7] == NULL || $penjelasan[7] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor7"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p7"  value="Y" class="pi7" <?php echo $Y[7]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p7"  value="N" class="pi7" <?php echo $N[7]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[7]; ?>" class="y7">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[7]; ?>" class="n7">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[7]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[7]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[7]; ?>" class = 'bb7'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[7]; ?>" class = 'rs7'>
-                                       <div class="dp7" style="display: none;">
-                                           <?php foreach ($noass7 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a7 ac7' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b7' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a7' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s7' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[8] != '' || $id_ass[8] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[8]; ?></td>
-                          <td><?php echo $pertanyaan[8]; ?>&nbsp;<?php if($penjelasan[8] == NULL || $penjelasan[8] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor8"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p8"  value="Y" class="pi8" <?php echo $Y[8]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p8"  value="N" class="pi8" <?php echo $N[8]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[8]; ?>" class="y8">
-                                       <input type="hidden" name="N[]" value="<?php echo $Y[8]; ?>" class="n8">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[8]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[8]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[8]; ?>" class = 'bb8'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[8]; ?>" class = 'rs8'>
-                                       <div class="dp8" style="display: none;">
-                                           <?php foreach ($noass8 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a8 ac8' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b8' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a8' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s8' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[9] != '' || $id_ass[9] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[9]; ?></td>
-                          <td><?php echo $pertanyaan[9]; ?>&nbsp;<?php if($penjelasan[9] == NULL || $penjelasan[9] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor9"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p9"  value="Y" class="pi9" <?php echo $Y[9]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p9"  value="N" class="pi9" <?php echo $N[9]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[9]; ?>" class="y9">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[9]; ?>" class="n9">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[9]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[9]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[9]; ?>" class = 'bb9'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[9]; ?>" class = 'rs9'>
-                                       <div class="dp9" style="display: none;">
-                                           <?php foreach ($noass9 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a9 ac9' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b9' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a9' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s9' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[10] != '' || $id_ass[10] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[10]; ?></td>
-                          <td><?php echo $pertanyaan[10]; ?>&nbsp;<?php if($penjelasan[10] == NULL || $penjelasan[10] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor10"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p10"  value="Y" class="pi10" <?php echo $Y[10]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p10"  value="N" class="pi10" <?php echo $N[10]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[10]; ?>" class="y10">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[10]; ?>" class="n10">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[10]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[10]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[10]; ?>" class = 'bb10'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[10]; ?>" class = 'rs10'>
-                                       <div class="dp10" style="display: none;">
-                                           <?php foreach ($noass10 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a10 ac10' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b10' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a10' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s10' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[11] != '' || $id_ass[11] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[11]; ?></td>
-                          <td><?php echo $pertanyaan[11]; ?>&nbsp;<?php if($penjelasan[11] == NULL || $penjelasan[11] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor11"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p11"  value="Y" class="pi11" <?php echo $Y[11]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p11"  value="N" class="pi11" <?php echo $N[11]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[11]; ?>" class="y11">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[11]; ?>" class="n11">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[11]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[11]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[11]; ?>" class = 'bb11'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[11]; ?>" class = 'rs11'>
-                                       <div class="dp11" style="display: none;">
-                                           <?php foreach ($noass11 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a11 ac11' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b11' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a11' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s11' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[12] != '' || $id_ass[12] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[12]; ?></td>
-                          <td><?php echo $pertanyaan[12]; ?>&nbsp;<?php if($penjelasan[12] == NULL || $penjelasan[12] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor12"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p12"  value="Y" class="pi12" <?php echo $Y[12]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p12"  value="N" class="pi12" <?php echo $N[12]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[12]; ?>" class="y12">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[12]; ?>" class="n12">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[12]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[12]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[12]; ?>" class = 'bb12'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[12]; ?>" class = 'rs12'>
-                                       <div class="dp12" style="display: none;">
-                                           <?php foreach ($noass12 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a12 ac12' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b12' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a12' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s12' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[13] != '' || $id_ass[13] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[13]; ?></td>
-                          <td><?php echo $pertanyaan[13]; ?>&nbsp;<?php if($penjelasan[13] == NULL || $penjelasan[13] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor13"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p13"  value="Y" class="pi13" <?php echo $Y[13]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p13"  value="N" class="pi13" <?php echo $N[13]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[13]; ?>" class="y13">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[13]; ?>" class="n13">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[13]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[13]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[13]; ?>" class = 'bb13'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[13]; ?>" class = 'rs13'>
-                                       <div class="dp13" style="display: none;">
-                                           <?php foreach ($noass13 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a13 ac13' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b13' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a13' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s13' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[14] != '' || $id_ass[14] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[14]; ?></td>
-                          <td><?php echo $pertanyaan[14]; ?>&nbsp;<?php if($penjelasan[14] == NULL || $penjelasan[14] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor14"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p14"  value="Y" class="pi14" <?php echo $Y[14]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p14"  value="N" class="pi14" <?php echo $N[14]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[14]; ?>" class="y14">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[14]; ?>" class="n14">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[14]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[14]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[14]; ?>" class = 'bb14'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[14]; ?>" class = 'rs14'>
-                                       <div class="dp14" style="display: none;">
-                                           <?php foreach ($noass14 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a14 ac14' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b14' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a14' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s14' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
-                        <?php if($id_ass[15] != '' || $id_ass[15] != NULL){ ?>
-                       <tr>
-                          <td><?php echo $nomor[15]; ?></td>
-                          <td><?php echo $pertanyaan[15]; ?>&nbsp;<?php if($penjelasan[15] == NULL || $penjelasan[15] == ''){  }else{ ?> <i class="glyphicon glyphicon-info-sign" style="color: blue; cursor:pointer;" data-toggle="modal" data-target="#bnomor15"></i><?php } ?>
-                          <br>
-                                       <input type="radio" name="p15"  value="Y" class="pi15" <?php echo $Y[15]; ?>>&nbsp;&nbsp;Ya&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <input type="radio" name="p15"  value="N" class="pi15" <?php echo $N[15]; ?>>&nbsp;&nbsp;Tidak
-                                       <input type="hidden" name="Y[]" value="<?php echo $Y[15]; ?>" class="y15">
-                                       <input type="hidden" name="N[]" value="<?php echo $N[15]; ?>" class="n15">
-                                       <input type="hidden" name="id_ass[]" value="<?php echo $id_ass[15]; ?>">
-                                       <input type="hidden" name="nomor[]" value="<?php echo $nomor[15]; ?>"> 
-                                       <input type="hidden" name="bobot[]" value="<?php echo $bobot[15]; ?>" class = 'bb15'> 
-                                       <input type="hidden" name="respon[]" value="<?php echo $respon[15]; ?>" class = 'rs15'>
-                                       <div class="dp15" style="display: none;">
-                                           <?php foreach ($noass15 as $row) {
-                                           if($row->b == 'not'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='not' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else if($row->b == 'label'){
-                                              echo "<label>".$row->a."</label><br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='label' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                           }else  if($row->b == 'checkbox'){
-                                              echo "<input disabled type='".$row->b."' value='".$row->a."' ".$row->c." class='a15 ac15' $row->status>&nbsp;".$row->a."<br>";
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input name='box4[]' type='hidden' value='".$row->a."' />";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='nonchecked' class='b15' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'text'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<input readonly name='box4[]' type='text' value='".$row->a."' class='form-control a15' placeholder='Lainnya'/>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='none' class='s15' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                          }else if($row->b == 'textarea'){
-                                              echo "<input name='box1[]' type='hidden' value='".$row->id."' />";
-                                              echo "<input name='box2[]' type='hidden' value='".$row->idass."' />";
-                                              echo "<input name='box3[]' type='hidden' value='".$row->nomor_urut."' />";
-                                              echo "<textarea readonly  name='box4[]' cols='3' class='form-control areax'>".$row->a."</textarea>";
-                                              echo "<input name='box5[]' type='hidden' value='".$row->b."' />";
-                                              echo "<input name='box6[]' type='hidden' value='textarea' />";
-                                              echo "<input name='box7[]' type='hidden' value='".$row->urut."' />";
-                                              
-                                          }
-                                        ?>
-                                        <?php  } ?>
-                                      </div>
-                          </td>
-                       </tr>
-                       <?php } ?>
+                                         } ?>
+                                        </div>
+                            </td>
+                              <td><?php echo $skr[$x]; ?></td>
+                          </tr>
+                          <?php }} ?>
                       </tbody>
                     </table>
                   </div>
