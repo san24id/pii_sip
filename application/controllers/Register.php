@@ -186,13 +186,16 @@ class Register extends CI_Controller{
         
         // SMTP configuration
         $mail->isSMTP();
+        // $mail->protocol = 'smtp';
         $mail->Host     = 'ssl://smtp.gmail.com:465';
         $mail->SMTPAuth = true;
         $mail->Username = 'iigfirisk@gmail.com';
         $mail->Password = 'R15k.2017';
         //$mail->SMTPSecure = 'tls';
         //$mail->Port     = 587;
-        
+
+        // $this->email->set_crlf( "\r\n");   
+             
         $mail->setFrom('iigfirisk@gmail.com', 'PII SIP');
         //$mail->addReplyTo('');
         

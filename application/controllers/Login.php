@@ -37,7 +37,6 @@ class Login extends CI_Controller {
 	// 	$this->load->view('login/login_adm');
 	// }
 
-
 	public function auth(){
         $username=htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
         $password=htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
