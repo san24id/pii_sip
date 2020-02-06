@@ -186,7 +186,8 @@ class Register extends CI_Controller{
         
         // SMTP configuration
         $mail->isSMTP();
-        // $mail->protocol = 'smtp';
+        // $mail->protocol = 'mail';
+        // $mail->Host = 'mail.office365.co.id';
         $mail->Host     = 'ssl://smtp.gmail.com:465';
         $mail->SMTPAuth = true;
         $mail->Username = 'iigfirisk@gmail.com';
